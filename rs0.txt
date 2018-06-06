@@ -1,0 +1,895 @@
+ rs.c:rs_init:125:RS: address of m_in=0x804ef00 m_out=0x804dcc0
+ rs.c:rs_init:131:Binding process 2894 to VM0 with rs_nr=2
+ rs.c:rs_init:155:Get the DRVS info from SYSTASK
+ rs.c:rs_init:159:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ rs.c:rs_init:161:Get the VM info from SYSTASK
+ rs.c:rs_init:165:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ rs.c:rs_init:168:Register RS into SYSTASK rs_lpid=2894
+ sys_bindproc.c:sys_rbindproc:26:SYS_BINDPROC request to SYSTEM(0) sysproc_ep=2 lpid=2894 oper=0
+ sys_bindproc.c:get_process_name_by_pid:56:name=[./rs]
+ sys_bindproc.c:sys_rbindproc:39:endpoint=2
+ sys_setpname.c:sys_rsetpname:16:Sending SYS_SETPNAME request to SYSTEM p_ep=2 p_name=rs
+ mol_bindproc.c:mol_bindproc:19:p_endpoint=2 pid=2 lpid=2894 oper=1
+ rs.c:udp_init:197:RS: unning at port=2000
+ rs.c:udp_init:213:RS: is bound to port=2000 socket=3
+ rs.c:main:55:Receiving command line 
+ rs.c:main:64:bytes=83 mtype=0x700
+ rs.c:main:66:source=0 type=1792 m7i1=9 m7i2=1 m7i3=9 m7i4=42 m7p1=(nil) m7p2=(nil)
+ rs.c:check_PM:111:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:231:source=0 type=1792 m7i1=9 m7i2=1 m7i3=9 m7i4=42 m7p1=(nil) m7p2=(nil)
+ rs.c:deamonize:241:deamon_nodeid=0 deamon_type=1 deamon_ep=9
+ rs.c:deamonize:243:nodeid=9 mnxpid=99
+ rs.c:deamonize:244:arg_v=/home/MoL_Module/mol-ipc/servers/inet/inet arg_len=42
+ rs.c:deamonize:253:deamon_ep=9
+ rs.c:deamonize:260:deamon_nodeid=0
+ rs.c:deamonize:272:mnxpid=9
+ rs.c:deamonize:372:PARENT waiting child exiting
+ rs.c:be_a_daemon:384:
+ rs.c:deamonize:374:exiting child=0
+ rs.c:main:74:deamonize rcode=0
+ rs.c:main:84:Sending reply rcode=68
+ rs.c:main:55:Receiving command line 
+ rs.c:be_a_daemon:391:pid=2901
+ rs.c:deamonize:307:mnxpid:9 deamon_type=1
+ rs.c:deamonize:327:CHILD:  Bind to PM 
+ mol_bindproc.c:mol_bindproc:19:p_endpoint=9 pid=9 lpid=2901 oper=1
+ rs.c:deamonize:332:Demonized process PID=9
+ rs.c:deamonize:335:CHILD: sys_getproc 
+ rs.c:deamonize:339:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:343:CHILD: arg_len=42/42 execvpe >/home/MoL_Module/mol-ipc/servers/inet/inet< 
+ rs.c:deamonize:349:CHILD: arg_v[0]=/home/MoL_Module/mol-ipc/servers/inet/inet
+ rs.c:deamonize:349:CHILD: arg_v[1]=(null)
+ inet.c:main:70:Starting INET on p_nr=9
+ inet.c:inet_init:182:ETH: mnx_wait4bind_T  rcode=9
+ inet.c:inet_init:190:Get the DRVS info from SYSTASK
+ inet.c:inet_init:194:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ inet.c:inet_init:196:Get the VM info from SYSTASK
+ inet.c:inet_init:200:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ inet.c:inet_init:202:Get ETH_PROC_NR info from SYSTASK
+ inet.c:inet_init:206:nr=6 endp=6 vmid=0 flags=8 misc=20 lpid=2881 nodeid=0 nodemap=1 name=eth 
+ inet.c:inet_init:213:Get INET_PROC_NR info from SYSTASK
+ inet.c:inet_init:217:nr=9 endp=9 vmid=0 flags=8 misc=20 lpid=2901 nodeid=0 nodemap=1 name=inet 
+ inet.c:inet_init:224:INET m_ptr=0x86d7000
+ inet.c:inet_init:229:clockTicks =100
+ mol_time.c:mol_time:12:source=0 type=0 m2i1=9 m2i2=0 m2i3=0 m2l1=1037 m2l2=-1989934592 m2p1=(nil)
+ inet.c:inet_init:234:boottime =10
+ inet.c:nw_conf:243:
+ inet_config.c:read_conf:185:
+ inet_config.c:check_dev:88:type=1 ifno=0
+ inet_config.c:check_dev:88:type=0 ifno=1
+ inet_config.c:check_dev:88:type=0 ifno=2
+ inet_config.c:check_dev:88:type=0 ifno=3
+ inet_config.c:check_dev:88:type=0 ifno=4
+ inet_config.c:check_dev:88:type=0 ifno=5
+ inet_config.c:check_dev:88:type=0 ifno=6
+ inet_config.c:check_dev:88:type=0 ifno=7
+ inet_config.c:check_dev:88:type=0 ifno=8
+ inet_config.c:check_dev:88:type=0 ifno=9
+ inet_config.c:check_dev:88:type=0 ifno=10
+ inet_config.c:check_dev:88:type=0 ifno=11
+ inet_config.c:check_dev:88:type=0 ifno=12
+ inet_config.c:check_dev:88:type=0 ifno=13
+ inet_config.c:check_dev:88:type=0 ifno=14
+ inet_config.c:check_dev:88:type=0 ifno=15
+ inet_config.c:check_dev:88:type=0 ifno=16
+ inet_config.c:check_dev:88:type=0 ifno=17
+ inet_config.c:check_dev:88:type=0 ifno=18
+ inet_config.c:check_dev:88:type=0 ifno=19
+ inet_config.c:check_dev:88:type=0 ifno=20
+ inet_config.c:check_dev:88:type=0 ifno=21
+ inet_config.c:check_dev:88:type=0 ifno=22
+ inet_config.c:check_dev:88:type=0 ifno=23
+ inet_config.c:check_dev:88:type=0 ifno=24
+ inet_config.c:check_dev:88:type=0 ifno=25
+ inet_config.c:check_dev:88:type=0 ifno=26
+ inet_config.c:check_dev:88:type=0 ifno=27
+ inet_config.c:check_dev:88:type=0 ifno=28
+ inet_config.c:check_dev:88:type=0 ifno=29
+ inet_config.c:check_dev:88:type=0 ifno=30
+ inet_config.c:check_dev:88:type=0 ifno=31
+ generic/eth.c:eth_prep:88:
+ generic/arp.c:arp_prep:160:
+ generic/psip.c:psip_prep:86:
+ generic/ip.c:ip_prep:44:
+ generic/tcp.c:tcp_prep:69:
+ generic/udp.c:udp_prep:58:
+ inet.c:main:79:using current time for random-number seed
+ inet.c:main:93:this_proc=9
+ inet.c:nw_init:256:
+ mq.c:mq_init:20:
+ qp.c:qp_init:50:
+ buf.c:bf_init:116:
+ clock.c:clck_init:27:
+ sr.c:sr_init:103:
+ generic/eth.c:eth_init:97:
+ mnx_eth.c:osdep_eth_init:42:
+ mnx_eth.c:osdep_eth_init:59:ETH found
+ mnx_eth.c:osdep_eth_init:80:source=-1218543714 type=2055 m2i1=0 m2i2=9 m2i3=134738260 m2l1=0 m2l2=134513704 m2p1=0xb771fac0
+ mnx_eth.c:osdep_eth_init:93:source=6 type=2324 m3i1=0 m3i2=1 m3p1=(nil) m3ca1=[¾ëI_|d]
+ sr.c:sr_add_minor:193:minor=0 port=0
+ mnx_eth.c:setup_read:565:etp_flags=3 etp_port=0 etp_ethaddr=BE:EB:49:5F:7C:64
+ buf.c:bf_memreq:236:size=1518
+ buf.c:bf_memreq:322:tail->acc_length=494
+ mnx_eth.c:setup_read:590:eth0: mnx_sending DL_READV
+ mnx_eth.c:setup_read:592:source=-1217267008 type=2054 m2i1=0 m2i2=9 m2i3=3 m2l1=1 m2l2=0 m2p1=0x86d9144
+ mnx_eth.c:setup_read:594:source=6 type=2325 m2i1=0 m2i2=9 m2i3=0 m2l1=0 m2l2=521 m2p1=0x804f9cb
+ mnx_eth.c:setup_read:641:m_type=915 DL_PORT=0 etp_port=0
+ mnx_eth.c:setup_read:643:DL_PROC=9 this_proc=9 DL_STAT=0 
+ generic/arp.c:arp_init:180:
+ generic/psip.c:psip_init:96:
+ generic/ip.c:ip_init:58:
+ generic/ip_eth.c:ipeth_init:64:
+ generic/eth.c:eth_open:136:port=0 srfd=0 get_userdata=806a3ba put_userdata=806a66b
+ generic/icmp.c:icmp_init:104:
+ generic/icmp.c:icmp_main:133:icp_ipport=0 
+ generic/ip.c:ip_open:202:ip_flags=1 port=0 srfd=0
+ generic/ip.c:ip_open:232:return i=0
+ generic/icmp.c:icmp_main:148:icp_ipfd=0 
+ generic/ip_ioctl.c:ip_ioctl:50:fd=0 req=40386E22
+ generic/ip_ioctl.c:ip_ioctl:55:ip_port:0 
+ generic/icmp.c:icmp_main:150:result=-998 
+ generic/ipr.c:ipr_init:77:
+ mol_time.c:mol_time:12:source=0 type=0 m2i1=6 m2i2=0 m2i3=0 m2l1=1037 m2l2=-1789934592 m2p1=(nil)
+ sr.c:sr_add_minor:193:minor=1 port=0
+ generic/ip_eth.c:ipeth_main:95:de_state=0
+ generic/eth.c:eth_ioctl:174:fd=0 req=0x40146e10 
+ generic/eth.c:eth_ioctl:189:NWIOSETHOPT
+ generic/ip_eth.c:get_eth_data:146:fd=0 offset=0 count=20 for_ioctl=1
+ generic/ip_eth.c:get_eth_data:152:IES_SETPROTO
+ buf.c:bf_memreq:236:size=20
+ buf.c:bf_memreq:322:tail->acc_length=20
+ generic/eth.c:eth_checkopt:664:eth_port=0
+ generic/eth.c:do_rec_conf:1056:eth_port=0
+ generic/eth.c:compute_rec_conf:1076:eth_port=0
+ mnx_eth.c:eth_set_rec_conf:459:port=0 flags=11800273
+ generic/eth.c:hash_fd:695:
+ generic/eth.c:reply_thr_get:1096:ef_srfd=0, result=0, for_ioctl=1
+ generic/ip_eth.c:get_eth_data:146:fd=0 offset=0 count=0 for_ioctl=1
+ generic/ip_eth.c:get_eth_data:152:IES_SETPROTO
+ generic/eth.c:eth_open:136:port=0 srfd=0 get_userdata=8058bad put_userdata=8058e44
+ generic/eth.c:eth_ioctl:174:fd=1 req=0x80486e12 
+ generic/eth.c:eth_ioctl:322:NWIOGETHSTAT etp_port=0
+ buf.c:bf_memreq:236:size=72
+ buf.c:bf_memreq:322:tail->acc_length=72
+ generic/eth.c:eth_ioctl:344:NWIOGETHSTAT ethaddr=BE:EB:49:5F:7C:64
+ mnx_eth.c:eth_get_stat:415:port=0 task=6
+ generic/eth.c:eth_ioctl:349:NWIOGETHSTAT not VLAN result=0
+ generic/eth.c:eth_ioctl:361:NWIOGETHSTAT ef_put_userdata
+ buf.c:bf_packIffLess:471:min_len=72
+ generic/eth.c:reply_thr_put:1107:ef_srfd=0, result=0, for_ioctl=1
+ generic/tcp.c:tcp_init:81:
+ sr.c:sr_add_minor:193:minor=2 port=0
+ generic/ip.c:ip_open:202:ip_flags=1 port=0 srfd=0
+ generic/ip.c:ip_open:232:return i=1
+ generic/ip_ioctl.c:ip_ioctl:50:fd=1 req=40386E22
+ generic/ip_ioctl.c:ip_ioctl:55:ip_port:0 
+ generic/udp.c:udp_init:69:
+ sr.c:sr_add_minor:193:minor=3 port=0
+ generic/ip.c:ip_open:202:ip_flags=1 port=0 srfd=0
+ generic/ip.c:ip_open:232:return i=2
+ generic/ip_ioctl.c:ip_ioctl:50:fd=2 req=40386E22
+ generic/ip_ioctl.c:ip_ioctl:55:ip_port:0 
+ mq.c:mq_get:35:
+ inet.c:main:138:mnx_receive
+ rs.c:main:64:bytes=129 mtype=0x700
+ rs.c:main:66:source=0 type=1792 m7i1=1 m7i2=1 m7i3=1 m7i4=88 m7p1=(nil) m7p2=(nil)
+ rs.c:check_PM:111:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:231:source=0 type=1792 m7i1=1 m7i2=1 m7i3=1 m7i4=88 m7p1=(nil) m7p2=(nil)
+ rs.c:deamonize:241:deamon_nodeid=0 deamon_type=1 deamon_ep=1
+ rs.c:deamonize:243:nodeid=1 mnxpid=11
+ rs.c:deamonize:244:arg_v=/home/MoL_Module/mol-ipc/servers/fs/fs /home/MoL_Module/mol-ipc/servers/fs/molfs_VM0.cfg arg_len=88
+ rs.c:deamonize:253:deamon_ep=1
+ rs.c:deamonize:260:deamon_nodeid=0
+ rs.c:deamonize:272:mnxpid=1
+ rs.c:deamonize:372:PARENT waiting child exiting
+ rs.c:be_a_daemon:384:
+ rs.c:deamonize:374:exiting child=0
+ rs.c:main:74:deamonize rcode=0
+ rs.c:main:84:Sending reply rcode=68
+ rs.c:main:55:Receiving command line 
+ rs.c:be_a_daemon:391:pid=2906
+ rs.c:deamonize:307:mnxpid:1 deamon_type=1
+ rs.c:deamonize:327:CHILD:  Bind to PM 
+ mol_bindproc.c:mol_bindproc:19:p_endpoint=1 pid=1 lpid=2906 oper=1
+ rs.c:deamonize:332:Demonized process PID=1
+ rs.c:deamonize:335:CHILD: sys_getproc 
+ rs.c:deamonize:339:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:343:CHILD: arg_len=88/88 execvpe >/home/MoL_Module/mol-ipc/servers/fs/fs /home/MoL_Module/mol-ipc/servers/fs/molfs_VM0.cfg< 
+ rs.c:deamonize:349:CHILD: arg_v[0]=/home/MoL_Module/mol-ipc/servers/fs/fs
+ rs.c:deamonize:349:CHILD: arg_v[1]=/home/MoL_Module/mol-ipc/servers/fs/molfs_VM0.cfg
+ rs.c:deamonize:349:CHILD: arg_v[2]=(null)
+ main.c:fs_init:195:FS: mnx_wait4bind_T  rcode=1
+ main.c:fs_init:203:Get the DRVS info from SYSTASK
+ main.c:fs_init:207:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ main.c:fs_init:209:Get the VM info from SYSTASK
+ main.c:fs_init:213:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ main.c:fs_init:215:Get FS_PROC_NR info from SYSTASK
+ main.c:fs_init:219:nr=1 endp=1 vmid=0 flags=8 misc=20 lpid=2906 nodeid=0 nodemap=1 name=fs 
+ main.c:fs_init:227:Alloc dynamic memory for the FS process table nr_procs=221
+ main.c:fs_init:233:Alloc dynamic memory for temporal copy of  PM table nr_procs=221
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=3001 mp_nice=-10 
+ utility.c:fproc_init:62:mp_endpoint=1 mp_pid=1 mp_parent=0 mp_flags=2001 mp_nice=-10 
+ utility.c:fproc_init:62:mp_endpoint=2 mp_pid=2 mp_parent=0 mp_flags=2001 mp_nice=-10 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=9 mp_pid=9 mp_parent=0 mp_flags=2001 mp_nice=-10 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ utility.c:fproc_init:62:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ main.c:fs_init:250:Alloc dynamic memory for user_path
+ dmap.c:init_dmap:155:
+ moldevcfg.c:search_dev_config:371:
+ moldevcfg.c:search_device:327:
+ moldevcfg.c:search_device:341:DEVICE: MY_FILE_IMG
+ moldevcfg.c:read_lines:311:
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=7 cfg=0x855ec10
+ moldevcfg.c:search_ident:120:cfg->line=4
+ moldevcfg.c:search_ident:122:line=4 word=major
+ moldevcfg.c:search_ident:135:	major=1
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=6 cfg=0x855eca8
+ moldevcfg.c:search_ident:120:cfg->line=5
+ moldevcfg.c:search_ident:122:line=5 word=minor
+ moldevcfg.c:search_ident:148:	minor=0
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=4 cfg=0x855ed40
+ moldevcfg.c:search_ident:120:cfg->line=6
+ moldevcfg.c:search_ident:122:line=6 word=type
+ moldevcfg.c:search_ident:169:	TYPE=FILE_IMG, VALUE(hex)=0x0100, VALUE(int)=256
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=C cfg=0x855edc0
+ moldevcfg.c:search_ident:120:cfg->line=7
+ moldevcfg.c:search_ident:122:line=7 word=filename
+ moldevcfg.c:search_ident:197:	filename=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=4 cfg=0x855ee60
+ moldevcfg.c:search_ident:120:cfg->line=8
+ moldevcfg.c:search_ident:122:line=8 word=volatile
+ moldevcfg.c:search_ident:219:	VOLATILE=NO, VALUE=0
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=4 cfg=0x855eee0
+ moldevcfg.c:search_ident:120:cfg->line=9
+ moldevcfg.c:search_ident:122:line=9 word=root_dev
+ moldevcfg.c:search_ident:233:	ROOT_DEV=YES, VALUE=1
+ moldevcfg.c:search_ident:116:cfg_dev_nr=1 mandatory=4 cfg=0x855ef60
+ moldevcfg.c:search_ident:120:cfg->line=10
+ moldevcfg.c:search_ident:122:line=10 word=buffer_size
+ moldevcfg.c:search_ident:241:	minor=4096
+ moldevcfg.c:search_device:327:
+ moldevcfg.c:search_device:341:DEVICE: MY_ETH
+ moldevcfg.c:read_lines:311:
+ moldevcfg.c:search_ident:116:cfg_dev_nr=2 mandatory=7 cfg=0x854d0a0
+ moldevcfg.c:search_ident:120:cfg->line=14
+ moldevcfg.c:search_ident:122:line=14 word=major
+ moldevcfg.c:search_ident:135:	major=9
+ moldevcfg.c:search_ident:116:cfg_dev_nr=2 mandatory=6 cfg=0x854d138
+ moldevcfg.c:search_ident:120:cfg->line=15
+ moldevcfg.c:search_ident:122:line=15 word=minor
+ moldevcfg.c:search_ident:148:	minor=0
+ moldevcfg.c:search_ident:116:cfg_dev_nr=2 mandatory=4 cfg=0x854d1d0
+ moldevcfg.c:search_ident:120:cfg->line=16
+ moldevcfg.c:search_ident:122:line=16 word=type
+ moldevcfg.c:search_ident:169:	TYPE=FILE_DEV, VALUE(hex)=0x0500, VALUE(int)=1280
+ moldevcfg.c:search_ident:116:cfg_dev_nr=2 mandatory=C cfg=0x854d250
+ moldevcfg.c:search_ident:120:cfg->line=17
+ moldevcfg.c:search_ident:122:line=17 word=filename
+ moldevcfg.c:search_ident:197:	filename=/dev/eth
+ moldevcfg.c:search_device:327:
+ moldevcfg.c:search_device:341:DEVICE: MY_IP
+ moldevcfg.c:read_lines:311:
+ moldevcfg.c:search_ident:116:cfg_dev_nr=3 mandatory=7 cfg=0x854d368
+ moldevcfg.c:search_ident:120:cfg->line=20
+ moldevcfg.c:search_ident:122:line=20 word=major
+ moldevcfg.c:search_ident:135:	major=9
+ moldevcfg.c:search_ident:116:cfg_dev_nr=3 mandatory=6 cfg=0x854d400
+ moldevcfg.c:search_ident:120:cfg->line=21
+ moldevcfg.c:search_ident:122:line=21 word=minor
+ moldevcfg.c:search_ident:148:	minor=1
+ moldevcfg.c:search_ident:116:cfg_dev_nr=3 mandatory=4 cfg=0x854d498
+ moldevcfg.c:search_ident:120:cfg->line=22
+ moldevcfg.c:search_ident:122:line=22 word=type
+ moldevcfg.c:search_ident:169:	TYPE=FILE_DEV, VALUE(hex)=0x0500, VALUE(int)=1280
+ moldevcfg.c:search_ident:116:cfg_dev_nr=3 mandatory=C cfg=0x854d518
+ moldevcfg.c:search_ident:120:cfg->line=23
+ moldevcfg.c:search_ident:122:line=23 word=filename
+ moldevcfg.c:search_ident:197:	filename=/dev/ip
+ moldevcfg.c:search_device:327:
+ moldevcfg.c:search_device:341:DEVICE: MY_TCP
+ moldevcfg.c:read_lines:311:
+ moldevcfg.c:search_ident:116:cfg_dev_nr=4 mandatory=7 cfg=0x854d648
+ moldevcfg.c:search_ident:120:cfg->line=26
+ moldevcfg.c:search_ident:122:line=26 word=major
+ moldevcfg.c:search_ident:135:	major=9
+ moldevcfg.c:search_ident:116:cfg_dev_nr=4 mandatory=6 cfg=0x854d6e0
+ moldevcfg.c:search_ident:120:cfg->line=27
+ moldevcfg.c:search_ident:122:line=27 word=minor
+ moldevcfg.c:search_ident:148:	minor=2
+ moldevcfg.c:search_ident:116:cfg_dev_nr=4 mandatory=4 cfg=0x854d778
+ moldevcfg.c:search_ident:120:cfg->line=28
+ moldevcfg.c:search_ident:122:line=28 word=type
+ moldevcfg.c:search_ident:169:	TYPE=FILE_DEV, VALUE(hex)=0x0500, VALUE(int)=1280
+ moldevcfg.c:search_ident:116:cfg_dev_nr=4 mandatory=C cfg=0x854d7f8
+ moldevcfg.c:search_ident:120:cfg->line=29
+ moldevcfg.c:search_ident:122:line=29 word=filename
+ moldevcfg.c:search_ident:197:	filename=/dev/tcp
+ moldevcfg.c:search_device:327:
+ moldevcfg.c:search_device:341:DEVICE: MY_UDP
+ moldevcfg.c:read_lines:311:
+ moldevcfg.c:search_ident:116:cfg_dev_nr=5 mandatory=7 cfg=0x854d910
+ moldevcfg.c:search_ident:120:cfg->line=32
+ moldevcfg.c:search_ident:122:line=32 word=major
+ moldevcfg.c:search_ident:135:	major=9
+ moldevcfg.c:search_ident:116:cfg_dev_nr=5 mandatory=6 cfg=0x854d9a8
+ moldevcfg.c:search_ident:120:cfg->line=33
+ moldevcfg.c:search_ident:122:line=33 word=minor
+ moldevcfg.c:search_ident:148:	minor=3
+ moldevcfg.c:search_ident:116:cfg_dev_nr=5 mandatory=4 cfg=0x854da40
+ moldevcfg.c:search_ident:120:cfg->line=34
+ moldevcfg.c:search_ident:122:line=34 word=type
+ moldevcfg.c:search_ident:169:	TYPE=FILE_DEV, VALUE(hex)=0x0500, VALUE(int)=1280
+ moldevcfg.c:search_ident:116:cfg_dev_nr=5 mandatory=C cfg=0x854dac0
+ moldevcfg.c:search_ident:120:cfg->line=35
+ moldevcfg.c:search_ident:122:line=35 word=filename
+ moldevcfg.c:search_ident:197:	filename=/dev/udp
+ main.c:fs_init:279:cfg_dev_nr=6
+ moldevcfg.c:count_root_devs:439:	map_driver=1 	dmap_flags=0
+ moldevcfg.c:count_root_devs:441:	name=MY_FILE_IMG 	major=1 
+	minor=0 
+	type=256 
+	image_file=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img 
+	root_dev=1 
+	buffer_size=4096 
+	volatile=0 
+	server=(null) 
+	port=-1 
+	compression=-1
+ moldevcfg.c:count_root_devs:446:	CountRoot[1]=1
+ moldevcfg.c:count_root_devs:439:	map_driver=9 	dmap_flags=0
+ moldevcfg.c:count_root_devs:441:	name=MY_ETH 	major=9 
+	minor=0 
+	type=1280 
+	image_file=/dev/eth 
+	root_dev=-1 
+	buffer_size=-1 
+	volatile=-1 
+	server=(null) 
+	port=-1 
+	compression=-1
+ moldevcfg.c:count_root_devs:439:	map_driver=9 	dmap_flags=0
+ moldevcfg.c:count_root_devs:441:	name=MY_IP 	major=9 
+	minor=1 
+	type=1280 
+	image_file=/dev/ip 
+	root_dev=-1 
+	buffer_size=-1 
+	volatile=-1 
+	server=(null) 
+	port=-1 
+	compression=-1
+ moldevcfg.c:count_root_devs:439:	map_driver=9 	dmap_flags=0
+ moldevcfg.c:count_root_devs:441:	name=MY_TCP 	major=9 
+	minor=2 
+	type=1280 
+	image_file=/dev/tcp 
+	root_dev=-1 
+	buffer_size=-1 
+	volatile=-1 
+	server=(null) 
+	port=-1 
+	compression=-1
+ moldevcfg.c:count_root_devs:439:	map_driver=9 	dmap_flags=0
+ moldevcfg.c:count_root_devs:441:	name=MY_UDP 	major=9 
+	minor=3 
+	type=1280 
+	image_file=/dev/udp 
+	root_dev=-1 
+	buffer_size=-1 
+	volatile=-1 
+	server=(null) 
+	port=-1 
+	compression=-1
+ moldevcfg.c:count_root_devs:451:dmap_rev[1]=1
+ moldevcfg.c:count_root_devs:451:dmap_rev[9]=5
+ main.c:init_root:320:--BEGIN FS--
+ moldevcfg.c:get_root_major:463:major=1
+ main.c:init_root:327:	name=MY_FILE_IMG 	major=1 
+	minor=0 
+	type=256 
+	image_file=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img 
+	root_dev=1 
+	buffer_size=4096 
+	volatile=0 
+	server=(null) 
+	port=-1 
+	compression=-1
+ main.c:init_root:331: dev_open -> root_dev=256, PROC_NR=1, R_BIT|W_BIT=6
+ device.c:dev_open:45:dev=256 major=1 minor=0 proc=1 flags=6
+ device.c:dev_open:57:CONFIGURED buffer_size =4096
+ device.c:dev_open:58:_MAX_BLOCK_SIZE=4096
+ device.c:dev_open:61:REAL buffer_size=4096
+ device.c:f_gen_opcl:263:op=406 dev=256 major=1 minor=0 proc_e=1 flags=6
+ device.c:f_gen_opcl:276:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=0
+ device.c:f_gen_opcl:280: DEV_OPEN -> op=1030, dev=256, proc_e=1, flags=6
+ device.c:f_gen_opcl:281:OPENING file disk 
+ device.c:f_gen_opcl:282:OPENING fileName /home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img
+ device.c:f_gen_opcl:288:OPENED file disk succesfully, FD 4
+ device.c:dev_open:67:r=0
+ super.c:read_super:203:Read the Superblock 
+ super.c:read_super:209: dev_io -> op=1027, dev=256, POS=0, BYTES=1024
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=1024 bytes=1024 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=1024, IO_ENDPT=1, COUNT=1024
+ device.c:dev_io:171:dmap_driver=1 source=-1218772686 type=1027 m2i1=0 m2i2=1 m2i3=1024 m2l1=1024 m2l2=0 m2p1=0x805e460
+ device.c:f_gen_io:541:task_nr=1 source=-1218772686 type=1027 m2i1=0 m2i2=1 m2i3=1024 m2l1=1024 m2l2=0 m2p1=0x805e460
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 1024 
+ device.c:f_gen_io:562:Bytes read: 1024 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=1024 
+ super.c:read_super:211:output dev_io r=1024, 
+ super.c:read_super:222:_MIN_BLOCK_SIZE r=1024, 
+ inode.c:get_inode:41:dev=256 numb=1
+ cache.c:rw_block:114: dev_io -> op=1027, dev=256, POS=16384, BYTES=4096
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=16384 bytes=4096 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=16384, IO_ENDPT=1, COUNT=4096
+ device.c:dev_io:171:dmap_driver=1 source=2 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:541:task_nr=1 source=2 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 4096 
+ device.c:f_gen_io:562:Bytes read: 4096 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=4096 
+ cache.c:rw_block:116:dev_io r=4096, 
+ inode.c:get_inode:75:i_num=1
+i_mode=41FF
+i_nlinks=5
+i_uid=2
+i_gid=2
+i_dev=256
+i_ndzones=7
+i_nindirs=1024
+ main.c:init_root:364:s_ninodes=768
+s_nzones=0
+s_imap_blocks=1
+s_zmap_blocks=1
+s_magic=4D5A
+s_firstdatazone=16
+s_log_zone_size=0
+s_max_size=4294967295
+s_zones=360
+s_ndzones=7
+s_nindirs=1024
+s_inodes_per_block=64
+s_block_size=4096
+s_version=3
+
+ main.c:fs_init:289:i_num=1
+i_mode=41FF
+i_nlinks=5
+i_uid=2
+i_gid=2
+i_dev=256
+i_ndzones=7
+i_nindirs=1024
+ main.c:main:59:FS(0) main loop that gets work
+ main.c:get_work:151: LISTENING . 
+ rs.c:main:64:bytes=109 mtype=0x700
+ rs.c:main:66:source=0 type=1792 m7i1=16 m7i2=1 m7i3=0 m7i4=68 m7p1=(nil) m7p2=(nil)
+ rs.c:check_PM:111:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:231:source=0 type=1792 m7i1=16 m7i2=1 m7i3=0 m7i4=68 m7p1=(nil) m7p2=(nil)
+ rs.c:deamonize:241:deamon_nodeid=0 deamon_type=1 deamon_ep=16
+ rs.c:deamonize:243:nodeid=0 mnxpid=016
+ rs.c:deamonize:244:arg_v=/home/MoL_Module/mol-ipc/commands/simple/mnx_ifconfig -h 172.16.1.1  arg_len=68
+ rs.c:deamonize:253:deamon_ep=16
+ rs.c:deamonize:260:deamon_nodeid=0
+ rs.c:deamonize:272:mnxpid=0
+ rs.c:deamonize:372:PARENT waiting child exiting
+ rs.c:be_a_daemon:384:
+ rs.c:deamonize:374:exiting child=0
+ rs.c:main:74:deamonize rcode=0
+ rs.c:main:84:Sending reply rcode=68
+ rs.c:main:55:Receiving command line 
+ rs.c:be_a_daemon:391:pid=2912
+ rs.c:deamonize:307:mnxpid:0 deamon_type=1
+ rs.c:deamonize:327:CHILD:  Bind to PM 
+ mol_bindproc.c:mol_bindproc:19:p_endpoint=16 pid=0 lpid=2912 oper=1
+ rs.c:deamonize:332:Demonized process PID=0
+ rs.c:deamonize:335:CHILD: sys_getproc 
+ rs.c:deamonize:339:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2889 nodeid=0 nodemap=1 name=pm 
+ rs.c:deamonize:343:CHILD: arg_len=68/68 execvpe >/home/MoL_Module/mol-ipc/commands/simple/mnx_ifconfig -h 172.16.1.1 < 
+ rs.c:deamonize:349:CHILD: arg_v[0]=/home/MoL_Module/mol-ipc/commands/simple/mnx_ifconfig
+ rs.c:deamonize:349:CHILD: arg_v[1]=-h
+ rs.c:deamonize:349:CHILD: arg_v[2]=172.16.1.1
+ rs.c:deamonize:349:CHILD: arg_v[3]=(null)
+ mol_open.c:mol_open:8:name=/dev/ip flags=2
+ main.c:get_work:155:source=16 type=5 m1i1=8 m1i2=2 m1i3=134518352 m1p1=0x7665642f m1p2=0x70692f m1p3=(nil) 
+ main.c:get_work:156:source=16 type=5 m3i1=8 m3i2=2 m3p1=0x8049650 m3ca1=[/dev/ip]
+ main.c:get_work:176:call_nr = 5 
+ open.c:do_open:61:M3
+ utility.c:fetch_name:137:who_e=16 path=8049650 len=8 flag=3
+ utility.c:fetch_name:149:M3=3
+ utility.c:fetch_name:150:M3_STRING=14
+ utility.c:fetch_name:162:user_path=/dev/ip
+ utility.c:fetch_name:163:r =0
+ open.c:common_open:90:oflags=2 omode=0
+ filedes.c:get_fd:29:start=0 mode=6
+ filedes.c:get_fd:35:FD located is=0
+ open.c:common_open:96:m_in.fd=0 oflags=2 
+ open.c:common_open:112:user_path=/dev/ip
+ path.c:parse_path:47:path=/dev/ip string=(null) action=0 
+ path.c:parse_path:52:ABSOLUTE: fp_endpoint=0 i_num=1
+ path.c:parse_path:98:string = dev
+ protect.c:forbidden:186:access_desired=1 
+ protect.c:forbidden:187:perm_bits=7 perm_bits(OCT)=07
+ protect.c:forbidden:188:access_desired=1 access_desired(OCT)=01
+ protect.c:forbidden:203:r=0
+ cache.c:rw_block:114: dev_io -> op=1027, dev=256, POS=65536, BYTES=4096
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=65536 bytes=4096 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=65536, IO_ENDPT=1, COUNT=4096
+ device.c:dev_io:171:dmap_driver=1 source=-1218772353 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=65536 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:541:task_nr=1 source=-1218772353 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=65536 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 4096 
+ device.c:f_gen_io:562:Bytes read: 4096 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=4096 
+ cache.c:rw_block:116:dev_io r=4096, 
+ inode.c:get_inode:41:dev=256 numb=46
+ cache.c:rw_block:114: dev_io -> op=1027, dev=256, POS=16384, BYTES=4096
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=16384 bytes=4096 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=16384, IO_ENDPT=1, COUNT=4096
+ device.c:dev_io:171:dmap_driver=1 source=-1217086744 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:541:task_nr=1 source=-1217086744 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 4096 
+ device.c:f_gen_io:562:Bytes read: 4096 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=4096 
+ cache.c:rw_block:116:dev_io r=4096, 
+ inode.c:get_inode:75:i_num=46
+i_mode=41ED
+i_nlinks=2
+i_uid=0
+i_gid=0
+i_dev=256
+i_ndzones=7
+i_nindirs=1024
+ path.c:parse_path:98:string = ip
+ protect.c:forbidden:186:access_desired=1 
+ protect.c:forbidden:187:perm_bits=7 perm_bits(OCT)=07
+ protect.c:forbidden:188:access_desired=1 access_desired(OCT)=01
+ protect.c:forbidden:203:r=0
+ cache.c:rw_block:114: dev_io -> op=1027, dev=256, POS=552960, BYTES=4096
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=552960 bytes=4096 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=552960, IO_ENDPT=1, COUNT=4096
+ device.c:dev_io:171:dmap_driver=1 source=-1218772353 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=552960 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:541:task_nr=1 source=-1218772353 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=552960 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 4096 
+ device.c:f_gen_io:562:Bytes read: 4096 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=4096 
+ cache.c:rw_block:116:dev_io r=4096, 
+ inode.c:get_inode:41:dev=256 numb=47
+ cache.c:rw_block:114: dev_io -> op=1027, dev=256, POS=16384, BYTES=4096
+ device.c:dev_io:116:op=403 dev=256 major=1 minor=0 proc_e=1 pos=16384 bytes=4096 flags=0
+ device.c:dev_io:127: DEV_READ -> m_type=1027, dev=256, POS=16384, IO_ENDPT=1, COUNT=4096
+ device.c:dev_io:171:dmap_driver=1 source=38 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:541:task_nr=1 source=38 type=1027 m2i1=0 m2i2=1 m2i3=4096 m2l1=16384 m2l2=0 m2p1=0x8064da0
+ device.c:f_gen_io:553:img_name=/home/MoL_Module/mol-ipc/servers/diskImgs/floppy3RWX.img img_fd=4
+ device.c:f_gen_io:557:DEV_READ 1027
+ device.c:f_gen_io:559:image FILE FD: 4 
+ device.c:f_gen_io:560:bytes to READ: 4096 
+ device.c:f_gen_io:562:Bytes read: 4096 
+ device.c:dev_io:200:BEFORE return dev_mess.REP_STATUS=4096 
+ cache.c:rw_block:116:dev_io r=4096, 
+ inode.c:get_inode:75:i_num=47
+i_mode=21A4
+i_nlinks=1
+i_uid=0
+i_gid=0
+i_dev=256
+i_ndzones=7
+i_nindirs=1024
+ path.c:parse_path:145:Devolviendo rip
+ open.c:common_open:125:FD: m_in.fd=0 
+ open.c:common_open:126:filp_mode=6 filp_flags=2 filp_count=1 filp_pos=0 filp_selectors=0 filp_select_ops=0 filp_pipe_select_ops=0
+ open.c:common_open:128:exist=1 
+ protect.c:forbidden:186:access_desired=6 
+ protect.c:forbidden:187:perm_bits=6 perm_bits(OCT)=06
+ protect.c:forbidden:188:access_desired=6 access_desired(OCT)=06
+ protect.c:forbidden:203:r=0
+ open.c:common_open:134:r forbidden = 0
+ open.c:common_open:163: I_CHAR_SPECIAL/I_BLOCK_SPECIAL dev 2305
+ device.c:dev_open:45:dev=2305 major=9 minor=1 proc=16 flags=6
+ device.c:dev_open:57:CONFIGURED buffer_size =-1
+ device.c:dev_open:58:_MAX_BLOCK_SIZE=4096
+ device.c:dev_open:61:REAL buffer_size=-1
+ device.c:d_gen_opcl:888:op=406 dev=901 proc_e=16 flags=6
+ utility.c:isokendpt_f:247:endpoint 9
+ utility.c:isokendpt_f:248:*proc 9
+ device.c:d_gen_io:836:task_nr=9 proc_e=16source=-1217236992 type=1030 m2i1=1 m2i2=16 m2i3=6 m2l1=-1217488192 m2l2=-1218814052 m2p1=0xb76e9ac0
+ inet.c:main:144:source=1 type=1030 m2i1=1 m2i2=16 m2i3=6 m2l1=-1217488192 m2l2=-1218814052 m2p1=0xb76e9ac0
+ inet.c:main:149:message from FS_PROC_NR
+ sr.c:sr_rec:120:sr_rec m_type=1030
+ sr.c:sr_rec:123:source=1 type=1030 m2i1=1 m2i2=16 m2i3=6 m2l1=-1217488192 m2l2=-1218814052 m2p1=0xb76e9ac0
+ sr.c:sr_open:226:source=1 type=1030 m2i1=1 m2i2=16 m2i3=6 m2l1=-1217488192 m2l2=-1218814052 m2p1=0xb76e9ac0
+ sr.c:sr_open:228:minor=1 sr_fd_table[minor].srf_flags=3 
+ generic/ip.c:ip_open:202:ip_flags=1 port=0 srfd=4
+ generic/ip.c:ip_open:232:return i=3
+ sr.c:sr_open:258:minor=1 i=4 srf_flags=2 srf_fd=3
+ sr.c:sr_reply_:709:proc=16 status=4 operation=406 is_revive=0
+ sr.c:sr_reply_:718:dest=1 source=2 type=67 m2i1=16 m2i2=4 m2i3=-1218814052 m2l1=-1217488192 m2l2=-1217267008 m2p1=0xb76e9ac0
+ mq.c:mq_get:35:
+ inet.c:main:138:mnx_receive
+ device.c:d_gen_io:838:source=9 type=67 m2i1=16 m2i2=4 m2i3=-1218814052 m2l1=-1217488192 m2l2=-1217267008 m2p1=0xb76e9ac0
+ device.c:d_gen_io:856:proc_e=16  REP_ENDPT=16
+ device.c:d_gen_opcl:912:REP_STATUS=4
+ device.c:dev_open:67:r=4
+ open.c:common_open:167:r=4
+ open.c:common_open:219:m_in.fd=0 
+ main.c:reply:405: Send a reply to a user process.
+ main.c:reply:409:source=0 type=0 m1i1=0 m1i2=0 m1i3=0 m1p1=(nil) m1p2=(nil) m1p3=(nil) 
+ main.c:get_work:151: LISTENING . 
+ mnx_ifconfig.c:main:122:ip_fd=0
+ mnx_ifconfig.c:set_hostaddr:178:ip_fd=0 hostaddr_s=172.16.1.1 ins=0
+ mol_ioctl.c:mol_ioctl:7:fd=0 request=1074818592 data=
+ main.c:get_work:155:source=16 type=54 m1i1=0 m1i2=0 m1i3=1074818592 m1p1=(nil) m1p2=(nil) m1p3=0xbfc12fc8 
+ main.c:get_work:156:source=16 type=54 m3i1=0 m3i2=0 m3p1=0x40106e20 m3ca1=[]
+ main.c:get_work:176:call_nr = 54 
+ filedes.c:get_filp:71:fild is=0
+ device.c:do_ioctl:364:i_num=47
+i_mode=21A4
+i_nlinks=1
+i_uid=0
+i_gid=0
+i_dev=256
+i_ndzones=7
+i_nindirs=1024
+ device.c:do_ioctl:366:I_CHAR_SPECIAL=2000 I_BLOCK_SPECIAL=6000
+ device.c:do_ioctl:371:dev=901
+ device.c:dev_io:116:op=405 dev=2305 major=9 minor=1 proc_e=16 pos=0 bytes=1074818592 flags=2
+ device.c:dev_io:171:dmap_driver=9 source=-1218814052 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ device.c:d_gen_io:836:task_nr=9 proc_e=16source=-1218814052 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ inet.c:main:144:source=1 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ inet.c:main:149:message from FS_PROC_NR
+ sr.c:sr_rec:120:sr_rec m_type=1029
+ sr.c:sr_rec:123:source=1 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ sr.c:sr_rwio:291:source=1 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ sr.c:sr_getchannel:674:minor=1
+ sr.c:sr_getchannel:685:srf_fd=0 srf_port=0 srf_flags=3 0 2 
+ sr.c:sr_getchannel:694:return srf_fd=0
+ sr.c:sr_rwio:296:srf_flags=3 srf_fd=0 srf_port=0 srf_select_proc=0
+ sr.c:sr_rwio:316:DEV_IOCTL3 type=1029
+ sr.c:sr_rwio:327:srf_flags=3 ip_flag=4
+ sr.c:sr_rwio:328:srf_flags=3 srf_fd=0 srf_port=0 srf_select_proc=0
+ sr.c:sr_rwio:353:srf_flags=207 srf_fd=0 srf_port=0 srf_select_proc=0
+ sr.c:sr_rwio:368:DEV_IOCTL3 request=40106E20
+ sr.c:sr_rwio:395:srf_fd=0 request=40106E20
+ generic/ip_ioctl.c:ip_ioctl:50:fd=0 req=40106E20
+ generic/ip_ioctl.c:ip_ioctl:176:ip_port:0 req=40106E20 
+ generic/ip_ioctl.c:ip_ioctl:192:req=NWIOSIPCONF
+ generic/icmp.c:icmp_getdata:180:port=0 offset=0 count=16 for_ioctl=1 sizeof(*ipopt)=56
+ generic/icmp.c:icmp_getdata:183:icp_flags=1 icp_state=1 icp_ipport=0 icp_ipfd=0
+ buf.c:bf_memreq:236:size=56
+ buf.c:bf_memreq:322:tail->acc_length=56
+ generic/icmp.c:icmp_getdata:227:nwio_flags=15000233 nwio_tos=0 nwio_ttl=0 nwio_df=0 nwio_proto=1
+ generic/icmp.c:icmp_getdata:228:data->acc_length=56
+ buf.c:bf_packIffLess:471:min_len=16
+ generic/ip_ioctl.c:ip_ioctl:196:req=NWIOSIPCONF acc_length=56 sizeof(*ipconf)=16
+ device.c:d_gen_io:838:source=-1218814052 type=1029 m2i1=1 m2i2=16 m2i3=1074818592 m2l1=0 m2l2=2 m2p1=0xbfc12fc8
+ main.c:reply:405: Send a reply to a user process.
+ main.c:reply:409:source=0 type=-5 m1i1=0 m1i2=0 m1i3=0 m1p1=(nil) m1p2=(nil) m1p3=(nil) 
+ main.c:get_work:151: LISTENING . 
+ mnx_ifconfig.c:set_hostaddr:194:result=-1 sizeof(ipconf)=16

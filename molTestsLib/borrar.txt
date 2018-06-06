@@ -1,0 +1,71 @@
+read  -p "01_test_open_close: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/01_test_open_close services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "02_test_open_read_close: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/02_test_open_read_close services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "03_test_open_read_write_close: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/03_test_open_read_write_close services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "04_test_open_read_write_close_sync: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/04_test_open_read_write_close_sync services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "05_test_creat: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/05_test_creat pap5.txt > fs_test_out.txt 2> fs_test_err.txt
+read  -p "06_test_creat_open_read_write_close_sync: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/06_test_creat_open_read_write_close_sync pap6.txt > fs_test_out.txt 2> fs_test_err.txt
+read  -p "07_test_open_lseek_read_close: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/07_test_open_lseek_read_close services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "08_test_stat: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/08_test_stat services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "09_test_fstat: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/09_test_fstat services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "10_test_fcntl: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/10_test_fcntl services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "11_test_sync: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/11_test_sync services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "12_test_opendir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/12_test_opendir pepe > fs_test_out.txt 2> fs_test_err.txt
+read  -p "13_test_readdir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/13_test_readdir pepe > fs_test_out.txt 2> fs_test_err.txt
+read  -p "14_test_mkdir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/14_test_mkdir papdir > fs_test_out.txt 2> fs_test_err.txt
+read  -p "15_test_rmdir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/15_test_rmdir papdir > fs_test_out.txt 2> fs_test_err.txt
+read  -p "16_test_chdir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/16_test_chdir pepe > fs_test_out.txt 2> fs_test_err.txt
+read  -p "17_test_closedir: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/17_test_closedir pepe > fs_test_out.txt 2> fs_test_err.txt
+read  -p "18_test_chmod: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/18_test_chmod services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "19_test_chroot: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/19_test_chroot pepe > fs_test_out.txt 2> fs_test_err.txt
+read  -p "20_test_chown: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/20_test_chown services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "21_test_utime: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/21_test_utime services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "22_test_rename: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/22_test_rename services services2 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "23_test_link: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/23_test_link services services3 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "24_test_unlink: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/24_test_unlink services3 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "25_test_symlink: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/25_test_symlink services services3 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "26_test_readlink: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/26_test_readlink services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "27_test_access: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/27_test_access services3 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "28_test_truncate: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/28_test_truncate services 100 > fs_test_out.txt 2> fs_test_err.txt
+read  -p "29_test_umask: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/29_test_umask services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "30_test_mount: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/30_test_mount services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "31_test_umount: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/31_test_umount services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "32_test_dup: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/32_test_dup services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "33_test_dup2: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/33_test_dup2 services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "34_test_fsync: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/34_test_fsync services > fs_test_out.txt 2> fs_test_err.txt
+read  -p "35_test_mknod: Enter para continuar... "
+./demonize -l $dcid 20 0 /home/MoL_Module/mol-ipc/molTestsLib/35_test_mknod services > fs_test_out.txt 2> fs_test_err.txt
+

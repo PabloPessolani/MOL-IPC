@@ -1,0 +1,1189 @@
+ system.c:main:44:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ system.c:main:46:local_nodeid=0
+ system.c:init_systask:219:Binding to VM 0 with sys_nr=-2 sys_pid=2733
+ system.c:init_systask:222:has binded with p_endpoint=-2 
+ system.c:init_systask:235:Initialize the call vector to a safe default handler.
+ system.c:init_systask:308:Map kernel process table on /sys/kernel/debug/dvs/VM0/procs
+ system.c:init_systask:314:open debug_fd=3
+ system.c:init_systask:323:mmap debug_fd OK
+ system.c:init_systask:327:proc_ptr=b755f000 nr=-35 endp=-35 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755f200 nr=-34 endp=-34 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755f400 nr=-33 endp=-33 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755f600 nr=-32 endp=-32 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755f800 nr=-31 endp=-31 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755fa00 nr=-30 endp=-30 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755fc00 nr=-29 endp=-29 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b755fe00 nr=-28 endp=-28 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560000 nr=-27 endp=-27 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560200 nr=-26 endp=-26 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560400 nr=-25 endp=-25 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560600 nr=-24 endp=-24 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560800 nr=-23 endp=-23 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560a00 nr=-22 endp=-22 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560c00 nr=-21 endp=-21 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7560e00 nr=-20 endp=-20 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561000 nr=-19 endp=-19 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561200 nr=-18 endp=-18 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561400 nr=-17 endp=-17 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561600 nr=-16 endp=-16 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561800 nr=-15 endp=-15 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561a00 nr=-14 endp=-14 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561c00 nr=-13 endp=-13 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7561e00 nr=-12 endp=-12 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562000 nr=-11 endp=-11 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562200 nr=-10 endp=-10 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562400 nr=-9 endp=-9 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562600 nr=-8 endp=-8 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562800 nr=-7 endp=-7 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562a00 nr=-6 endp=-6 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562c00 nr=-5 endp=-5 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7562e00 nr=-4 endp=-4 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563000 nr=-3 endp=-3 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563200 nr=-2 endp=-2 vmid=0 flags=0 misc=20 lpid=2733 nodeid=0 nodemap=1 name=systask 
+ system.c:init_systask:327:proc_ptr=b7563400 nr=-1 endp=-1 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563600 nr=0 endp=0 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563800 nr=1 endp=1 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563a00 nr=2 endp=2 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563c00 nr=3 endp=3 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7563e00 nr=4 endp=4 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564000 nr=5 endp=5 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564200 nr=6 endp=6 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564400 nr=7 endp=7 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564600 nr=8 endp=8 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564800 nr=9 endp=9 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564a00 nr=10 endp=10 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564c00 nr=11 endp=11 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7564e00 nr=12 endp=12 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565000 nr=13 endp=13 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565200 nr=14 endp=14 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565400 nr=15 endp=15 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565600 nr=16 endp=16 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565800 nr=17 endp=17 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565a00 nr=18 endp=18 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565c00 nr=19 endp=19 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7565e00 nr=20 endp=20 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566000 nr=21 endp=21 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566200 nr=22 endp=22 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566400 nr=23 endp=23 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566600 nr=24 endp=24 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566800 nr=25 endp=25 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566a00 nr=26 endp=26 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566c00 nr=27 endp=27 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7566e00 nr=28 endp=28 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567000 nr=29 endp=29 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567200 nr=30 endp=30 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567400 nr=31 endp=31 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567600 nr=32 endp=32 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567800 nr=33 endp=33 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567a00 nr=34 endp=34 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567c00 nr=35 endp=35 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7567e00 nr=36 endp=36 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568000 nr=37 endp=37 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568200 nr=38 endp=38 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568400 nr=39 endp=39 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568600 nr=40 endp=40 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568800 nr=41 endp=41 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568a00 nr=42 endp=42 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568c00 nr=43 endp=43 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7568e00 nr=44 endp=44 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569000 nr=45 endp=45 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569200 nr=46 endp=46 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569400 nr=47 endp=47 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569600 nr=48 endp=48 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569800 nr=49 endp=49 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569a00 nr=50 endp=50 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569c00 nr=51 endp=51 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7569e00 nr=52 endp=52 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756a000 nr=53 endp=53 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756a200 nr=54 endp=54 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756a400 nr=55 endp=55 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756a600 nr=56 endp=56 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756a800 nr=57 endp=57 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756aa00 nr=58 endp=58 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ac00 nr=59 endp=59 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ae00 nr=60 endp=60 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756b000 nr=61 endp=61 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756b200 nr=62 endp=62 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756b400 nr=63 endp=63 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756b600 nr=64 endp=64 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756b800 nr=65 endp=65 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ba00 nr=66 endp=66 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756bc00 nr=67 endp=67 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756be00 nr=68 endp=68 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756c000 nr=69 endp=69 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756c200 nr=70 endp=70 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756c400 nr=71 endp=71 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756c600 nr=72 endp=72 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756c800 nr=73 endp=73 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ca00 nr=74 endp=74 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756cc00 nr=75 endp=75 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ce00 nr=76 endp=76 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756d000 nr=77 endp=77 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756d200 nr=78 endp=78 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756d400 nr=79 endp=79 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756d600 nr=80 endp=80 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756d800 nr=81 endp=81 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756da00 nr=82 endp=82 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756dc00 nr=83 endp=83 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756de00 nr=84 endp=84 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756e000 nr=85 endp=85 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756e200 nr=86 endp=86 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756e400 nr=87 endp=87 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756e600 nr=88 endp=88 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756e800 nr=89 endp=89 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ea00 nr=90 endp=90 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ec00 nr=91 endp=91 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756ee00 nr=92 endp=92 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756f000 nr=93 endp=93 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756f200 nr=94 endp=94 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756f400 nr=95 endp=95 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756f600 nr=96 endp=96 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756f800 nr=97 endp=97 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756fa00 nr=98 endp=98 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756fc00 nr=99 endp=99 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b756fe00 nr=100 endp=100 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570000 nr=101 endp=101 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570200 nr=102 endp=102 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570400 nr=103 endp=103 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570600 nr=104 endp=104 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570800 nr=105 endp=105 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570a00 nr=106 endp=106 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570c00 nr=107 endp=107 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7570e00 nr=108 endp=108 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571000 nr=109 endp=109 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571200 nr=110 endp=110 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571400 nr=111 endp=111 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571600 nr=112 endp=112 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571800 nr=113 endp=113 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571a00 nr=114 endp=114 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571c00 nr=115 endp=115 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7571e00 nr=116 endp=116 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572000 nr=117 endp=117 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572200 nr=118 endp=118 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572400 nr=119 endp=119 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572600 nr=120 endp=120 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572800 nr=121 endp=121 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572a00 nr=122 endp=122 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572c00 nr=123 endp=123 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7572e00 nr=124 endp=124 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573000 nr=125 endp=125 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573200 nr=126 endp=126 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573400 nr=127 endp=127 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573600 nr=128 endp=128 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573800 nr=129 endp=129 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573a00 nr=130 endp=130 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573c00 nr=131 endp=131 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7573e00 nr=132 endp=132 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574000 nr=133 endp=133 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574200 nr=134 endp=134 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574400 nr=135 endp=135 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574600 nr=136 endp=136 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574800 nr=137 endp=137 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574a00 nr=138 endp=138 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574c00 nr=139 endp=139 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7574e00 nr=140 endp=140 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575000 nr=141 endp=141 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575200 nr=142 endp=142 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575400 nr=143 endp=143 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575600 nr=144 endp=144 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575800 nr=145 endp=145 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575a00 nr=146 endp=146 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575c00 nr=147 endp=147 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7575e00 nr=148 endp=148 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576000 nr=149 endp=149 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576200 nr=150 endp=150 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576400 nr=151 endp=151 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576600 nr=152 endp=152 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576800 nr=153 endp=153 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576a00 nr=154 endp=154 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576c00 nr=155 endp=155 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7576e00 nr=156 endp=156 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577000 nr=157 endp=157 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577200 nr=158 endp=158 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577400 nr=159 endp=159 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577600 nr=160 endp=160 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577800 nr=161 endp=161 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577a00 nr=162 endp=162 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577c00 nr=163 endp=163 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7577e00 nr=164 endp=164 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578000 nr=165 endp=165 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578200 nr=166 endp=166 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578400 nr=167 endp=167 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578600 nr=168 endp=168 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578800 nr=169 endp=169 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578a00 nr=170 endp=170 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578c00 nr=171 endp=171 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7578e00 nr=172 endp=172 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579000 nr=173 endp=173 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579200 nr=174 endp=174 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579400 nr=175 endp=175 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579600 nr=176 endp=176 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579800 nr=177 endp=177 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579a00 nr=178 endp=178 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579c00 nr=179 endp=179 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b7579e00 nr=180 endp=180 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757a000 nr=181 endp=181 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757a200 nr=182 endp=182 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757a400 nr=183 endp=183 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757a600 nr=184 endp=184 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757a800 nr=185 endp=185 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757aa00 nr=186 endp=186 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ac00 nr=187 endp=187 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ae00 nr=188 endp=188 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757b000 nr=189 endp=189 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757b200 nr=190 endp=190 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757b400 nr=191 endp=191 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757b600 nr=192 endp=192 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757b800 nr=193 endp=193 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ba00 nr=194 endp=194 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757bc00 nr=195 endp=195 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757be00 nr=196 endp=196 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757c000 nr=197 endp=197 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757c200 nr=198 endp=198 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757c400 nr=199 endp=199 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757c600 nr=200 endp=200 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757c800 nr=201 endp=201 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ca00 nr=202 endp=202 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757cc00 nr=203 endp=203 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ce00 nr=204 endp=204 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757d000 nr=205 endp=205 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757d200 nr=206 endp=206 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757d400 nr=207 endp=207 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757d600 nr=208 endp=208 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757d800 nr=209 endp=209 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757da00 nr=210 endp=210 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757dc00 nr=211 endp=211 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757de00 nr=212 endp=212 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757e000 nr=213 endp=213 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757e200 nr=214 endp=214 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757e400 nr=215 endp=215 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757e600 nr=216 endp=216 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757e800 nr=217 endp=217 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ea00 nr=218 endp=218 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ec00 nr=219 endp=219 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:327:proc_ptr=b757ee00 nr=220 endp=220 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:337:Allocated space for nr_procs=221 + nr_tasks=35 slots descriptors 
+ system.c:init_systask:345:Allocated space for nr_procs=221 + nr_tasks=35 temporal slot descriptors 
+ system.c:init_systask:355:Allocated space for global status sts_size=4312
+ system.c:init_systask:359:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ system.c:init_systask:360:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ system.c:init_systask:383:total_slots=192 min_owned_slots=6 free_slots_low=3
+ system.c:init_systask:394:Initialize process and slot table table 
+ system.c:init_systask:404:nr=-35 endp=-35 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-34 endp=-34 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-33 endp=-33 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-32 endp=-32 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-31 endp=-31 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-30 endp=-30 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-29 endp=-29 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-28 endp=-28 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-27 endp=-27 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-26 endp=-26 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-25 endp=-25 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-24 endp=-24 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-23 endp=-23 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-22 endp=-22 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-21 endp=-21 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-20 endp=-20 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-19 endp=-19 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-18 endp=-18 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-17 endp=-17 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-16 endp=-16 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-15 endp=-15 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-14 endp=-14 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-13 endp=-13 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-12 endp=-12 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-11 endp=-11 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-10 endp=-10 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-9 endp=-9 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-8 endp=-8 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-7 endp=-7 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-6 endp=-6 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-5 endp=-5 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-4 endp=-4 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-3 endp=-3 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=-2 endp=-2 vmid=0 flags=0 misc=20 lpid=2733 nodeid=0 nodemap=1 name=systask 
+ system.c:init_systask:404:nr=-1 endp=-1 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=0 endp=0 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=1 endp=1 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=2 endp=2 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=3 endp=3 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=4 endp=4 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=5 endp=5 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=6 endp=6 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=7 endp=7 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=8 endp=8 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=9 endp=9 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=10 endp=10 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=11 endp=11 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=12 endp=12 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=13 endp=13 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=14 endp=14 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=15 endp=15 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=16 endp=16 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=17 endp=17 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=18 endp=18 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=19 endp=19 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=20 endp=20 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=21 endp=21 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=22 endp=22 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=23 endp=23 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=24 endp=24 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=25 endp=25 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=26 endp=26 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=27 endp=27 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=28 endp=28 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=29 endp=29 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=30 endp=30 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=31 endp=31 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=32 endp=32 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=33 endp=33 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=34 endp=34 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=35 endp=35 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=36 endp=36 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=37 endp=37 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=38 endp=38 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=39 endp=39 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=40 endp=40 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=41 endp=41 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=42 endp=42 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=43 endp=43 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=44 endp=44 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=45 endp=45 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=46 endp=46 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=47 endp=47 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=48 endp=48 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=49 endp=49 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=50 endp=50 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=51 endp=51 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=52 endp=52 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=53 endp=53 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=54 endp=54 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=55 endp=55 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=56 endp=56 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=57 endp=57 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=58 endp=58 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=59 endp=59 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=60 endp=60 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=61 endp=61 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=62 endp=62 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=63 endp=63 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=64 endp=64 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=65 endp=65 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=66 endp=66 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=67 endp=67 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=68 endp=68 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=69 endp=69 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=70 endp=70 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=71 endp=71 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=72 endp=72 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=73 endp=73 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=74 endp=74 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=75 endp=75 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=76 endp=76 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=77 endp=77 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=78 endp=78 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=79 endp=79 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=80 endp=80 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=81 endp=81 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=82 endp=82 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=83 endp=83 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=84 endp=84 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=85 endp=85 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=86 endp=86 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=87 endp=87 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=88 endp=88 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=89 endp=89 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=90 endp=90 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=91 endp=91 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=92 endp=92 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=93 endp=93 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=94 endp=94 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=95 endp=95 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=96 endp=96 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=97 endp=97 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=98 endp=98 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=99 endp=99 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=100 endp=100 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=101 endp=101 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=102 endp=102 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=103 endp=103 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=104 endp=104 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=105 endp=105 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=106 endp=106 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=107 endp=107 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=108 endp=108 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=109 endp=109 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=110 endp=110 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=111 endp=111 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=112 endp=112 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=113 endp=113 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=114 endp=114 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=115 endp=115 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=116 endp=116 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=117 endp=117 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=118 endp=118 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=119 endp=119 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=120 endp=120 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=121 endp=121 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=122 endp=122 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=123 endp=123 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=124 endp=124 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=125 endp=125 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=126 endp=126 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=127 endp=127 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=128 endp=128 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=129 endp=129 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=130 endp=130 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=131 endp=131 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=132 endp=132 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=133 endp=133 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=134 endp=134 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=135 endp=135 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=136 endp=136 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=137 endp=137 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=138 endp=138 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=139 endp=139 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=140 endp=140 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=141 endp=141 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=142 endp=142 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=143 endp=143 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=144 endp=144 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=145 endp=145 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=146 endp=146 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=147 endp=147 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=148 endp=148 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=149 endp=149 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=150 endp=150 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=151 endp=151 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=152 endp=152 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=153 endp=153 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=154 endp=154 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=155 endp=155 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=156 endp=156 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=157 endp=157 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=158 endp=158 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=159 endp=159 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=160 endp=160 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=161 endp=161 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=162 endp=162 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=163 endp=163 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=164 endp=164 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=165 endp=165 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=166 endp=166 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=167 endp=167 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=168 endp=168 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=169 endp=169 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=170 endp=170 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=171 endp=171 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=172 endp=172 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=173 endp=173 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=174 endp=174 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=175 endp=175 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=176 endp=176 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=177 endp=177 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=178 endp=178 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=179 endp=179 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=180 endp=180 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=181 endp=181 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=182 endp=182 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=183 endp=183 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=184 endp=184 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=185 endp=185 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=186 endp=186 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=187 endp=187 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=188 endp=188 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=189 endp=189 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=190 endp=190 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=191 endp=191 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=192 endp=192 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=193 endp=193 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=194 endp=194 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=195 endp=195 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=196 endp=196 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=197 endp=197 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=198 endp=198 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=199 endp=199 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=200 endp=200 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=201 endp=201 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=202 endp=202 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=203 endp=203 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=204 endp=204 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=205 endp=205 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=206 endp=206 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=207 endp=207 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=208 endp=208 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=209 endp=209 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=210 endp=210 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=211 endp=211 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=212 endp=212 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=213 endp=213 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=214 endp=214 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=215 endp=215 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=216 endp=216 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=217 endp=217 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=218 endp=218 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=219 endp=219 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:404:nr=220 endp=220 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:init_systask:416:Initializing SLOTS
+ slots.c:init_slots:385:group name=VM0
+ slots.c:init_slots:386:user  name=0.0
+ slots.c:init_slots:396:Spread library version is 4.3.0
+ slots.c:init_slots:414:User 0.0: connected to 4803 with private group #0.0#node0
+ system.c:init_systask:419:Starting SLOTS thread
+ slots.c:slots_read_thread:1851:Binding to VM 0 with sp_nr=-34
+ slots.c:slots_read_thread:1856:has bound with p_endpoint=-34 
+ slots.c:slots_read_thread:1865:nr=-34 endp=-34 vmid=0 flags=0 misc=80 lpid=2734 nodeid=0 nodemap=1 name=systask 
+ slots.c:slots_read_thread:1872:s_nr=1 s_endpoint=-34 s_flags=0 s_owner=0
+ slots.c:slots_loop:1924:sender=VM0 Private_group=#0.0#node0 dc_name=VM0 service_type=4352 SP_bytes=56 
+ slots.c:slots_loop:2005:Received REGULAR membership for group VM0 with 1 members, where I am member 0:
+ slots.c:get_nodeid:148:member=#0 nodeid=0
+ slots.c:slots_loop:2014:	#0:0
+ slots.c:slots_loop:2019:num_groups=1 OLD bm_active=0 NEW bm_active=1
+ slots.c:slots_loop:2027:Due to the JOIN of #0.0#node0
+ slots.c:get_nodeid:148:member=#0 nodeid=0
+ slots.c:sp_join:493:FSM_state=0 new_member=0 primary_mbr=-1 active_nodes=1 bm_active=1
+ slots.c:sp_join:515:Wake up systask: new_mbr=0
+ system.c:init_systask:425:SYSTASK has been signaled by the SLOTS thread  FSM_state=3000
+ system.c:init_systask:480:next_child=64 init_nodes=1 max_owned_slots=192 owned_slots=192 free_slots=192
+ slots.c:mcast_binds2rmt:195:
+ slots.c:mcast_bind_proc:280:nr=-34 endp=-34 vmid=0 flags=0 misc=80 lpid=2734 nodeid=0 nodemap=1 name=systask 
+ slots.c:mcast_bind_proc:280:nr=-2 endp=-2 vmid=0 flags=0 misc=20 lpid=2733 nodeid=0 nodemap=1 name=systask 
+ system.c:init_systask:507:Allocated space for nr_procs=221 + nr_tasks=35 ptrivileges
+ system.c:init_systask:512:Initialize priv table
+ clock.c:init_clock:78:clockTicks =100
+ clock.c:get_uptime:205:tv_sec=152 tv_nsec=725929957 uptime=15272 
+ clock.c:set_clock_handler:160:
+ clock.c:set_interval:46:
+ clock.c:set_interval:53:new_sec=1 new_usec=0
+ system.c:main:116:SYSTASK is waiting for requests
+ clock.c:get_uptime:205:tv_sec=153 tv_nsec=727151916 uptime=15372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15372 
+ clock.c:get_uptime:205:tv_sec=154 tv_nsec=727212173 uptime=15472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15472 
+ clock.c:get_uptime:205:tv_sec=155 tv_nsec=726574411 uptime=15572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15572 
+ clock.c:get_uptime:205:tv_sec=156 tv_nsec=726669051 uptime=15672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15672 
+ clock.c:get_uptime:205:tv_sec=157 tv_nsec=726255248 uptime=15772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15772 
+ clock.c:get_uptime:205:tv_sec=158 tv_nsec=726422898 uptime=15872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15872 
+ clock.c:get_uptime:205:tv_sec=159 tv_nsec=726246922 uptime=15972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=15972 
+ clock.c:get_uptime:205:tv_sec=160 tv_nsec=726775969 uptime=16072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16072 
+ clock.c:get_uptime:205:tv_sec=161 tv_nsec=726335723 uptime=16172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16172 
+ clock.c:get_uptime:205:tv_sec=162 tv_nsec=726705006 uptime=16272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16272 
+ clock.c:get_uptime:205:tv_sec=163 tv_nsec=726806765 uptime=16372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16372 
+ clock.c:get_uptime:205:tv_sec=164 tv_nsec=726220948 uptime=16472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16472 
+ clock.c:get_uptime:205:tv_sec=165 tv_nsec=726525641 uptime=16572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16572 
+ clock.c:get_uptime:205:tv_sec=166 tv_nsec=726285204 uptime=16672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16672 
+ clock.c:get_uptime:205:tv_sec=167 tv_nsec=726315031 uptime=16772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16772 
+ clock.c:get_uptime:205:tv_sec=168 tv_nsec=726681437 uptime=16872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16872 
+ clock.c:get_uptime:205:tv_sec=169 tv_nsec=726373314 uptime=16972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=16972 
+ clock.c:get_uptime:205:tv_sec=170 tv_nsec=726771783 uptime=17072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17072 
+ clock.c:get_uptime:205:tv_sec=171 tv_nsec=726564660 uptime=17172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17172 
+ slots.c:slots_loop:1924:sender=VM0 Private_group=#0.0#node0 dc_name=VM0 service_type=4352 SP_bytes=56 
+ slots.c:slots_loop:2005:Received REGULAR membership for group VM0 with 2 members, where I am member 0:
+ slots.c:get_nodeid:148:member=#0 nodeid=0
+ slots.c:slots_loop:2014:	#0:0
+ slots.c:get_nodeid:148:member=#1 nodeid=1
+ slots.c:slots_loop:2014:	#1:1
+ slots.c:slots_loop:2019:num_groups=2 OLD bm_active=1 NEW bm_active=3
+ slots.c:slots_loop:2027:Due to the JOIN of #1.0#node1
+ slots.c:get_nodeid:148:member=#1 nodeid=1
+ slots.c:sp_join:493:FSM_state=3000 new_member=1 primary_mbr=0 active_nodes=2 bm_active=3
+ slots.c:sp_join:524:member=0 FSM_state=3000
+ slots.c:sp_join:584:bm_donors=0 bm_pending=0
+ slots.c:sp_join:593:member=0 FSM_state=3000
+ slots.c:get_next_mbr:117:node=0 bm=2
+ slots.c:get_next_mbr:125:bm=2 node=0 nx_mbr=1
+ slots.c:primary_sts_mcast:64:waitsts_mbr=1
+ slots.c:mcast_status_info:471:source=0 type=3 m2i1=1 m2i2=0 m2i3=0 m2l1=1 m2l2=2 m2p1=(nil)
+ slots.c:mcast_status_info:472:Send Global sts_size=4312
+ slots.c:new_rqst_slots:46:nr_slots=6
+ slots.c:slots_loop:1924:sender=#0.0#node0 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=4312 
+ slots.c:slots_loop:1937:message from #0.0#node0, of type 3, (endian 0) to 1 groups (4312 bytes)
+ slots.c:get_nodeid:148:member=#0 nodeid=0
+ slots.c:slots_loop:1973:SYS_PUT_STATUS: primary_mbr=0 table has 269 slots
+ slots.c:sp_put_status:617:FSM_state=3000 SP_bytes=4312 
+ slots.c:sp_put_status:620:source=0 type=3 m2i1=1 m2i2=0 m2i3=0 m2l1=1 m2l2=2 m2p1=(nil)
+ slots.c:sp_put_status:630:init_mbr=1 bm_waitsts=0 
+ slots.c:get_next_mbr:117:node=1 bm=0
+ slots.c:sp_put_status:654:init_mbr=1 init_nodes=2 bm_init=3
+ slots.c:sp_put_status:657:bm_init=3 init_nodes=2 max_owned_slots=186
+ slots.c:sp_put_status:663:nr=-3 endp=-3 vmid=0 flags=1 misc=0 lpid=-1 nodeid=-1 nodemap=0 name=$noname 
+ system.c:bind_rmt_systask:552:node=1 SYSTASK(1)=-3 dc_ptr->dc_nr_tasks=35 bm_init=3
+ system.c:bind_rmt_systask:559:Binding Remote SYSTASK p_nr=-3 nodeid=1 rcode=-3
+ system.c:bind_rmt_systask:570:nr=-3 endp=-3 vmid=0 flags=1000 misc=0 lpid=-1 nodeid=1 nodemap=2 name=systask 
+ system.c:bind_rmt_systask:576:s_nr=32 s_endpoint=-3 s_flags=0 s_owner=1
+ slots.c:sp_req_slots:853:FSM_state=3000 requester=1 needed_slots=6
+ slots.c:sp_req_slots:889:free_slots=192 free_slots_low=3 needed_slots=6 don_nodes=1 surplus=189
+ slots.c:sp_req_slots:915:procs=256 donated_slots=4 requester=1
+ slots.c:sp_req_slots:948:source=0 type=2 dest=1 mAnr=4 mAia[0]=64 mAia[1]=65 mAia[2]=66 mAia[3]=67
+ slots.c:slots_loop:1924:sender=#0.0#node0 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #0.0#node0, of type 2, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1952:source=0 type=2 dest=1 mAnr=4 mAia[0]=64 mAia[1]=65 mAia[2]=66 mAia[3]=67
+ slots.c:sp_don_slots:968:FSM_state=3000
+ slots.c:sp_don_slots:971:Donation of 4 slots from 0 to 1
+ slots.c:slots_loop:1924:sender=#1.0#node1 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #1.0#node1, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=1 type=96 m3i1=-34 m3i2=-34 m3p1=(nil) m3ca1=[systask]
+ slots.c:sp_syscall:1592:source=1 m_type=96 p_nr=-34 p_endpoint=-34
+ slots.c:sp_syscall:1613:MOLBINDPROC p_nr=-34 p_endpoint=-34
+ slots.c:sp_syscall:1639:REPLICATED vmid=0 name=systask p_nr=-34 p_endpoint=-34 nodeid=1
+ slots.c:slots_loop:1924:sender=#1.0#node1 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #1.0#node1, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=1 type=96 m3i1=-3 m3i2=-3 m3p1=(nil) m3ca1=[systask]
+ slots.c:sp_syscall:1592:source=1 m_type=96 p_nr=-3 p_endpoint=-3
+ slots.c:sp_syscall:1613:MOLBINDPROC p_nr=-3 p_endpoint=-3
+ slots.c:slots_loop:1924:sender=#1.0#node1 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #1.0#node1, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=1 type=96 m3i1=3 m3i2=3 m3p1=(nil) m3ca1=[rdisk]
+ slots.c:sp_syscall:1592:source=1 m_type=96 p_nr=3 p_endpoint=3
+ slots.c:sp_syscall:1613:MOLBINDPROC p_nr=3 p_endpoint=3
+ slots.c:sp_syscall:1652:mnx_rmtbind vmid=0 name=rdisk p_nr=3 p_endpoint=3 nodeid=1
+ slots.c:sp_syscall:1666:nr=3 endp=3 vmid=0 flags=1000 misc=0 lpid=-1 nodeid=1 nodemap=2 name=rdisk 
+ slots.c:sp_syscall:1672:s_id=38 s_warn=27342 s_level=0 trap=0 call=0
+ clock.c:get_uptime:205:tv_sec=172 tv_nsec=727094214 uptime=17272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17272 
+ clock.c:get_uptime:205:tv_sec=173 tv_nsec=726968689 uptime=17372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17372 
+ clock.c:get_uptime:205:tv_sec=174 tv_nsec=726655728 uptime=17472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17472 
+ clock.c:get_uptime:205:tv_sec=175 tv_nsec=726873073 uptime=17572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17572 
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1568 m4l1=2743 m4l2=0 m4l3=4 m4l4=1836068654 m4l5=0
+ system.c:main:137:call_nr=32 who_e=0
+ system.c:main:142:Calling vector 32
+ do_bindproc.c:do_bindproc:42:source=0 type=1568 m3i1=2743 m3i2=0 m3p1=0x4 m3ca1=[./pm]
+ do_bindproc.c:do_bindproc:48:sysproc_lpid=2743, sysproc_ep=0 sysproc_nr=0 sysproc_oper=4 
+ do_bindproc.c:do_bindproc:63:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2743 nodeid=0 nodemap=1 name=pm 
+ do_bindproc.c:do_bindproc:66:s_nr=35 s_endpoint=27342 s_flags=0 s_owner=-1
+ do_bindproc.c:do_bindproc:151:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2743 nodeid=0 nodemap=1 name=pm 
+ do_bindproc.c:do_bindproc:159:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2743 nodeid=0 nodemap=1 name=pm 
+ do_bindproc.c:do_bindproc:166:s_id=35 s_warn=27342 s_level=0 trap=0 call=0
+ do_bindproc.c:do_bindproc:171:s_nr=35 s_endpoint=0 s_flags=0 s_owner=0
+ slots.c:mcast_bind_proc:280:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2743 nodeid=0 nodemap=1 name=pm 
+ slots.c:slots_loop:1924:sender=#0.0#node0 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #0.0#node0, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=0 type=96 m3i1=0 m3i2=0 m3p1=0x40 m3ca1=[pm]
+ slots.c:sp_syscall:1592:source=0 m_type=96 p_nr=0 p_endpoint=0
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=0 m1i2=4 m1i3=4 m1p1=0x6d702f2e m1p2=(nil) m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1571 m4l1=0 m4l2=0 m4l3=4 m4l4=28016 m4l5=0
+ system.c:main:137:call_nr=35 who_e=0
+ system.c:main:142:Calling vector 35
+ do_bindproc.c:do_setpname:195:source=0 type=1571 m3i1=0 m3i2=0 m3p1=0x4 m3ca1=[pm]
+ do_bindproc.c:do_setpname:209:nr=0 endp=0 vmid=0 flags=8 misc=A0 lpid=2743 nodeid=0 nodemap=1 name=pm 
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=0 m1i2=0 m1i3=4 m1p1=0x6d70 m1p2=(nil) m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=0 m4l2=0 m4l3=0 m4l4=35534 m4l5=134561792
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=0 addr=8054000 len=0
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=0 m1i2=0 m1i3=0 m1p1=0x8ace m1p2=0x8054000 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=0 m4l2=0 m4l3=12 m4l4=35534 m4l5=134565952
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=12 addr=8055040 len=0
+ do_getinfo.c:do_getinfo:51:dc_id=0 
+ do_getinfo.c:do_getinfo:54:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=0 m1i2=0 m1i3=12 m1p1=0x8ace m1p2=0x8055040 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1540 m4l1=0 m4l2=1 m4l3=12 m4l4=35534 m4l5=134565952
+ system.c:main:137:call_nr=4 who_e=0
+ system.c:main:142:Calling vector 4
+ do_privctl.c:do_privctl:28:caller_ep=0 proc_ep=0 priv=1
+ do_privctl.c:do_privctl:38:proc_ep=0 proc_nr=0
+ do_privctl.c:do_privctl:52:OLD s_id=35 s_warn=27342 s_level=0 trap=0 call=0
+ do_privctl.c:do_privctl:68:NEW s_id=35 s_warn=27342 s_level=1 trap=0 call=0
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=0 m1i2=1 m1i3=12 m1p1=0x8ace m1p2=0x8055040 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=54272 m4l2=0 m4l3=2 m4l4=35534 m4l5=145719296
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=2 addr=8AF8000 len=54272
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=54272 m1i2=0 m1i3=2 m1p1=0x8ace m1p2=0x8af8000 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1561 m4l1=27342 m4l2=0 m4l3=2 m4l4=35534 m4l5=145719296
+ system.c:main:137:call_nr=25 who_e=0
+ system.c:main:142:Calling vector 25
+ do_times.c:do_times:55:ppid=2709, pgrp=2709, session=2662, tty=1025, tpgid=2709
+ do_times.c:do_times:56:utime=1 stime=0
+ do_times.c:do_times:57:priority=1, nice=-19 
+ clock.c:get_uptime:205:tv_sec=176 tv_nsec=422010392 uptime=17642 
+ do_times.c:do_times:67: boot=17642 user=100 system=200
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=100 m1i2=200 m1i3=2 m1p1=0x8ace m1p2=0x44ea m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ clock.c:get_uptime:205:tv_sec=176 tv_nsec=727186249 uptime=17672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17672 
+ clock.c:get_uptime:205:tv_sec=177 tv_nsec=726816240 uptime=17772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17772 
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=2 type=1562 m4l1=0 m4l2=0 m4l3=0 m4l4=35534 m4l5=134536096
+ system.c:main:137:call_nr=26 who_e=2
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=2 rqst=0 addr=804DBA0 len=0
+ system.c:main:153:REPLY msg:source=2 type=0 m1i1=0 m1i2=0 m1i3=0 m1p1=0x8ace m1p2=0x804dba0 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=2 type=1562 m4l1=0 m4l2=0 m4l3=12 m4l4=35534 m4l5=134536448
+ system.c:main:137:call_nr=26 who_e=2
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=2 rqst=12 addr=804DD00 len=0
+ do_getinfo.c:do_getinfo:51:dc_id=0 
+ do_getinfo.c:do_getinfo:54:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ system.c:main:153:REPLY msg:source=2 type=0 m1i1=0 m1i2=0 m1i3=12 m1p1=0x8ace m1p2=0x804dd00 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=2 type=1568 m4l1=2746 m4l2=2 m4l3=0 m4l4=1936863022 m4l5=0
+ system.c:main:137:call_nr=32 who_e=2
+ system.c:main:142:Calling vector 32
+ do_bindproc.c:do_bindproc:42:source=2 type=1568 m3i1=2746 m3i2=2 m3p1=(nil) m3ca1=[./rs]
+ do_bindproc.c:do_bindproc:48:sysproc_lpid=2746, sysproc_ep=2 sysproc_nr=2 sysproc_oper=0 
+ do_bindproc.c:do_bindproc:63:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:66:s_nr=37 s_endpoint=27342 s_flags=0 s_owner=-1
+ do_bindproc.c:do_bindproc:151:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:159:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:166:s_id=37 s_warn=27342 s_level=0 trap=0 call=0
+ do_bindproc.c:do_bindproc:171:s_nr=37 s_endpoint=2 s_flags=0 s_owner=0
+ slots.c:mcast_bind_proc:280:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ slots.c:slots_loop:1924:sender=#0.0#node0 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #0.0#node0, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=0 type=96 m3i1=2 m3i2=2 m3p1=0x40 m3ca1=[rs]
+ slots.c:sp_syscall:1592:source=0 m_type=96 p_nr=2 p_endpoint=2
+ system.c:main:153:REPLY msg:source=2 type=0 m1i1=2 m1i2=0 m1i3=0 m1p1=0x73722f2e m1p2=(nil) m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=2 type=1571 m4l1=2 m4l2=2 m4l3=0 m4l4=29554 m4l5=0
+ system.c:main:137:call_nr=35 who_e=2
+ system.c:main:142:Calling vector 35
+ do_bindproc.c:do_setpname:195:source=2 type=1571 m3i1=2 m3i2=2 m3p1=(nil) m3ca1=[rs]
+ do_bindproc.c:do_setpname:209:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ system.c:main:153:REPLY msg:source=2 type=0 m1i1=2 m1i2=2 m1i3=0 m1p1=0x7372 m1p2=(nil) m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=212 m4l2=2 m4l3=11 m4l4=35534 m4l5=145727140
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=11 addr=8AF9EA4 len=212
+ do_getinfo.c:do_getinfo:89:p_ep=2 p_nr=2 
+ do_getinfo.c:do_getinfo:106:AFTERnr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=212 m1i2=2 m1i3=11 m1p1=0x8ace m1p2=0x8af9ea4 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1568 m4l1=2746 m4l2=2 m4l3=1 m4l4=1936863022 m4l5=0
+ system.c:main:137:call_nr=32 who_e=0
+ system.c:main:142:Calling vector 32
+ do_bindproc.c:do_bindproc:42:source=0 type=1568 m3i1=2746 m3i2=2 m3p1=0x1 m3ca1=[./rs]
+ do_bindproc.c:do_bindproc:48:sysproc_lpid=2746, sysproc_ep=2 sysproc_nr=2 sysproc_oper=1 
+ do_bindproc.c:do_bindproc:63:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:66:s_nr=37 s_endpoint=2 s_flags=0 s_owner=0
+ do_bindproc.c:do_bindproc:151:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:159:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ do_bindproc.c:do_bindproc:166:s_id=37 s_warn=27342 s_level=0 trap=0 call=0
+ do_bindproc.c:do_bindproc:171:s_nr=37 s_endpoint=2 s_flags=0 s_owner=0
+ slots.c:mcast_bind_proc:280:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ slots.c:slots_loop:1924:sender=#0.0#node0 Private_group=#0.0#node0 dc_name=VM0 service_type=32 SP_bytes=36 
+ slots.c:slots_loop:1937:message from #0.0#node0, of type 20, (endian 0) to 1 groups (36 bytes)
+ slots.c:slots_loop:1985:source=0 type=96 m3i1=2 m3i2=2 m3p1=0x40 m3ca1=[rs]
+ slots.c:sp_syscall:1592:source=0 m_type=96 p_nr=2 p_endpoint=2
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=2 m1i2=1 m1i3=1 m1p1=0x73722f2e m1p2=(nil) m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=212 m4l2=2 m4l3=11 m4l4=35534 m4l5=145727140
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=11 addr=8AF9EA4 len=212
+ do_getinfo.c:do_getinfo:89:p_ep=2 p_nr=2 
+ do_getinfo.c:do_getinfo:106:AFTERnr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=212 m1i2=2 m1i3=11 m1p1=0x8ace m1p2=0x8af9ea4 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ clock.c:get_uptime:205:tv_sec=178 tv_nsec=726501847 uptime=17872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17872 
+ clock.c:get_uptime:205:tv_sec=179 tv_nsec=726388230 uptime=17972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=17972 
+ clock.c:get_uptime:205:tv_sec=180 tv_nsec=726433711 uptime=18072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18072 
+ clock.c:get_uptime:205:tv_sec=181 tv_nsec=726406027 uptime=18172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18172 
+ clock.c:get_uptime:205:tv_sec=182 tv_nsec=727133808 uptime=18272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18272 
+ clock.c:get_uptime:205:tv_sec=183 tv_nsec=726727741 uptime=18372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18372 
+ clock.c:get_uptime:205:tv_sec=184 tv_nsec=726673876 uptime=18472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18472 
+ clock.c:get_uptime:205:tv_sec=185 tv_nsec=727274684 uptime=18572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18572 
+ clock.c:get_uptime:205:tv_sec=186 tv_nsec=726640942 uptime=18672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18672 
+ clock.c:get_uptime:205:tv_sec=187 tv_nsec=726556184 uptime=18772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18772 
+ clock.c:get_uptime:205:tv_sec=188 tv_nsec=726812000 uptime=18872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18872 
+ clock.c:get_uptime:205:tv_sec=189 tv_nsec=726682231 uptime=18972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=18972 
+ clock.c:get_uptime:205:tv_sec=190 tv_nsec=727272396 uptime=19072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19072 
+ clock.c:get_uptime:205:tv_sec=191 tv_nsec=727072348 uptime=19172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19172 
+ clock.c:get_uptime:205:tv_sec=192 tv_nsec=727158442 uptime=19272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19272 
+ system.c:main:120:mnx_receive rcode=0
+ system.c:main:128:RECEIVE msg:source=0 type=1562 m4l1=212 m4l2=3 m4l3=11 m4l4=35534 m4l5=145727352
+ system.c:main:137:call_nr=26 who_e=0
+ system.c:main:142:Calling vector 26
+ do_getinfo.c:do_getinfo:38:caller=0 rqst=11 addr=8AF9F78 len=212
+ do_getinfo.c:do_getinfo:89:p_ep=3 p_nr=3 
+ do_getinfo.c:do_getinfo:106:AFTERnr=3 endp=3 vmid=0 flags=1008 misc=0 lpid=-1 nodeid=1 nodemap=2 name=rdisk 
+ system.c:main:153:REPLY msg:source=0 type=0 m1i1=212 m1i2=3 m1i3=11 m1p1=0x8ace m1p2=0x8af9f78 m1p3=(nil) 
+ system.c:main:116:SYSTASK is waiting for requests
+ clock.c:get_uptime:205:tv_sec=193 tv_nsec=726995830 uptime=19372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19372 
+ clock.c:get_uptime:205:tv_sec=194 tv_nsec=726593221 uptime=19472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19472 
+ clock.c:get_uptime:205:tv_sec=195 tv_nsec=726911949 uptime=19572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19572 
+ clock.c:get_uptime:205:tv_sec=196 tv_nsec=727026717 uptime=19672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19672 
+ clock.c:get_uptime:205:tv_sec=197 tv_nsec=727167246 uptime=19772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19772 
+ clock.c:get_uptime:205:tv_sec=198 tv_nsec=727169000 uptime=19872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19872 
+ clock.c:get_uptime:205:tv_sec=199 tv_nsec=726791974 uptime=19972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=19972 
+ clock.c:get_uptime:205:tv_sec=200 tv_nsec=727026373 uptime=20072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20072 
+ clock.c:get_uptime:205:tv_sec=201 tv_nsec=727031883 uptime=20172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20172 
+ clock.c:get_uptime:205:tv_sec=202 tv_nsec=726833246 uptime=20272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20272 
+ clock.c:get_uptime:205:tv_sec=203 tv_nsec=726538041 uptime=20372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20372 
+ clock.c:get_uptime:205:tv_sec=204 tv_nsec=727082033 uptime=20472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20472 
+ clock.c:get_uptime:205:tv_sec=205 tv_nsec=727055215 uptime=20572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20572 
+ clock.c:get_uptime:205:tv_sec=206 tv_nsec=727351713 uptime=20672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20672 
+ clock.c:get_uptime:205:tv_sec=207 tv_nsec=727067955 uptime=20772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20772 
+ clock.c:get_uptime:205:tv_sec=208 tv_nsec=726978404 uptime=20872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20872 
+ clock.c:get_uptime:205:tv_sec=209 tv_nsec=726705297 uptime=20972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=20972 
+ clock.c:get_uptime:205:tv_sec=210 tv_nsec=726534677 uptime=21072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21072 
+ clock.c:get_uptime:205:tv_sec=211 tv_nsec=726984842 uptime=21172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21172 
+ clock.c:get_uptime:205:tv_sec=212 tv_nsec=726925910 uptime=21272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21272 
+ clock.c:get_uptime:205:tv_sec=213 tv_nsec=727087057 uptime=21372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21372 
+ clock.c:get_uptime:205:tv_sec=214 tv_nsec=726755656 uptime=21472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21472 
+ clock.c:get_uptime:205:tv_sec=215 tv_nsec=727029988 uptime=21572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21572 
+ clock.c:get_uptime:205:tv_sec=216 tv_nsec=727274066 uptime=21672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21672 
+ clock.c:get_uptime:205:tv_sec=217 tv_nsec=726745042 uptime=21772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21772 
+ clock.c:get_uptime:205:tv_sec=218 tv_nsec=726806868 uptime=21872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21872 
+ clock.c:get_uptime:205:tv_sec=219 tv_nsec=727363704 uptime=21972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=21972 
+ clock.c:get_uptime:205:tv_sec=220 tv_nsec=726938433 uptime=22072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22072 
+ clock.c:get_uptime:205:tv_sec=221 tv_nsec=727187210 uptime=22172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22172 
+ clock.c:get_uptime:205:tv_sec=222 tv_nsec=726568104 uptime=22272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22272 
+ clock.c:get_uptime:205:tv_sec=223 tv_nsec=726437936 uptime=22372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22372 
+ clock.c:get_uptime:205:tv_sec=224 tv_nsec=726954266 uptime=22472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22472 
+ clock.c:get_uptime:205:tv_sec=225 tv_nsec=727135606 uptime=22572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22572 
+ clock.c:get_uptime:205:tv_sec=226 tv_nsec=726351275 uptime=22672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22672 
+ clock.c:get_uptime:205:tv_sec=227 tv_nsec=727111097 uptime=22772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22772 
+ clock.c:get_uptime:205:tv_sec=228 tv_nsec=726939130 uptime=22872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22872 
+ clock.c:get_uptime:205:tv_sec=229 tv_nsec=727033744 uptime=22972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=22972 
+ clock.c:get_uptime:205:tv_sec=230 tv_nsec=726919488 uptime=23072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23072 
+ clock.c:get_uptime:205:tv_sec=231 tv_nsec=727001102 uptime=23172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23172 
+ clock.c:get_uptime:205:tv_sec=232 tv_nsec=726880502 uptime=23272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23272 
+ clock.c:get_uptime:205:tv_sec=233 tv_nsec=726411492 uptime=23372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23372 
+ clock.c:get_uptime:205:tv_sec=234 tv_nsec=726605889 uptime=23472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23472 
+ clock.c:get_uptime:205:tv_sec=235 tv_nsec=726836685 uptime=23572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23572 
+ clock.c:get_uptime:205:tv_sec=236 tv_nsec=726600592 uptime=23672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23672 
+ clock.c:get_uptime:205:tv_sec=237 tv_nsec=726756557 uptime=23772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23772 
+ clock.c:get_uptime:205:tv_sec=238 tv_nsec=726592512 uptime=23872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23872 
+ clock.c:get_uptime:205:tv_sec=239 tv_nsec=727711182 uptime=23972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=23972 
+ clock.c:get_uptime:205:tv_sec=240 tv_nsec=727168792 uptime=24072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24072 
+ clock.c:get_uptime:205:tv_sec=241 tv_nsec=726751055 uptime=24172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24172 
+ clock.c:get_uptime:205:tv_sec=242 tv_nsec=727357011 uptime=24272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24272 
+ clock.c:get_uptime:205:tv_sec=243 tv_nsec=727336558 uptime=24372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24372 
+ clock.c:get_uptime:205:tv_sec=244 tv_nsec=727088974 uptime=24472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24472 
+ clock.c:get_uptime:205:tv_sec=245 tv_nsec=727200772 uptime=24572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24572 
+ clock.c:get_uptime:205:tv_sec=246 tv_nsec=726851206 uptime=24672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24672 
+ clock.c:get_uptime:205:tv_sec=247 tv_nsec=726509071 uptime=24772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24772 
+ clock.c:get_uptime:205:tv_sec=248 tv_nsec=726552239 uptime=24872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24872 
+ clock.c:get_uptime:205:tv_sec=249 tv_nsec=727191910 uptime=24972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=24972 
+ clock.c:get_uptime:205:tv_sec=250 tv_nsec=727340157 uptime=25072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25072 
+ clock.c:get_uptime:205:tv_sec=251 tv_nsec=727291873 uptime=25172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25172 
+ clock.c:get_uptime:205:tv_sec=252 tv_nsec=727143540 uptime=25272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25272 
+ clock.c:get_uptime:205:tv_sec=253 tv_nsec=726719056 uptime=25372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25372 
+ clock.c:get_uptime:205:tv_sec=254 tv_nsec=726473022 uptime=25472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25472 
+ clock.c:get_uptime:205:tv_sec=255 tv_nsec=726986229 uptime=25572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25572 
+ clock.c:get_uptime:205:tv_sec=256 tv_nsec=726872639 uptime=25672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25672 
+ clock.c:get_uptime:205:tv_sec=257 tv_nsec=727247027 uptime=25772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25772 
+ clock.c:get_uptime:205:tv_sec=258 tv_nsec=727284289 uptime=25872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25872 
+ clock.c:get_uptime:205:tv_sec=259 tv_nsec=727245903 uptime=25972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=25972 
+ clock.c:get_uptime:205:tv_sec=260 tv_nsec=726736775 uptime=26072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26072 
+ clock.c:get_uptime:205:tv_sec=261 tv_nsec=727301245 uptime=26172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26172 
+ clock.c:get_uptime:205:tv_sec=262 tv_nsec=726554646 uptime=26272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26272 
+ clock.c:get_uptime:205:tv_sec=263 tv_nsec=726832578 uptime=26372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26372 
+ clock.c:get_uptime:205:tv_sec=264 tv_nsec=726991194 uptime=26472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26472 
+ clock.c:get_uptime:205:tv_sec=265 tv_nsec=726896984 uptime=26572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26572 
+ clock.c:get_uptime:205:tv_sec=266 tv_nsec=728503549 uptime=26672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26672 
+ clock.c:get_uptime:205:tv_sec=267 tv_nsec=726902431 uptime=26772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26772 
+ clock.c:get_uptime:205:tv_sec=268 tv_nsec=726411294 uptime=26872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26872 
+ clock.c:get_uptime:205:tv_sec=269 tv_nsec=726480343 uptime=26972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=26972 
+ clock.c:get_uptime:205:tv_sec=270 tv_nsec=726900156 uptime=27072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27072 
+ clock.c:get_uptime:205:tv_sec=271 tv_nsec=726901565 uptime=27172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27172 
+ clock.c:get_uptime:205:tv_sec=272 tv_nsec=727146605 uptime=27272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27272 
+ clock.c:get_uptime:205:tv_sec=273 tv_nsec=727058971 uptime=27372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27372 
+ clock.c:get_uptime:205:tv_sec=274 tv_nsec=727004040 uptime=27472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27472 
+ clock.c:get_uptime:205:tv_sec=275 tv_nsec=726701541 uptime=27572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27572 
+ clock.c:get_uptime:205:tv_sec=276 tv_nsec=727037074 uptime=27672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27672 
+ clock.c:get_uptime:205:tv_sec=277 tv_nsec=726694003 uptime=27772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27772 
+ clock.c:get_uptime:205:tv_sec=278 tv_nsec=726610958 uptime=27872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27872 
+ clock.c:get_uptime:205:tv_sec=279 tv_nsec=727172009 uptime=27972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=27972 
+ clock.c:get_uptime:205:tv_sec=280 tv_nsec=726603824 uptime=28072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28072 
+ clock.c:get_uptime:205:tv_sec=281 tv_nsec=727249807 uptime=28172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28172 
+ clock.c:get_uptime:205:tv_sec=282 tv_nsec=726950904 uptime=28272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28272 
+ clock.c:get_uptime:205:tv_sec=283 tv_nsec=727031500 uptime=28372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28372 
+ clock.c:get_uptime:205:tv_sec=284 tv_nsec=726406630 uptime=28472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28472 
+ clock.c:get_uptime:205:tv_sec=285 tv_nsec=726636801 uptime=28572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28572 
+ clock.c:get_uptime:205:tv_sec=286 tv_nsec=727181652 uptime=28672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28672 
+ clock.c:get_uptime:205:tv_sec=287 tv_nsec=726663143 uptime=28772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28772 
+ clock.c:get_uptime:205:tv_sec=288 tv_nsec=727192561 uptime=28872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28872 
+ clock.c:get_uptime:205:tv_sec=289 tv_nsec=726582721 uptime=28972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=28972 
+ clock.c:get_uptime:205:tv_sec=290 tv_nsec=726638744 uptime=29072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29072 
+ clock.c:get_uptime:205:tv_sec=291 tv_nsec=726510409 uptime=29172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29172 
+ clock.c:get_uptime:205:tv_sec=292 tv_nsec=726667546 uptime=29272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29272 
+ clock.c:get_uptime:205:tv_sec=293 tv_nsec=726885607 uptime=29372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29372 
+ clock.c:get_uptime:205:tv_sec=294 tv_nsec=726800474 uptime=29472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29472 
+ clock.c:get_uptime:205:tv_sec=295 tv_nsec=726878779 uptime=29572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29572 
+ clock.c:get_uptime:205:tv_sec=296 tv_nsec=726707008 uptime=29672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29672 
+ clock.c:get_uptime:205:tv_sec=297 tv_nsec=727311988 uptime=29772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29772 
+ clock.c:get_uptime:205:tv_sec=298 tv_nsec=726293569 uptime=29872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29872 
+ clock.c:get_uptime:205:tv_sec=299 tv_nsec=735581484 uptime=29973 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=29973 
+ clock.c:get_uptime:205:tv_sec=300 tv_nsec=726607947 uptime=30072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30072 
+ clock.c:get_uptime:205:tv_sec=301 tv_nsec=727260290 uptime=30172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30172 
+ clock.c:get_uptime:205:tv_sec=302 tv_nsec=728331082 uptime=30272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30272 
+ clock.c:get_uptime:205:tv_sec=303 tv_nsec=726336602 uptime=30372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30372 
+ clock.c:get_uptime:205:tv_sec=304 tv_nsec=726786353 uptime=30472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30472 
+ clock.c:get_uptime:205:tv_sec=305 tv_nsec=728371241 uptime=30572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30572 
+ clock.c:get_uptime:205:tv_sec=306 tv_nsec=728570896 uptime=30672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30672 
+ clock.c:get_uptime:205:tv_sec=307 tv_nsec=728561134 uptime=30772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30772 
+ clock.c:get_uptime:205:tv_sec=308 tv_nsec=726415242 uptime=30872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30872 
+ clock.c:get_uptime:205:tv_sec=309 tv_nsec=728851005 uptime=30972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=30972 
+ clock.c:get_uptime:205:tv_sec=310 tv_nsec=728681803 uptime=31072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31072 
+ clock.c:get_uptime:205:tv_sec=311 tv_nsec=728598806 uptime=31172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31172 
+ clock.c:get_uptime:205:tv_sec=312 tv_nsec=728588170 uptime=31272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31272 
+ clock.c:get_uptime:205:tv_sec=313 tv_nsec=726734727 uptime=31372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31372 
+ clock.c:get_uptime:205:tv_sec=314 tv_nsec=728559363 uptime=31472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31472 
+ clock.c:get_uptime:205:tv_sec=315 tv_nsec=728561488 uptime=31572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31572 
+ clock.c:get_uptime:205:tv_sec=316 tv_nsec=728679726 uptime=31672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31672 
+ clock.c:get_uptime:205:tv_sec=317 tv_nsec=728134347 uptime=31772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31772 
+ clock.c:get_uptime:205:tv_sec=318 tv_nsec=726715221 uptime=31872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31872 
+ clock.c:get_uptime:205:tv_sec=319 tv_nsec=728814434 uptime=31972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=31972 
+ clock.c:get_uptime:205:tv_sec=320 tv_nsec=728544754 uptime=32072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32072 
+ clock.c:get_uptime:205:tv_sec=321 tv_nsec=728601272 uptime=32172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32172 
+ clock.c:get_uptime:205:tv_sec=322 tv_nsec=728551428 uptime=32272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32272 
+ clock.c:get_uptime:205:tv_sec=323 tv_nsec=726650199 uptime=32372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32372 
+ clock.c:get_uptime:205:tv_sec=324 tv_nsec=729185043 uptime=32472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32472 
+ clock.c:get_uptime:205:tv_sec=325 tv_nsec=729083961 uptime=32572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32572 
+ clock.c:get_uptime:205:tv_sec=326 tv_nsec=728355647 uptime=32672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32672 
+ clock.c:get_uptime:205:tv_sec=327 tv_nsec=728478352 uptime=32772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32772 
+ clock.c:get_uptime:205:tv_sec=328 tv_nsec=726444628 uptime=32872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32872 
+ clock.c:get_uptime:205:tv_sec=329 tv_nsec=728321238 uptime=32972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=32972 
+ clock.c:get_uptime:205:tv_sec=330 tv_nsec=728723381 uptime=33072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33072 
+ clock.c:get_uptime:205:tv_sec=331 tv_nsec=728055951 uptime=33172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33172 
+ clock.c:get_uptime:205:tv_sec=332 tv_nsec=728440885 uptime=33272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33272 
+ clock.c:get_uptime:205:tv_sec=333 tv_nsec=726593923 uptime=33372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33372 
+ clock.c:get_uptime:205:tv_sec=334 tv_nsec=728094143 uptime=33472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33472 
+ clock.c:get_uptime:205:tv_sec=335 tv_nsec=728048232 uptime=33572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33572 
+ clock.c:get_uptime:205:tv_sec=336 tv_nsec=753274248 uptime=33675 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33675 
+ clock.c:get_uptime:205:tv_sec=337 tv_nsec=728214330 uptime=33772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33772 
+ clock.c:get_uptime:205:tv_sec=338 tv_nsec=727868515 uptime=33872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33872 
+ clock.c:get_uptime:205:tv_sec=339 tv_nsec=728172894 uptime=33972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=33972 
+ clock.c:get_uptime:205:tv_sec=340 tv_nsec=728357108 uptime=34072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34072 
+ clock.c:get_uptime:205:tv_sec=341 tv_nsec=728165131 uptime=34172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34172 
+ clock.c:get_uptime:205:tv_sec=342 tv_nsec=728050464 uptime=34272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34272 
+ clock.c:get_uptime:205:tv_sec=343 tv_nsec=726749250 uptime=34372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34372 
+ clock.c:get_uptime:205:tv_sec=344 tv_nsec=728266342 uptime=34472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34472 
+ clock.c:get_uptime:205:tv_sec=345 tv_nsec=728632219 uptime=34572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34572 
+ clock.c:get_uptime:205:tv_sec=346 tv_nsec=728724107 uptime=34672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34672 
+ clock.c:get_uptime:205:tv_sec=347 tv_nsec=728436937 uptime=34772 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34772 
+ clock.c:get_uptime:205:tv_sec=348 tv_nsec=728686141 uptime=34872 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34872 
+ clock.c:get_uptime:205:tv_sec=349 tv_nsec=728647040 uptime=34972 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=34972 
+ clock.c:get_uptime:205:tv_sec=350 tv_nsec=728317827 uptime=35072 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35072 
+ clock.c:get_uptime:205:tv_sec=351 tv_nsec=727425762 uptime=35172 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35172 
+ clock.c:get_uptime:205:tv_sec=352 tv_nsec=728095053 uptime=35272 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35272 
+ clock.c:get_uptime:205:tv_sec=353 tv_nsec=727217970 uptime=35372 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35372 
+ clock.c:get_uptime:205:tv_sec=354 tv_nsec=728328779 uptime=35472 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35472 
+ clock.c:get_uptime:205:tv_sec=355 tv_nsec=728120446 uptime=35572 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35572 
+ clock.c:get_uptime:205:tv_sec=356 tv_nsec=728379024 uptime=35672 
+ clock.c:clock_handler:108:clockTicks=100 next_timeout=2147483647 realtime=35672 

@@ -1,0 +1,273 @@
+CC=gcc
+BINS= 	test_proxy_bind test_vm_init test_node_up test_node_down \
+	test_vm_end test_vm_dump test_proc_dump test_bind \
+	test_receive test_send test_getep test_rs test_rs2 \
+	test_rs3 test_sendrec \
+	test_sendrec2 test_notify test_notify2 test_src_notify \
+	test_zcopy test_zcopy2 \
+	test_vcopy test_vcopy2 test_vcopy3 test_vcopy4 \
+	test_server  test_client test_server2  test_client2 \
+	test_unbind test_unbind2 test_unbind3 test_unbind4 test_unbind5 \
+	test_getpid  test_rmtbind test_relay test_drvs_end \
+	test_add_node test_del_node test_drvs_init  test_rmtsend \
+	msgtool test_exit  test_sendrcv\
+	test_getprocinfo test_getprocinfo2 test_getvminfo test_getnodeinfo test_getdrvsinfo \
+	test_receive_T test_migrate test_bkupbind \
+	test_getpriv test_times test_getproxyinfo \
+	test_receive_T cliente_open_y_read cliente_scatter cliente_gather cliente_devopen \
+	cliente_devclose cliente_devwrite cliente_devread
+
+#	test_proxy_vcopy1 test_proxy_vcopy2 test_proxy_vcopy3 test_proxy_vcopy4 
+#	proxy_rmtsendrec proxy_rmtsendrcv proxy_rmtnotify proxy_rmtrqstrply \
+#	proxy_rmtdatain proxy_rmtdataout 
+		
+INCLUDE = ..
+LIBS = /home/jara/mol-ipc/stub_syscall.o
+CFLAGS = -MMD -MP -ldl -lm -lrt -lnsl -pthread -rdynamic
+
+all: $(BINS)
+
+
+#.c.o:
+#	$(CC)  $(CFLAGS) -MMD -MP -ldl -lm -lrt -lnsl -pthread -rdynamic -o $@ $< $(LIBS) -I$(INCLUDE)
+#	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDE)
+
+		
+test_proxy_bind: test_proxy_bind.c 
+	$(CC)  $(CFLAGS)  -o test_proxy_bind test_proxy_bind.c $(LIBS) -I$(INCLUDE)
+
+test_node_up: test_node_up.c 
+	$(CC)  $(CFLAGS)  -o test_node_up test_node_up.c $(LIBS) -I$(INCLUDE)
+
+test_node_down: test_node_down.c 
+	$(CC)  $(CFLAGS)  -o test_node_down test_node_down.c $(LIBS) -I$(INCLUDE)
+
+test_vm_init: test_vm_init.c 
+	$(CC)  $(CFLAGS) -o test_vm_init test_vm_init.c  $(LIBS) -I$(INCLUDE)
+
+test_vm_end: test_vm_end.c 
+	$(CC)  $(CFLAGS) -o test_vm_end test_vm_end.c  $(LIBS) -I$(INCLUDE)
+
+test_vm_dump: test_vm_dump.c 
+	$(CC)  $(CFLAGS) -o test_vm_dump test_vm_dump.c  $(LIBS) -I$(INCLUDE)	
+
+test_proc_dump: test_proc_dump.c 
+	$(CC)  $(CFLAGS) -o test_proc_dump test_proc_dump.c  $(LIBS) -I$(INCLUDE)
+
+test_bind: test_bind.c 
+	$(CC)  $(CFLAGS) -o test_bind test_bind.c  $(LIBS) -I$(INCLUDE)	
+
+test_receive: test_receive.c 
+	$(CC)  $(CFLAGS) -o test_receive test_receive.c  $(LIBS) -I$(INCLUDE)
+
+test_send: test_send.c 
+	$(CC)  $(CFLAGS) -o test_send test_send.c  $(LIBS) -I$(INCLUDE)
+
+test_getep: test_getep.c 
+	$(CC)  $(CFLAGS) -o test_getep test_getep.c  $(LIBS) -I$(INCLUDE)
+
+test_rs: test_rs.c 
+	$(CC)  $(CFLAGS) -o test_rs test_rs.c  $(LIBS) -I$(INCLUDE)
+
+test_rs2: test_rs2.c 
+	$(CC)  $(CFLAGS) -o test_rs2 test_rs2.c  $(LIBS) -I$(INCLUDE)
+
+test_rs3: test_rs3.c 
+	$(CC)  $(CFLAGS) -o test_rs3 test_rs3.c  $(LIBS) -I$(INCLUDE)
+
+test_sendrec: test_sendrec.c 
+	$(CC)  $(CFLAGS) -o test_sendrec test_sendrec.c  $(LIBS) -I$(INCLUDE)	
+
+test_sendrec2: test_sendrec2.c 
+	$(CC)  $(CFLAGS) -o test_sendrec2 test_sendrec2.c  $(LIBS) -I$(INCLUDE)
+
+test_notify: test_notify.c 
+	$(CC)  $(CFLAGS) -o test_notify test_notify.c  $(LIBS) -I$(INCLUDE)
+
+test_notify2: test_notify2.c 
+	$(CC)  $(CFLAGS) -o test_notify2 test_notify2.c  $(LIBS) -I$(INCLUDE)
+
+test_src_notify: test_src_notify.c 
+	$(CC)  $(CFLAGS) -o test_src_notify test_src_notify.c  $(LIBS) -I$(INCLUDE)
+
+test_zcopy: test_zcopy.c 
+	$(CC)  $(CFLAGS) -o test_zcopy test_zcopy.c  $(LIBS) -I$(INCLUDE)
+
+test_zcopy2: test_zcopy2.c 
+	$(CC)  $(CFLAGS) -o test_zcopy2 test_zcopy2.c  $(LIBS) -I$(INCLUDE)
+
+test_vcopy: test_vcopy.c 
+	$(CC)  $(CFLAGS) -o test_vcopy test_vcopy.c  $(LIBS) -I$(INCLUDE)
+
+test_vcopy2: test_vcopy2.c 
+	$(CC)  $(CFLAGS) -o test_vcopy2 test_vcopy2.c  $(LIBS) -I$(INCLUDE)
+
+test_vcopy3: test_vcopy3.c 
+	$(CC)  $(CFLAGS) -o test_vcopy3 test_vcopy3.c  $(LIBS) -I$(INCLUDE)
+
+test_vcopy4: test_vcopy4.c 
+	$(CC)  $(CFLAGS) -o test_vcopy4 test_vcopy4.c  $(LIBS) -I$(INCLUDE)
+
+test_server: test_server.c 
+	$(CC)  $(CFLAGS) -o test_server test_server.c  $(LIBS) -I$(INCLUDE)	
+
+test_client: test_client.c 
+	$(CC)  $(CFLAGS) -o test_client test_client.c  $(LIBS) -I$(INCLUDE)	
+
+test_server2: test_server2.c 
+	$(CC)  $(CFLAGS) -o test_server2 test_server2.c  $(LIBS) -I$(INCLUDE)	
+
+test_client2: test_client2.c 
+	$(CC)  $(CFLAGS) -o test_client2 test_client2.c  $(LIBS) -I$(INCLUDE)
+
+test_unbind: test_unbind.c 
+	$(CC)  $(CFLAGS) -o test_unbind test_unbind.c  $(LIBS) -I$(INCLUDE)
+
+test_unbind2: test_unbind2.c 
+	$(CC)  $(CFLAGS) -o test_unbind2 test_unbind2.c  $(LIBS) -I$(INCLUDE)
+
+test_unbind3: test_unbind3.c 
+	$(CC)  $(CFLAGS) -o test_unbind3 test_unbind3.c  $(LIBS) -I$(INCLUDE)
+
+test_unbind4: test_unbind4.c 
+	$(CC)  $(CFLAGS) -o test_unbind4 test_unbind4.c  $(LIBS) -I$(INCLUDE)
+
+test_unbind5: test_unbind5.c 
+	$(CC)  $(CFLAGS) -o test_unbind5 test_unbind5.c  $(LIBS) -I$(INCLUDE)
+
+test_getpid: test_getpid.c 
+	$(CC)  $(CFLAGS) -o test_getpid test_getpid.c  $(LIBS) -I$(INCLUDE)
+
+test_rmtbind: test_rmtbind.c 
+	$(CC)  $(CFLAGS) -o test_rmtbind test_rmtbind.c  $(LIBS) -I$(INCLUDE)
+
+test_relay: test_relay.c 
+	$(CC)  $(CFLAGS) -o test_relay test_relay.c  $(LIBS) -I$(INCLUDE)
+	
+test_proxy_s: test_proxy_s.c 
+	$(CC)  $(CFLAGS) -o test_proxy_s test_proxy_s.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_r: test_proxy_r.c 
+	$(CC)  $(CFLAGS) -o test_proxy_r test_proxy_r.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_n: test_proxy_n.c 
+	$(CC)  $(CFLAGS) -o test_proxy_n test_proxy_n.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_sr: test_proxy_sr.c 
+	$(CC)  $(CFLAGS) -o test_proxy_sr test_proxy_sr.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_n1: test_proxy_n1.c 
+	$(CC)  $(CFLAGS) -o test_proxy_n1 test_proxy_n1.c  $(LIBS) -I$(INCLUDE)
+
+test_add_node: test_add_node.c 
+	$(CC)  $(CFLAGS) -o test_add_node test_add_node.c  $(LIBS) -I$(INCLUDE)
+
+test_del_node: test_del_node.c 
+	$(CC)  $(CFLAGS) -o test_del_node test_del_node.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_vcopy1: test_proxy_vcopy1.c 
+	$(CC)  $(CFLAGS) -o test_proxy_vcopy1 test_proxy_vcopy1.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_vcopy2: test_proxy_vcopy2.c 
+	$(CC)  $(CFLAGS) -o test_proxy_vcopy2 test_proxy_vcopy2.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_vcopy3: test_proxy_vcopy3.c 
+	$(CC)  $(CFLAGS) -o test_proxy_vcopy3 test_proxy_vcopy3.c  $(LIBS) -I$(INCLUDE)
+
+test_proxy_vcopy4: test_proxy_vcopy4.c 
+	$(CC)  $(CFLAGS) -o test_proxy_vcopy4 test_proxy_vcopy4.c  $(LIBS) -I$(INCLUDE)
+	
+test_rmtsend: test_rmtsend.c 
+	$(CC)  $(CFLAGS) -o test_rmtsend test_rmtsend.c  $(LIBS) -I$(INCLUDE)	
+
+test_drvs_init: test_drvs_init.c 
+	$(CC)  $(CFLAGS) -o test_drvs_init test_drvs_init.c  $(LIBS) -I$(INCLUDE)
+
+test_drvs_end: test_drvs_end.c 
+	$(CC)  $(CFLAGS) -o test_drvs_end test_drvs_end.c  $(LIBS) -I$(INCLUDE)
+
+test_exit: test_exit.c 
+	$(CC)  $(CFLAGS) -o test_exit test_exit.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtsendrec: proxy_rmtsendrec.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtsendrec proxy_rmtsendrec.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtsendrcv: proxy_rmtsendrcv.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtsendrcv proxy_rmtsendrcv.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtnotify: proxy_rmtnotify.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtnotify proxy_rmtnotify.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtrqstrply: proxy_rmtrqstrply.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtrqstrply proxy_rmtrqstrply.c  $(LIBS) -I$(INCLUDE)
+
+test_sendrcv: test_sendrcv.c 
+	$(CC)  $(CFLAGS) -o test_sendrcv test_sendrcv.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtdatain: proxy_rmtdatain.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtdatain proxy_rmtdatain.c  $(LIBS) -I$(INCLUDE)
+
+proxy_rmtdataout: proxy_rmtdataout.c 
+	$(CC)  $(CFLAGS) -o proxy_rmtdataout proxy_rmtdataout.c  $(LIBS) -I$(INCLUDE)
+
+msgtool: msgtool.c 
+	$(CC)  $(CFLAGS) -o msgtool msgtool.c 
+
+test_getpriv: test_getpriv.c 
+	$(CC)  $(CFLAGS) -o test_getpriv test_getpriv.c  $(LIBS) -I$(INCLUDE)
+
+test_times: test_times.c 
+	$(CC)  $(CFLAGS) -o test_times test_times.c  $(LIBS) -I$(INCLUDE)
+
+test_getprocinfo: test_getprocinfo.c 
+	$(CC)  $(CFLAGS) -o test_getprocinfo test_getprocinfo.c  $(LIBS) -I$(INCLUDE)
+
+test_getprocinfo2: test_getprocinfo2.c 
+	$(CC)  $(CFLAGS) -o test_getprocinfo2 test_getprocinfo2.c  $(LIBS) -I$(INCLUDE)
+
+test_getvminfo: test_getvminfo.c 
+	$(CC)  $(CFLAGS) -o test_getvminfo test_getvminfo.c  $(LIBS) -I$(INCLUDE)
+
+test_getnodeinfo: test_getnodeinfo.c 
+	$(CC)  $(CFLAGS) -o test_getnodeinfo test_getnodeinfo.c  $(LIBS) -I$(INCLUDE)
+
+test_getdrvsinfo: test_getdrvsinfo.c 
+	$(CC)  $(CFLAGS) -o test_getdrvsinfo test_getdrvsinfo.c  $(LIBS) -I$(INCLUDE)
+
+test_receive_T: test_receive_T.c 
+	$(CC)  $(CFLAGS) -o test_receive_T test_receive_T.c  $(LIBS) -I$(INCLUDE)
+
+test_migrate: test_migrate.c 
+	$(CC)  $(CFLAGS) -o test_migrate test_migrate.c  $(LIBS) -I$(INCLUDE)
+
+test_bkupbind: test_bkupbind.c 
+	$(CC)  $(CFLAGS) -o test_bkupbind test_bkupbind.c  $(LIBS) -I$(INCLUDE)
+
+test_getproxyinfo: test_getproxyinfo.c 
+	$(CC)  $(CFLAGS) -o test_getproxyinfo test_getproxyinfo.c  $(LIBS) -I$(INCLUDE)
+
+cliente_open_y_read: cliente_open_y_read.c ../stub_syscall.c
+	$(CC) -o cliente_open_y_read cliente_open_y_read.c ../stub_syscall.c -I..
+
+cliente_scatter: cliente_scatter.c ../stub_syscall.c
+	$(CC) -o cliente_scatter cliente_scatter.c ../stub_syscall.c -I..
+
+cliente_gather: cliente_gather.c ../stub_syscall.c
+	$(CC) -o cliente_gather cliente_gather.c ../stub_syscall.c -I..
+	
+cliente_devopen: cliente_devopen.c ../stub_syscall.c
+	$(CC) -o cliente_devopen cliente_devopen.c ../stub_syscall.c -I..
+	
+cliente_devclose: cliente_devclose.c ../stub_syscall.c
+	$(CC) -o cliente_devclose cliente_devclose.c ../stub_syscall.c -I..
+	
+cliente_devwrite: cliente_devwrite.c ../stub_syscall.c
+	$(CC) -o cliente_devwrite cliente_devwrite.c ../stub_syscall.c -I..
+
+cliente_devread: cliente_devread.c ../stub_syscall.c
+	$(CC) -o cliente_devread cliente_devread.c ../stub_syscall.c -I..
+	
+clean:
+	rm -f $(BINS)
+
+

@@ -1,0 +1,12 @@
+-rwxr-xr-x 1 root root      1024 Oct 11 08:39 1Kb.txt
+-rwxr-xr-x 1 root root      2048 Oct 11 08:47 2Kb.txt
+-rwxr-xr-x 1 root root      5120 Oct 11 08:47 5Kb.txt
+-rwxr-xr-x 1 root root     10240 Oct 11 08:47 10Kb.txt
+-rwxr-xr-x 1 root root   1048576 Oct 11 08:41 1Mb.txt
+-rwxr-xr-x 1 root root   5242880 Oct 11 08:43 5Mb.txt
+-rwxr-xr-x 1 root root  10485760 Oct 11 08:43 10Mb.txt
+-rwxr-xr-x 1 root root  52428800 Oct 11 08:44 50Mb.txt
+-rwxr-xr-x 1 root root  78643200 Oct 11 08:47 75Mb.txt
+-rwxr-xr-x 1 root root 104857600 Oct 11 08:43 100Mb.txt
+-rwxr-xr-x 1 root root 524288000 Oct 11 08:46 500Mb.txt
+

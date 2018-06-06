@@ -1,0 +1,15 @@
+BIND DESTINATION vmid=0 dst_pid=1877 dst_nr=2 dst_ep=2
+BIND SOURCE vmid=0 src_pid=1878 src_nr=1 src_ep=1
+SEND msg: m_type=255, m1_i1=0, m1_i2=2, m1_i3=3
+UNBIND SOURCE vmid=0 src_pid=1878 src_nr=1 src_ep=1
+
+BIND DESTINATION vmid=0 dst_pid=1877 dst_nr=2 dst_ep=2
+Dump procs of VM0
+RECEIVER pause before RECEIVE
+RECEIVE msg: m_source=1, m_type=255, m1_i1=99999, m1_i2=2, m1_i3=3
+UNBIND DESTINATION vmid=0 dst_pid=1877 dst_nr=2 dst_ep=2
+t_start=1347472225.51 t_stop=1347472245.87 t_total=20.36
+Loops = 100000
+Time for a pair of SEND/RECEIVE= 0.203629[ms]
+Throuhput = 4910.883410 [SEND-RECEIVE/s]
+

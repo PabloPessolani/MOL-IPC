@@ -1,0 +1,40 @@
+#include <mollib.h>
+#define nil 0
+
+DIR *mol_opendir(const char *name)
+/* Open a directory for reading. */
+{
+	int d, f;
+	DIR *dp;
+	struct mnx_stat st;
+
+	/* Only read directories. */
+	LIBDEBUG("name:%s\n", name);
+
+	if (mol_stat(name, &st) < 0) return nil;
+	if (!S_ISDIR(st.st_mode)) { errno= EMOLNOTDIR; return nil;}
+
+	if ((d= mol_open(name, O_RDONLY | O_NONBLOCK)) < 0) return nil;
+
+	LIBDEBUG("File descriptor 'd':%d\n", d);
+	/* Check the type again, mark close-on-exec, get a buffer. */
+	if (mol_fstat(d, &st) < 0
+		|| (errno= EMOLNOTDIR, !S_ISDIR(st.st_mode))
+		|| (f= mol_fcntl(d, F_GETFD)) < 0
+		|| mol_fcntl(d, F_SETFD, f | FD_CLOEXEC) < 0
+		|| (dp= (DIR *) malloc(sizeof(*dp))) == nil
+	) {
+		int err= errno;
+		(void) mol_close(d);
+		errno= err;
+		return nil;
+	}
+
+	dp->_fd= d;
+	dp->_v7= -1;
+	dp->_count= 0;
+	dp->_pos= 0;
+
+	return dp;
+}
+

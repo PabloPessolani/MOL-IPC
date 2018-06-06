@@ -1,0 +1,4 @@
+inet: generic/ip_ioctl.c:197: ip_ioctl: Assertion `data->acc_length == sizeof(*ipconf)' failed.
+fs: dead driver 9
+ERROR: device.c:d_gen_io:845: rcode=-108
+/home/MoL_Module/mol-ipc/commands/simple/mnx_ifconfig: Unable to set IP configuration: Input/output error

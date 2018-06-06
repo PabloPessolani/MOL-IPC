@@ -1,0 +1,213 @@
+
+Como convertir URLGET de TCP/IP HTTP en M3-IPC.
+
+comando:
+	URLGET_CONNNECT: 	establese una sesion entre el cliente y el servidor. 
+	URLGET_REQUEST:		
+	
+int connect(host, port): Deberia asociar el cliente y el servidor con un numero de sesion.
+	Host: se traduce en el endpoint del servidor
+	Port: se traduce eventualmente en thread distinto, por ahora se ignora el parametro.
+
+para ello deberia tener un archivo de configuracion del tipo m3-urlget.cfg
+# this is a comment 
+host HOST1 {
+	name			"www.m3ipc.com.ar"
+	endpoint		15;
+};
+host HOST2 {
+	name			"192.168.1.100"
+	endpoint		16;
+};
+
+De tal forma que el cliente va a traducir
+
+http://www.m3ipc.com.ar/index.html
+
+En:
+	endpoint: 	15
+	port:	 	80 (default)
+	data: 		index.html
+
+#define 	WEB_CONNECT		1	
+#define 	WEB_GET			2
+
+Con estos codigos se puden usar (modificando) las rutinas de mollib (open, read, write, close)
+para hacer las invocaciones.
+	urlget_open, urlget_write, ....etc.
+	
+write(fd, "POST ", 5)
+Se traduciria en:
+urlget_write(fd, "POST ", 5);
+
+
+	
+********************************** SERVER *****************************
+Podria tener multiples threads atendiendo en diferentes "puertos"
+Archivo de configuracion: 
+websrv SERVER1 {
+	port			80
+	rootdir			"/websrv/server1"
+};
+websrv SERVER2 {
+	port			8080
+	rootdir			"/websrv/server2"
+};
+
+	
+typdef struct sess_s {	
+	int svr_port;
+	int clt_ep;
+	int clt_port;
+	int status;
+} sess_t;
+	
+sess_t 	*sess_table; 	// connection table
+
+
+	
+SERVER
+{
+	posix_malign(&sess_table, NR_PROCS, sizeof(sess_t));
+	
+	for (i =0; i < (NR_PROCS); i++){
+		sess_table[i].status = STS_CLOSED;
+	}
+	
+	m_ptr = &msg;
+
+	CMDDEBUG("% start serving...\n", argv[0]);
+	while(TRUE){
+		receive(ANY, &msg)
+		CMDDEBUG(MSG1_FORMAT, MSG1_FIELDS(m_ptr));
+		
+		clt_nr = _ENPOINT_P(msg.m_source);
+		switch(msg.mtype){
+			case WEB_CONNECT: // Client request session 
+				if( sess_table[clt_nr+NR_TASKS].status != STS_CLOSED){
+					rcode = EMOLCONNREFUSED;
+				}else{
+					sess_table[clt_nr+NR_TASKS].status = STS_INUSE;
+					rcode = clt_nr+NR_TASKS; // este es el equivalente del FD 
+				}
+				break;
+			case WEB_GET:
+				// NETFD es msg.m1_i1 segun MOLWRITE
+				if( sess_table[msg.NETFD].status == STS_CLOSED){
+					rcode = EMOLEBADF;
+					break;
+				}
+				bytes = msg.NETBYTES; // NETBYTES es m.m1_i2
+				clt_buffer = m.NETBUFF; // NETBUFF es m1_p1
+				if( bytes < 0 || bytes > MAXCOPYBUF) { //obtener este parametro del DRVS
+					rcode = EMOLFBIG;
+				}
+				rcode = sys_vcopy(msg.m_source, clt_buffer, SELF, rqst_buf; bytes);
+				CMDDEBUG("rcode=%d rqst_buf=%d\n", rcode, rqst_buf);
+				if(rcode) {
+					ERROR_PRINT(rcode);
+				}else{
+					rcode = bytes;
+				}	
+				break;
+			case WEB_CLTREAD:
+				// NETFD es msg.m1_i1 segun MOLREAD
+				if( sess_table[msg.NETFD].status == STS_CLOSED){
+					rcode = EMOLEBADF;
+					break;
+				}
+				bytes = msg.NETBYTES; // NETBYTES es m.m1_i2
+				clt_buffer = m.NETBUFF; // NETBUFF es m1_p1
+				if( bytes < 0 || bytes > MAXCOPYBUF) { //obtener este parametro del DRVS
+					rcode = EMOLFBIG;
+				}
+				rcode = sys_vcopy(SELF, reply_buf, msg.m_source, clt_buffer, bytes);
+				CMDDEBUG("rcode=%d rqst_buf=%d\n", rcode, rqst_buf);
+				if(rcode) {
+					ERROR_PRINT(rcode);
+				}else{
+					rcode = bytes;
+				}	
+				break;
+			case: 
+		}
+		
+	}
+}
+
+/* this is a child web server process, so we can exit on errors */
+void web(int fd, int hit)
+{
+  int j, file_fd, buflen;
+  long i, ret, len;
+  char * fstr;
+  static char buffer[BUFSIZE+1]; /* static so zero filled */
+
+  ret =read(fd,buffer,BUFSIZE);   /* read Web request in one go */
+  if(ret == 0 || ret == -1) {  /* read failure stop now */
+    logger(FORBIDDEN,"failed to read browser request","",fd);
+  }
+  if(ret > 0 && ret < BUFSIZE)  /* return code is valid chars */
+    buffer[ret]=0;    /* terminate the buffer */
+  else buffer[0]=0;
+  for(i=0;i<ret;i++)  /* remove CF and LF characters */
+    if(buffer[i] == '\r' || buffer[i] == '\n')
+      buffer[i]='*';
+  logger(LOG,"request",buffer,hit);
+  if( strncmp(buffer,"GET ",4) && strncmp(buffer,"get ",4) ) {
+    logger(FORBIDDEN,"Only simple GET operation supported",buffer,fd);
+  }
+  for(i=4;i<BUFSIZE;i++) { /* null terminate after the second space to ignore extra stuff */
+    if(buffer[i] == ' ') { /* string is "GET URL " +lots of other stuff */
+      buffer[i] = 0;
+      break;
+    }
+  }
+  for(j=0;j<i-1;j++)   /* check for illegal parent directory use .. */
+    if(buffer[j] == '.' && buffer[j+1] == '.') {
+      logger(FORBIDDEN,"Parent directory (..) path names not supported",buffer,fd);
+    }
+  if( !strncmp(&buffer[0],"GET /\0",6) || !strncmp(&buffer[0],"get /\0",6) ) /* convert no filename to index file */
+    (void)strcpy(buffer,"GET /index.html");
+
+  /* work out the file type and check we support it */
+  buflen=strlen(buffer);
+  fstr = (char *)0;
+  for(i=0;extensions[i].ext != 0;i++) {
+    len = strlen(extensions[i].ext);
+    if( !strncmp(&buffer[buflen-len], extensions[i].ext, len)) {
+      fstr =extensions[i].filetype;
+      break;
+    }
+  }
+  if(fstr == 0) logger(FORBIDDEN,"file extension type not supported",buffer,fd);
+
+  if(( file_fd = open(&buffer[5],O_RDONLY)) == -1) {  /* open the file for reading */
+    logger(NOTFOUND, "failed to open file",&buffer[5],fd);
+  }
+  logger(LOG,"SEND",&buffer[5],hit);
+  len = (long)lseek(file_fd, (off_t)0, SEEK_END); /* lseek to the file end to find the length */
+        (void)lseek(file_fd, (off_t)0, SEEK_SET); /* lseek back to the file start ready for reading */
+          (void)sprintf(buffer,"HTTP/1.1 200 OK\nServer: nweb/%d.0\nContent-Length: %ld\nConnection: close\nContent-Type: %s\n\n", VERSION, len, fstr); /* Header + a blank line */
+  logger(LOG,"Header",buffer,hit);
+  (void)write(fd,buffer,strlen(buffer));
+
+  /* send file in 8KB block - last block may be smaller */
+  while (  (ret = read(file_fd, buffer, BUFSIZE)) > 0 ) {
+    (void)write(fd,buffer,ret);
+  }
+  sleep(1);  /* allow socket to drain before signalling the socket is closed */
+  close(fd);
+  exit(1);
+}
+
+
+	for( i = 0; i < NR_WEBSRVS; i++){
+		if(web_table[i].port == m_ptr->m2_i2){
+			s_ptr->w_ptr = &web_table[i];
+			break;
+		}
+	}
+	if( i == NR_WEBSRVS) 
+		return(EMOLCONNREFUSED);
+

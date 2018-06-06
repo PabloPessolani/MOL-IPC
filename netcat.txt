@@ -1,0 +1,1 @@
+nc -l -u -p 7001 -vv -n -o nc.dmp

@@ -1,0 +1,24 @@
+
+int slots_to_donate(int s_req){
+	donors = init_nodes-1;
+	surplus = (s_free – FREE_LOW);
+	if( surplus <= 0) return(0);
+	do {
+		if( surplus > CEIL(s_req,donors))
+			return(CEIL(s_req,donors));
+		s_req = (s_req - donors);
+	}while(s_req > 0 );
+	/* never here !! */
+	assert(0);
+}
+
+int slots_to_request(void ){
+	int s_req;
+	max_owned = CEIL(NR_SLOTS, init_nodes);
+	if( max_owned > s_owned)
+		s_req = (max_owned - s_owned);
+	else
+		s_req = (FREE_LOW - s_free)
+	return(s_req);
+}
+					

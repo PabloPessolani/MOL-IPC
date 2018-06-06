@@ -1,0 +1,81 @@
+make: Warning: File `test_config.c' has modification time 3.3e+04 s in the future
+test_config.c: In function ‘search_ident’:
+test_config.c:262: warning: assignment discards qualifiers from pointer target type
+gcc: /home/MoL_Module/mol-ipc/stub_syscall.o: linker input file unused because linking not done
+gcc: /home/MoL_Module/mol-ipc/lib/timers/libtimers.so: linker input file unused because linking not done
+gcc: /home/MoL_Module/mol-ipc/lib/config/libconfig.so: linker input file unused because linking not done
+gcc: /home/MoL_Module/mol-ipc/lib/syslib/libsyslib.so: linker input file unused because linking not done
+gcc: /home/MoL_Module/mol-ipc/tasks/libdriver/libdriver.so: linker input file unused because linking not done
+gcc: /usr/local/lib/libspread.a: linker input file unused because linking not done
+gcc: /usr/local/lib/libspread-util.a: linker input file unused because linking not done
+gcc: /home/MoL_Module/lz4-r131/lib/lz4frame.o: linker input file unused because linking not done
+gcc: /home/MoL_Module/lz4-r131/lib/lz4.o: linker input file unused because linking not done
+gcc: /home/MoL_Module/lz4-r131/lib/lz4hc.o: linker input file unused because linking not done
+gcc: /home/MoL_Module/lz4-r131/lib/xxhash.o: linker input file unused because linking not done
+rdisk.c:82: warning: initialization from incompatible pointer type
+rdisk.c:83: warning: initialization from incompatible pointer type
+rdisk.c: In function ‘main’:
+rdisk.c:184: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘__off_t’
+rdisk.c:184: warning: format ‘%d’ expects type ‘int’, but argument 6 has type ‘off_t’
+rdisk.c:186: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘__blksize_t’
+rdisk.c:186: warning: format ‘%d’ expects type ‘int’, but argument 6 has type ‘blksize_t’
+rdisk.c:191: warning: implicit declaration of function ‘rd_init’
+rdisk.c:114: warning: unused variable ‘c’
+rdisk.c: In function ‘m_prepare’:
+rdisk.c:228: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘u32_t’
+rdisk.c:228: warning: format ‘%X’ expects type ‘unsigned int’, but argument 6 has type ‘u32_t’
+rdisk.c:228: warning: format ‘%u’ expects type ‘unsigned int’, but argument 7 has type ‘u32_t’
+rdisk.c:228: warning: format ‘%u’ expects type ‘unsigned int’, but argument 8 has type ‘u32_t’
+rdisk.c: In function ‘m_transfer’:
+rdisk.c:272: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘off_t’
+rdisk.c:288: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:312: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘phys_bytes’
+rdisk.c:337: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:345: warning: format ‘%s’ expects type ‘char *’, but argument 5 has type ‘unsigned int *’
+rdisk.c:347: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘long int’
+rdisk.c:361: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:362: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:363: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:373: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:387: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘long unsigned int’
+rdisk.c:401: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:403: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:411: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:412: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:424: warning: format ‘%X’ expects type ‘unsigned int’, but argument 6 has type ‘unsigned int *’
+rdisk.c:424: warning: format ‘%u’ expects type ‘unsigned int’, but argument 8 has type ‘off_t’
+rdisk.c:431: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘long unsigned int’
+rdisk.c:436: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘vir_bytes’
+rdisk.c:449: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘long int’
+rdisk.c:452: warning: assignment makes pointer from integer without a cast
+rdisk.c:466: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:474: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘long int’
+rdisk.c:485: warning: format ‘%X’ expects type ‘unsigned int’, but argument 9 has type ‘long int’
+rdisk.c:485: warning: format ‘%X’ expects type ‘unsigned int’, but argument 11 has type ‘char *’
+rdisk.c:485: warning: format ‘%d’ expects type ‘int’, but argument 12 has type ‘long int’
+rdisk.c:485: warning: format ‘%d’ expects type ‘int’, but argument 13 has type ‘long int’
+rdisk.c:509: warning: format ‘%X’ expects type ‘unsigned int’, but argument 6 has type ‘off_t’
+rdisk.c:509: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘long unsigned int’
+rdisk.c:516: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘long unsigned int’
+rdisk.c: In function ‘m_do_open’:
+rdisk.c:594: warning: format ‘%X’ expects type ‘unsigned int’, but argument 6 has type ‘unsigned int *’
+rdisk.c:595: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+rdisk.c:603: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘struct device *’
+rdisk.c:603: warning: format ‘%d’ expects type ‘int’, but argument 6 has type ‘struct device *’
+rdisk.c:653: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘off_t’
+rdisk.c:653: warning: format ‘%d’ expects type ‘int’, but argument 8 has type ‘blksize_t’
+rdisk.c:653: warning: format ‘%X’ expects type ‘unsigned int’, but argument 9 has type ‘unsigned int *’
+rdisk.c: In function ‘rd_init’:
+rdisk.c:702: error: ‘RDISK_PROC_NR’ undeclared (first use in this function)
+rdisk.c:702: error: (Each undeclared identifier is reported only once
+rdisk.c:702: error: for each function it appears in.)
+rdisk.c:716: warning: format ‘%X’ expects type ‘unsigned int’, but argument 3 has type ‘char *’
+rdisk.c:717: warning: passing argument 1 of ‘cvul64’ makes integer from pointer without a cast
+proto.h:3: note: expected ‘long unsigned int’ but argument is of type ‘char *’
+rdisk.c:718: warning: format ‘%X’ expects type ‘unsigned int’, but argument 3 has type ‘u64_t’
+rdisk.c:720: warning: format ‘%u’ expects type ‘unsigned int’, but argument 3 has type ‘off_t’
+rdisk.c:722: warning: format ‘%u’ expects type ‘unsigned int’, but argument 3 has type ‘u64_t’
+rdisk.c: In function ‘m_do_close’:
+rdisk.c:793: warning: assignment makes integer from pointer without a cast
+rdisk.c:800: warning: format ‘%X’ expects type ‘unsigned int’, but argument 5 has type ‘unsigned int *’
+make: *** [rdisk.o] Error 1

@@ -1,0 +1,35 @@
+all: rdisk 
+# Which compiler
+CC = gcc
+
+# Where are include files kept
+INCLUDE = ..
+
+# Options for develofsent
+# CFLAGS = -v -O3 -Wall -ansi
+
+CFLAGS = -MMD -MP -ldl -lm -lrt -lnsl -pthread -rdynamic
+
+OBJS =  utility.o test_config.o replicate.o rdisk.o
+
+#LIBS = ../../lib/syslib/libsyslib.so ../../lib/timers/libtimers.so
+LIBS =  ../../lib/timers/libtimers.so \
+	../libdriver/libdriver.so \
+	/usr/local/lib/libspread.a \
+	../../stub_syscall.o \
+	/usr/local/lib/libspread-util.a \
+	../../lib/config/libconfig.so 
+
+	
+rdisk: $(OBJS)
+	#$(CC)  $(CFLAGS) -MMD -MP -ldl -lm -lrt -lnsl -pthread -rdynamic -o rdisk $(OBJS) $(LIBS) -I$(INCLUDE)	
+	
+readfs: readfs.c  $(OBJS) $(LIBDRIVER) 
+	$(CC)  $(CFLAGS) -MMD -MP -ldl -pthread -o readfs readfs.c $(OBJS) $(LIBS) -I$(INCLUDE)
+	
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDE) -Wall
+
+clean:
+	rm rdisk readfs *.o
+	rm ../libdriver/*.o

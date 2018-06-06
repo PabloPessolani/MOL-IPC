@@ -1,0 +1,111 @@
+
+SPREAD NODE()
+{
+	spread_view = 0;
+	bm_view = 0;
+	while(TRUE){
+		receive(ANY, &msg);
+		switch(msg.type){
+			case DISCONNECT:
+			case JOIN:
+				if( msg.type == DISCONNECT && !TEST_BIT(bm_view, msg.m_source)){
+					fprintf(stderr, "Bad DISCONNECT from node i=%d bm_view=%X\n", i, bm_view);
+					exit(1);				
+				}
+				if( msg.type == JOIN && TEST_BIT(bm_view, msg.m_source)){
+					fprintf(stderr, "Bad JOIN from node i=%d bm_view=%X\n", i, bm_view);
+					exit(1);				
+				}
+				sp_out.m_type = CHANGE_VIEW;
+				send_to_all(sp_out);
+				for(i = 0; i < NR_NODES; i++){
+					if(TEST_BIT(bm_view, i)){
+						do { 
+							receive(node[i],&sp_in);
+							printf("Flushed message from i=%d m_type=%X \n", i, sp_in.m_type);
+						} while( sp_in.m_type != CHANGE_VIEW | BIT_ACKNOWLEDGE)) {
+					}
+				}
+				if(msg.m_type == JOIN){
+					SET_BIT(bm_view, msg.m_source);
+				}else{
+					CLR_BIT(bm_view, msg.m_source);
+				}
+				/* Declare new view */
+				spread_view++;
+				/* not break, falling down here */ 
+			default:
+				send_to_all(msg);
+				receive_acks(msg.type)
+				break;
+		}
+	}
+}
+
+send_to_all()
+{
+	for(i = 0; i < NR_NODES; i++){
+		if(TEST_BIT(bm_view, i)){
+			send(node[i],msg);
+		}
+	}
+}				
+
+receive_acks(mtype)
+{
+	for(i = 0; i < NR_NODES; i++){
+		if(TEST_BIT(bm_view, i)){
+			receive(node[i],&msg);
+			if( msg.m_type != (mtype | BIT_ACKNOWLEDGE)) {
+				fprintf(stderr, "Bad ACKNOWLEDGE from node i=%d m_type=%X\n", i, msg.m_type);
+				exit(1);
+			}	
+		}
+	}
+}
+
+OTHER_NODES()
+{
+	spread_view = 0;
+	bm_view = 0;
+	status = RUNNING;
+	while(TRUE){
+		receive(SPREAD, &msg);
+		switch(msg.m_type){
+			case VIEW_CHANGE:
+				status = WAIT_NEW_CONFIG; /* JOIN/DISCONNECT */
+				break;
+			case JOIN:
+				if( status != WAIT_NEW_CONFIG){
+					fprintf(stderr, "JOIN arrived on node %d with status=%X\n", i, status);
+					exit(1);				
+				}
+				if(TEST_BIT(bm_view, msg.m_source)){
+					fprintf(stderr, "Bad JOIN from node i=%d bm_view=%X\n", i, bm_view);
+					exit(1);				
+				}
+				status= RUNNING;
+				spread_view++;
+				SET_BIT(bm_view, msg.m_source);
+				break;
+			case DISCONNECT:
+				if( status != WAIT_NEW_CONFIG){
+					fprintf(stderr, "DISCONNECT arrived on node %d with status=%X\n", i, status);
+					exit(1);				
+				}
+				if( !TEST_BIT(bm_view, msg.m_source)){
+					fprintf(stderr, "Bad DISCONNECT from node i=%d bm_view=%X\n", i, bm_view);
+					exit(1);				
+				}
+				status= RUNNING;
+				spread_view++;
+				SET_BIT(bm_view, msg.m_source);
+				break;
+			default:	
+				/* OTHER MESSAGE TYPES */
+			}
+		msg.m_type |= BIT_ACKNOWLEDGE;
+		send(SPREAD,msg);
+	}
+}
+

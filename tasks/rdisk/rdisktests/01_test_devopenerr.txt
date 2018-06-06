@@ -1,0 +1,1 @@
+-bash: ./demonize: No such file or directory

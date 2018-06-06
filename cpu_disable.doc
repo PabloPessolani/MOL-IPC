@@ -1,0 +1,4 @@
+The following command will disable a CPU:
+# echo 0 > /sys/devices/system/cpu/cpu1/online
+verificar con 
+cat /proc/cpuinfo

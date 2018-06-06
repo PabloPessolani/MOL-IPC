@@ -1,0 +1,436 @@
+make: Warning: File `main.c' has modification time 6.3e+03 s in the future
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'main.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 main.c -quiet -dumpbase main.c -mtune=generic -march=i586 -auxbase-strip main.o -g -O0 -Wall -version -o /tmp/ccRFYgys.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+main.c: In function ‘fs_init’:
+main.c:269: warning: implicit declaration of function ‘init_dmap’
+main.c:272: warning: implicit declaration of function ‘search_dev_config’
+main.c:280: warning: implicit declaration of function ‘count_root_devs’
+main.c:287: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘mnx_ino_t’
+main.c: In function ‘init_root’:
+main.c:362: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘mnx_ino_t’
+main.c: In function ‘fs_init’:
+main.c:271: warning: ‘cfg’ may be used uninitialized in this function
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'main.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o main.o /tmp/ccRFYgys.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'main.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'utility.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 utility.c -quiet -dumpbase utility.c -mtune=generic -march=i586 -auxbase-strip utility.o -g -O0 -Wall -version -o /tmp/cc83tLoF.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+utility.c: In function ‘fproc_init’:
+utility.c:37: warning: unused variable ‘rcode’
+utility.c: In function ‘load_image’:
+utility.c:94: warning: implicit declaration of function ‘open’
+utility.c: In function ‘fetch_name’:
+utility.c:137: warning: format ‘%X’ expects type ‘unsigned int’, but argument 6 has type ‘char *’
+utility.c: In function ‘panic’:
+utility.c:215: warning: implicit declaration of function ‘_sys_exit’
+utility.c: In function ‘clock_time’:
+utility.c:228: warning: unused variable ‘k’
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'utility.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o utility.o /tmp/cc83tLoF.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'utility.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'misc.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 misc.c -quiet -dumpbase misc.c -mtune=generic -march=i586 -auxbase-strip misc.o -g -O0 -Wall -version -o /tmp/cc3SkRwO.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+misc.c: In function ‘do_getsysinfo’:
+misc.c:52: warning: assignment makes integer from pointer without a cast
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'misc.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o misc.o /tmp/cc3SkRwO.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'misc.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'cache.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 cache.c -quiet -dumpbase cache.c -mtune=generic -march=i586 -auxbase-strip cache.o -g -O0 -Wall -version -o /tmp/cciFlg9N.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+cache.c: In function ‘rw_block’:
+cache.c:114: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+cache.c: In function ‘rw_scattered’:
+cache.c:277: warning: assignment makes integer from pointer without a cast
+cache.c:282: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘long unsigned int’
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'cache.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o cache.o /tmp/cciFlg9N.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'cache.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'dmap.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 dmap.c -quiet -dumpbase dmap.c -mtune=generic -march=i586 -auxbase-strip dmap.o -g -O0 -Wall -version -o /tmp/ccnaQ4VW.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'dmap.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o dmap.o /tmp/ccnaQ4VW.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'dmap.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'device.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 device.c -quiet -dumpbase device.c -mtune=generic -march=i586 -auxbase-strip device.o -g -O0 -Wall -version -o /tmp/ccy58Tj7.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+device.c: In function ‘dev_close’:
+device.c:87: warning: ‘return’ with a value, in function returning void
+device.c:76: warning: unused variable ‘dev_mess’
+device.c: In function ‘dev_io’:
+device.c:124: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c:128: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c:132: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c:136: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c:140: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c:144: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_off_t’
+device.c: In function ‘f_gen_opcl’:
+device.c:277: warning: implicit declaration of function ‘open’
+device.c:249: warning: unused variable ‘fileDesc’
+device.c: In function ‘do_ioctl’:
+device.c:358: warning: format ‘%d’ expects type ‘int’, but argument 5 has type ‘mnx_ino_t’
+device.c: In function ‘f_gen_io’:
+device.c:588: warning: passing argument 2 of ‘pread’ makes pointer from integer without a cast
+/usr/include/unistd.h:388: note: expected ‘void *’ but argument is of type ‘vir_bytes’
+device.c:627: warning: passing argument 2 of ‘pwrite’ makes pointer from integer without a cast
+/usr/include/unistd.h:391: note: expected ‘const void *’ but argument is of type ‘vir_bytes’
+device.c:533: warning: unused variable ‘salida_fseek’
+device.c:516: warning: unused variable ‘rcode’
+device.c:516: warning: unused variable ‘r’
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'device.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o device.o /tmp/ccy58Tj7.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'device.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'pipe.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 pipe.c -quiet -dumpbase pipe.c -mtune=generic -march=i586 -auxbase-strip pipe.o -g -O0 -Wall -version -o /tmp/ccIBg9Em.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'pipe.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o pipe.o /tmp/ccIBg9Em.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'pipe.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'stadir.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 stadir.c -quiet -dumpbase stadir.c -mtune=generic -march=i586 -auxbase-strip stadir.o -g -O0 -Wall -version -o /tmp/ccrkJNOt.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+stadir.c: In function ‘change’:
+stadir.c:102: warning: implicit declaration of function ‘eat_path’
+stadir.c:102: warning: assignment makes pointer from integer without a cast
+stadir.c: In function ‘do_stat’:
+stadir.c:148: warning: assignment makes pointer from integer without a cast
+stadir.c: In function ‘do_lstat’:
+stadir.c:252: warning: implicit declaration of function ‘parse_path’
+stadir.c:252: warning: assignment makes pointer from integer without a cast
+stadir.c: In function ‘do_rdlink’:
+stadir.c:276: warning: assignment makes pointer from integer without a cast
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'stadir.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o stadir.o /tmp/ccrkJNOt.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'stadir.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'lock.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 lock.c -quiet -dumpbase lock.c -mtune=generic -march=i586 -auxbase-strip lock.o -g -O0 -Wall -version -o /tmp/ccR8C1Xz.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+lock.c: In function ‘lock_op’:
+lock.c:63: warning: assignment from incompatible pointer type
+lock.c:66: warning: comparison of distinct pointer types lacks a cast
+lock.c:149: warning: comparison of distinct pointer types lacks a cast
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'lock.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o lock.o /tmp/ccR8C1Xz.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'lock.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'time.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 time.c -quiet -dumpbase time.c -mtune=generic -march=i586 -auxbase-strip time.o -g -O0 -Wall -version -o /tmp/ccZhsOjK.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+time.c: In function ‘do_utime’:
+time.c:30: warning: implicit declaration of function ‘eat_path’
+time.c:30: warning: assignment makes pointer from integer without a cast
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'time.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o time.o /tmp/ccZhsOjK.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'time.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'mount.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 mount.c -quiet -dumpbase mount.c -mtune=generic -march=i586 -auxbase-strip mount.o -g -O0 -Wall -version -o /tmp/ccchAjBR.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+mount.c: In function ‘do_mount’:
+mount.c:58: warning: format ‘%x’ expects type ‘unsigned int’, but argument 2 has type ‘struct inode *’
+mount.c:58: warning: format ‘%d’ expects type ‘int’, but argument 4 has type ‘mnx_ino_t’
+mount.c:58: warning: format ‘%x’ expects type ‘unsigned int’, but argument 5 has type ‘struct inode *’
+mount.c:58: warning: format ‘%d’ expects type ‘int’, but argument 7 has type ‘mnx_ino_t’
+mount.c:58: warning: format ‘%x’ expects type ‘unsigned int’, but argument 8 has type ‘struct inode *’
+mount.c:86: warning: implicit declaration of function ‘eat_path’
+mount.c:86: warning: assignment makes pointer from integer without a cast
+mount.c:132: warning: implicit declaration of function ‘invalidate’
+mount.c:203: warning: assignment makes pointer from integer without a cast
+mount.c: In function ‘name_to_dev’:
+mount.c:330: warning: assignment makes pointer from integer without a cast
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'mount.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o mount.o /tmp/ccchAjBR.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'mount.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'moldevcfg.o' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/cc1 -quiet -v -I.. -imultilib . -imultiarch i386-linux-gnu -D_FILE_OFFSET_BITS=64 moldevcfg.c -quiet -dumpbase moldevcfg.c -mtune=generic -march=i586 -auxbase-strip moldevcfg.o -g -O0 -Wall -version -o /tmp/ccIMD6AR.s
+ignoring nonexistent directory "/usr/local/include/i386-linux-gnu"
+ignoring nonexistent directory "/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../i486-linux-gnu/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ ..
+ /usr/local/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/include-fixed
+ /usr/include/i386-linux-gnu
+ /usr/include
+End of search list.
+GNU C (Debian 4.4.7-2) version 4.4.7 (i486-linux-gnu)
+	compiled by GNU C version 4.4.7, GMP version 5.0.5, MPFR version 3.1.0-p10.
+GGC heuristics: --param ggc-min-expand=63 --param ggc-min-heapsize=63447
+Compiler executable checksum: fa80ad39ee177f1dad18229b93a14ba9
+moldevcfg.c: In function ‘search_ident’:
+moldevcfg.c:204: warning: assignment discards qualifiers from pointer target type
+moldevcfg.c:254: warning: assignment discards qualifiers from pointer target type
+moldevcfg.c: In function ‘search_device’:
+moldevcfg.c:340: warning: assignment discards qualifiers from pointer target type
+moldevcfg.c: In function ‘read_config’:
+moldevcfg.c:471: warning: unused variable ‘i’
+moldevcfg.c:474: warning: ‘cfg’ is used uninitialized in this function
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'moldevcfg.o' '-I..' '-mtune=generic' '-march=i586'
+ as -V -Qy -o moldevcfg.o /tmp/ccIMD6AR.s
+GNU assembler version 2.20.1 (i486-linux-gnu) using BFD version (GNU Binutils for Debian) 2.20.1-system.20100303
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-c' '-o' 'moldevcfg.o' '-I..' '-mtune=generic' '-march=i586'
+Using built-in specs.
+Target: i486-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Debian 4.4.7-2' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran --prefix=/usr --program-suffix=-4.4 --enable-shared --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --libdir=/usr/lib --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-targets=all --with-arch-32=i586 --with-tune=generic --enable-checking=release --build=i486-linux-gnu --host=i486-linux-gnu --target=i486-linux-gnu
+Thread model: posix
+gcc version 4.4.7 (Debian 4.4.7-2) 
+COMPILER_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib/:/lib/i386-linux-gnu/:/lib/../lib/:/usr/lib/i386-linux-gnu/:/usr/lib/../lib/:/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-g' '-v' '-O0' '-Wall' '-D_FILE_OFFSET_BITS=64' '-MMD' '-MP' '-pthread' '-o' 'fs' '-I..' '-mtune=generic' '-march=i586'
+ /usr/lib/gcc/i486-linux-gnu/4.4.7/collect2 --build-id --no-add-needed --eh-frame-hdr -m elf_i386 --hash-style=both -dynamic-linker /lib/ld-linux.so.2 -o fs /usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/crt1.o /usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/crti.o /usr/lib/gcc/i486-linux-gnu/4.4.7/crtbegin.o -L/usr/lib/gcc/i486-linux-gnu/4.4.7 -L/usr/lib/gcc/i486-linux-gnu/4.4.7 -L/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu -L/usr/lib/gcc/i486-linux-gnu/4.4.7/../../../../lib -L/lib/i386-linux-gnu -L/lib/../lib -L/usr/lib/i386-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/i486-linux-gnu/4.4.7/../../.. -ldl main.o table.o utility.o open.o read.o write.o filedes.o path.o protect.o super.o link.o inode.o misc.o cache.o dmap.o device.o pipe.o stadir.o lock.o time.o mount.o moldevcfg.o ../../stub_syscall.o ../../lib/syslib/libsyslib.so ../../lib/timers/libtimers.so ../../lib/config/libconfig.so -lgcc --as-needed -lgcc_s --no-as-needed -lpthread -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/i486-linux-gnu/4.4.7/crtend.o /usr/lib/gcc/i486-linux-gnu/4.4.7/../../../i386-linux-gnu/crtn.o
+main.o: In function `fs_init':
+/home/MoL_Module/mol-ipc/servers/fs/main.c:237: undefined reference to `getsysinfo'
+collect2: ld returned 1 exit status
+make: *** [fs] Error 1

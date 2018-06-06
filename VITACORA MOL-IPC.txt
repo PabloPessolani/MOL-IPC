@@ -1,0 +1,1555 @@
+20130515: Se implemento sys_fork en la systask y se hizo test_sysfork 
+20130516: Se implemento sys_vcopy en la systask y se hizo test_sysvcopy1 
+20130517: Se implemento sys_times en la systask y se hizo test_sysvcopy2 y test_systimes 
+		Se incorporo el campo p_name_ptr al proc struct para que los procesos locales
+		apunten al nombre del proceso real dado que cuando haya un EXEC p_name
+		cambiaria de nombre.
+20130519: Se probo el proxy.c que envió Oscar. 
+20130520: Se modificó el proxy.c para get2rmt/put2lcl y funciono OK el send y receive. Hay Otros errores a corregir=> mail Oscar. 
+20130521: Se probo modifico priv.h agregando priv_usr.h 
+	   Se modifico test_getpriv.c
+           Se incluyo do_privctl.c
+20130522:Se probo SYS_PRIVCTL con test_sysprivctl
+	 Se implemento SYS_GETINFO 
+	 Se probo parcialmente SYS_GETINFO:  GET_MACHINE(vm) y GET_PROCINFO
+20130523: se incorporo al kernel mol_getdrvsinfo con las constantes maximas para las VMs.
+	 se modifico read_drvs_info del molproc.c para que tome los datos del drvs y no de las constantes
+	del config. Se probo con test_getdrvsinfo.c
+	Se termino test_sysgetinfo.c que incluye GET_KINFO(drvs) GET_PROCTAB y GET_PRIVTAB
+
+20130526: Se incorporo creo kernel_sendrec que permite enviar mensajes al PM para notificar FORK y EXIT.
+
+20130527: Se hizo getwork de PM.
+	se incorporo el kill_unbind que se ejecuta al hacer EXIT
+	se incorporo el fork_bind que se ejecuta cuando un proceso hace FORK
+
+20130528: En main de PM se cambio codigo lineal por llamada a funciones sys_XXXXX en utility.c
+	
+20130529: Se trabajo en PM: fork, exit.  AUN no terminados ni probados
+	Se trabajo en SYSTASK: setalarm	 AUN no terminados ni probados
+
+20130529: Se modifico todo lo relacionado a SETALARM y CLOCK de la SYSTASK
+
+20130531: se crearon las librerias SYSLIB y TIMERS. Se incorporaro algunas funcione sys_xxxxx a syslib.
+	
+20130601: Se removieron de pm/utility.c  aquellas funciones sys_xxxx para ponerlas como parte de syslib.
+
+20130602: Se probó hacer un fork de un pseudo DS para que este a su vez hiciera un fork de otro proceso (system("/bin/sh")
+	Se cuelga.
+	Se probó el proxy q envió Oscar, el send y receive por separado andan. El sendrec() y receive/send da error.
+
+20130603: Se modifico kernel_bind para el binding automatico. Se creo la syscall FREEPROC para obtener del PM el child_nr asi el kernel puede hacer el bind automatico.
+
+20130604: Se hizo MOLPROCBIND en PM y SYSTASK que permite que un proceso del sistema haga bind sobre el kernel por si mismo (solo procesos del sistema), para luego hacercelo al PM y este al SYSTASK y asi quede en sus tablas,de tal modo se registrar el proceso solamente. Se creo el server INIT para hacer las pruebas.
+
+20130607:
+20130608: Se trabajo en molproc.c vm_procs_read para que imprima TODOS los proceso de la VM. 
+	
+
+20130608: Se modifico la semantica del SENDREC remoto.
+	ANTES:
+		SENDREC----------------->RECEIVE 
+			<--------------- SEND_ACK
+			<--------------- SEND
+		SEND_ACK --------------->
+	AHORA:
+		SENDREC----------------->RECEIVE 
+			<--------------- SEND
+		SEND_ACK --------------->
+			
+	EL PROXY FUNCIONA PERFECTAMENTE PARA:
+		- send
+		- sendrec
+		- notify
+
+20130611: Hacer se do_getsysinfo para obtener informacion del PM/SYSTASK
+	se hizo mollib para facilitar
+
+20130611: funciones GETINFO IS->PM->SYSTASK para obtener info		
+		- INFO DRVS: LISTO
+		- INFO MACHINE: LISTO
+		- INFO PROC KERNEL : LISTO
+		- INFO PRIV KERNEL: LISTO
+		- INFO PROC PM: LISTO
+
+20130613: Diferenciar si el proxy esta BINDEADO respecto al estado CONNECTED 
+		- BINDEADO: Está activo pero no puede transmitir mensajes
+		- CONNECTED:listo para transmitir mensajes.
+	Se modificaron las IPCs para que contemple el CONNECTED
+	En todos los tipos de SEND, se verifico la disponibilidad del SPROXY
+	En todos los tipos de RECEIVE donde se especifica emiosr se verifico la disponibilidad del RPROXY
+	Se modificaron algunas cosas relacionadas a nodos y proxies en /proc
+
+20130615: Test de la info de los proxies en cuanto a transferencia de mensajes y flag misc para ver si esta CONNECTED.
+
+20130618:  Test de proxies en loops
+
+20130619:   Test de proxies en loop
+		SERVER			CLIENT				RESULT
+		receive/send		sendrec				OK
+		receive/send		send/receive			OK 
+		receive/send		notify/receive			OK 
+		rcvrqst/reply		sendrec				OK
+		
+20130619: Modificacion de mol_vcopy (sin probar) y auto-rmtbind y auto-rmtunbind en put2lcl (probado OK)
+	Esto hace que no sea necesario hacer el bind y unbind de procesos remotos.
+
+20130620:  supongamos que un proceso remoto envio su 1er mensaje a un proceso local e hizo un AUTO-RMTBIND
+	   que sucede si un proceso local ahora le envia un mensaje al proceso remoto pero el proceso remoto 
+	   no existe mas. 
+	   El put2lcl hace:
+	   		if( lcl_ptr->p_usr.p_endpoint != h_ptr->c_dst) {ret = EMOLENDPOINT; break;}
+	   por lo que solo retorna pero no informa al proceso local de que ese ENDPOINT no existe mas.
+	   Quizas se puede poner una bandera reply = NO | YES, segun se quiera retornar un error al origen.
+	   if( lcl_ptr->p_usr.p_endpoint != h_ptr->c_dst) {ret = EMOLENDPOINT; reply= YES ; break;}
+       Al final
+	   
+	   QUIZAS HASTA NO HACE FALTA TRABAJAR CON reply
+	   	if (ret) {
+			if(reply) {
+				switch(cmd) {
+					case CMD_SEND_MSG:
+					case CMD_REPLY_MSG:
+					case CMD_SNDREC_MSG:
+					case CMD_NTFY_MSG:
+						ack = CMD_SEND_ACK;
+						break;
+					case CMD_COPYIN_DATA:
+						ack = CMD_COPYIN_ACK;
+						break;
+					case CMD_COPYOUT_RQST:
+						ack = CMD_COPYOUT_DATA;
+						break;
+						break;
+					default
+						ack = CMD_NONE;
+						break;
+				}
+				if(ack) error_lcl2rmt(h_ptr->c_dst, ack, ret); /* PROBLEMA: Que descriptor de proceso se encola en el proxy SENDER ??*/
+																/* El del proceso remoto, porque está libre */
+			}
+			ERROR_UNLOCK_TASK(task_ptr,ret);
+		}
+		
+20130621: Cuando un proceso envio un mensaje de peticion (SEND, SENDREC, REPLY, etc) y el nodo remoto le retorna un error EMOLDSTDEAD
+			El put2lcl, ademas de entregarle el error al proceso emisor del msg original hace un do_unbind() del proceso destino (remoto) no localizado.
+			Se reemplazaron todas las constantes por drvs.nr_vms, etc	NR_VMS, NR_NODES, NR_PROCS, NR_TASKS, NR_SYS_PROCS
+
+20130622:   Se provo VCOPY remoto:  requester->client y requester<-client
+			
+20130623:   Se provo VCOPY remoto: 
+					(requester:cliente1)->(client2)
+					(requester:cliente1)<-(client2)
+					(requester)   (client1->client2)
+
+
+20130627:   Se reprogramaron los proxies para que tomen el <rmt_nodeid> de la linea de comandos.
+		El port destino para el PROXY SENDER => 3000 + lcl_nodeid
+		El port local para el PROXY RECEIVER => 3000 + rmt_nodeid
+		La IP Address de ambos PROXIES => BASE = "192.168.214."+ (100+lcl_nodeid)
+		La info del lcl_nodeid se obtiene del mnx_getdrvsinfo(drvs)
+
+
+20130628:  Se corrigieron errores en SPROXY 
+		NODO0---> CMD_COPYRMT_RQST---->NODE1 : OK
+		NODE1 put2lcl OK ====== linea 820
+		NODE1 ---> CMD_COPYIN_RQST---->NODE2 : ERROR en get2rmt  => copy_usr2usr  => SE CUELGA
+
+	
+20130628: Se probo la copia remota rqtr->source->destination
+		(requester)   (client1)->( client2)  requester, client1 y client2 en diferentes nodos
+		(requester)->CMD_COPYRMT_RQST->(sender)-CMD_COPYIN_RQST->(receiver)
+		requester<-------------CMD_COPYRMT_ACK-------------------(receiver)
+        ON ERROR requester<----CMD_COPYRMT_ACK (sender)
+			 				
+		NODE0)	Requester --> sproxy_enqueue(requester_ptr, CMD_COPYRMT_RQST) ONCOPY(rqtr, src, dst)
+		NODE0) SPROXY   ----> CMD_COPYRMT_RQST;
+		NODE1)  RPROXY -->put2cll -> CMD_COPYRMT_RQST: 	copyrmt_rqst_rmt2lcl: verifica procesos
+				copyrmt_data_lcl2rmt: encola en proxy de sender CMD_COPYIN_RQST al proceso 
+												local enviando datos al destino
+			si hay error envia mensaje al requester
+		NODE1) SPROXY-----> CMD_COPYIN_RQST		
+		3)  Destination-> 	CMD_COPYIN_RQST: 	copyin_rqst_rmt2lcl: verifica procesos y copia datos desde el Receiver 
+													proxy al proceso destino
+										copyrmt_ack_lcl2rmt:  envia un ack desde el destino al requester.
+
+20130630:  Se integraron funciones en proxy server
+		Se dividio en mol-sproxy.c y mol-rproxy.c-
+	
+	
+20130703:	Se sumarizaron funciones(copylcl_ack_rmt2lcl, copyin_ack_rmt2lcl, copyrmt_ack_rmt2lcl) en copygen_ack_rmt2lcl
+		POWERPOINT: Se realizo diagrama de flujo de proxies
+
+20130703: 	Se incorporaron las versiones (via macros) de IPC con timeout (ms) Ej: mnx_send_T(dest, &mesg, timeout_ms);
+		Para ello se modifico sleep_proc(proc, timeout)
+
+20130704:	Se incorporo tratamiento para TIMEOUT_NOWAIT=0
+		Se modificaron proxy/tests/loop_server.c y loop_client.c
+	
+20130706:	Se soluciono COLGADA al hacer DRVS_END y kill a los proxies
+		Se hicieron tests sencillos de IPC y se documentaron
+
+20130708:   Se corrigieron errores en proxy.c y se hicieron pruebas de transferencias remotas sencillas hasta 65530
+
+20130708: 	Se incoporó copia de NR_BUF ciclos de MAXBUFSIZE a todas las copias remotas.
+			Se probaron transferencias simples client<->server de 262144 y 524288 bytes.
+
+20130710:	PROXY: Se introdujo <rmt_nodename> como  parámetro del proxy para que se resuelva por /etc/hosts.
+		Se hizo la prueba de transferencia de REMOTO<->LOCAL donde LOCAL->nodeid == REQUESTER->nodeid
+		Se realizaron los Scripts de benchmarks (IPC y VCOPY entre 2 nodos)
+		Se puso NONE en lugar de PM_PROC_NR como s_warn (proceso para notificar autobind/unbind), 
+		con lo que se puede usar libremente p_nr = 0 = PM_PROC_NR.
+
+		Al finalizar el RPROXY, uno de los procesos bloqueados intervinientes en un VCOPY podría estar esperando
+		un ACK de un proceso remoto. Se verifica si el proceso es: LOCAL->ONCOPY->REQUESTER
+
+		Se cambio vcopy() de tal modo que SIEMPRE se encola en el SPROXY al descriptor del REQUESTER, dado que 
+		la regla es que en las PETICIONES se encola el proceso LOCAL.
+
+****************************************
+HITO: Hasta aqui funcionaba todo bien
+Pero podria haber problemas potenciales.
+****************************************
+
+20130711:	Se cambiaron mucho los proxies y sus funciones
+		Se sumarizaron funciones de ACKs en genericas 
+		Como los proxies cada vez q ejecuta get2rmt o put2lcl es equivalente a que hagan un BIND temporal sobre la VM
+		incrementan el contador de la VM y al retornarlo decrementan.
+		Se creo el archivo mol-acks donde se concentran funciones de ACK tanto LCL-RMT como RMT-LCL
+		TEST LOCALES = OK
+
+20130714:	Se cambiaron mucho los SPROXY y RPROXY en cuanto a LOCKS				
+		Se ejecutaron Scripts de benchmarks (IPC y VCOPY entre 2 y 3 nodos)
+****************************************
+HITO: Hasta aqui funcionaba todo bien
+Pero podria haber problemas potenciales.
+****************************************
+
+20130715:	COPYRMT: El REQUESTER solicita al SENDER un CMD_COPYRMT_RQST 
+			Luego el SENDER solicita un CMD_COPYIN_RQST al DESTINATION
+			Si algo en el nodo del DESTINATION anda mal, debería responderle al REQUESTER y no al SENDER !!
+		Se solucionó en mol-rproxy.c put2lcl() y modifiando error_lcl2rmt.
+
+		Se creo do_autobind() usada por RPROXy 
+		Se creo la macro LOCK_ALL_PROCS
+		Se modifico do_vm_end()
+
+20130715:
+		Se depuro el uso de LOCKs
+		Se modifico send_rmt2lcl y mol_receive, mol_rcvrqst, mol_sendrec  de tal modo
+		que si el proceso receptor está esperando el mensaje, directamente copiarlo desde el espacio de 
+		usuario del sender hacia el espacio de usuario del receiver. Esto se extendio al rproxy para
+		que se copie desde el espacio de usuario del rproxy (payload_ptr) al espacio del receptor mptr.
+		
+20130715:	Se uso LOCKING de NODOS en algunas funciones.
+		Se seteo SOREUSEADDR en el socket del RPROXY para que permita reiniciar rapidamente el socket despues 
+		finalizada la conexion.
+		Se cambio el esquema de DEBUG, seteando en el DRVS una variable que controla el nivel de debugging.
+	
+	
+20130726	se Modifico GETEP para que solo lo puedan usar aplicaciones registradas de tal modo que sean de la misma VM.
+		Se creo la funcion check_lock_caller para reducir codigo 
+		se ordendo codigo de ingreso a ipc y proxies en control de errores
+		se agrego version y subversion a la estructura del drvs
+
+20130727: 	Se modifico SYSTASK, PM , INIT para arrancar procesos
+		La selección de ENDPOINT LIBRE quedo a cargo de SYSTASK en lugar de PM
+		SYSTASK: Se cuentan los los slotfree para disparar el algoritmo de DONACION DE RANURAS
+
+
+20130728: 	PROBLEMA: que pasa si un proceso LOCAL muere, hace el unbind en el kernel pero no hace el unbind en PM/FS/SYSTASK.
+			Como notificarlos?
+		SOLUCION: En lugar de dar una solucion a nivel de kernel, darla a nivel de usuario.
+			El padre de un proceso hace 
+			while((child_pid = wait(&child_sts)) >= 0)
+				PM_EXIT(child_pid)  /* envia un mensaje al PM diciendo que el child pid EXIT */
+		PROBLEMA de la SOLUCION: Cuando el padre muere y no hizo wait() los children pasan a INIT
+		SOLUCION:  Incorporar a INIT de LINUX la finalizacion de los procesos guachos.
+
+20130730:   Se creo la imagen de booteo y el DVD para cluster de UTN
+			Se realizaron los benchmarks nuevamente -TODO OK
+		
+20130731:	Se comenzo con SPREAD en SYSTASK
+			Se instalo /usr/src/spread_4.3.0
+			./configure
+			make 
+			make install
+			cd libspread-util
+			make install
+			
+		
+20130802:	Se implemento la comunicacion con SPREAD entre systask de diferentes nodos
+			Cuando el primer nodo inicia es el owner de todas las ranuras
+			Cuando otro nodo inicia hace un broadcast solicitando ranuras
+			Cuando un nodo muere , el primer nodo se queda con sus ranuras.
+			El fork controla si le quedan pocas ranuras libres. Si quedan pocas solicita donacion
+			Si los donadores tienen le otorgan ranuras.
+	
+20130803:	Se implemento el rmtbind via SPREAD entre SYSTASKs	de tal modo que cuando PM se registra en NODO0
+			PM->SYSTASK0--(MOLBIND)->SYSTASK1->KERNEL1
+			El proceso RINIT del NODO1 se registra al PM de NODO0 y a la SYSTASK del NODO1
+			
+...............................................................................................
+REGLA:		Las SYSTASKs se registran en (SYSTEM + local_nodeid)
+			Las Tareas y Servidores se registran ante su SYSTASK Local y la SYSTASK lo difunde por SPREAD
+			Los Procesos de usuario se registran ante el PM (Local o Remoto), la SYSTASK no difunde por SPREAD 
+			El PM registrará el proceso de usuario (Local o Remoto) ante su SYSTASK
+			El PM registrará el proceso de usuario (Local o Remoto) ante el FS (Local o Remoto)
+...............................................................................................
+					
+	
+20130810:   Como la systask está compuesta por 2 threads y se hace un BIND del THREAD SYSTASK y del SPREAD 
+			por lo que ahora la SYSTASK ocupa 2 slots.
+			Por otro lado, para que las SYSTASK puedan conformar un GRUPO comunicado por SPREAD 
+			deben tener su propio endpoint. El p_nr de cada systask se calcula de la siguiente manera:
+				sys_nr = SYSTEM - (2*local_nodeid) 		para el thread principal SYSTASK
+				sp_nr  = SYSTEM - (2*local_nodeid) - 1	para el thread secundario SPREAD
+			CUESTION: Porque tener varias SYSTASKs??
+				- Para tener rendimiento ideal en operaciones LOCALES
+				- Para reducir el tráfico de red
+			Para ello se debieron cambiar la libreria syslib, particularmente taskcall()
+
+			Al incrementarse el número de SYSTASK/SPREAD por VM, debieron cambiarse las constantes máximas
+			El numero de systask = 2*nr_nodes.
+			
+			#define NR_NODES 	32
+			#define NR_SYSTASKS	(2*NR_NODES)		/* 2 Threads por SYSTASK (64) */
+			#define NR_TASKS	(3+NR_SYSTASKS)		/* HARDWARE, CLOCK, IDLE + 32xSYSTASKS (64+3) */
+			#define NR_SERVERS	(32-3)			/* (32-3) = 29*/
+			#define NR_SYS_PROCS	(NR_SERVERS+NR_TASKS)   /* 64+3+32-3 = 64+32 = 96 */
+			#define NR_USR_PROCS    (256-NR_SYS_PROCS)	/* (256-96) = 160 */
+			#define NR_PROCS	(NR_SERVERS+NR_USR_PROCS) /* 29 +  160 =  189 => (NR_PROCS+NR_TASKS) = (189+ 64+3) = 256 !!!! */
+
+			/* Kernel tasks. These all run in the same address space. */
+			#define KERNEL           -1			/* pseudo-process for IPC and scheduling */
+			#define HARDWARE     KERNEL			/* for hardware interrupt handlers */
+			#define SYSTEM           -2			/* request system functionality */
+			#define CLOCK  		 (SYSTEM-NR_SYSTASKS)	/* process number until NR_NODES System tasks */
+			#define IDLE             (CLOCK-1)		/* runs when no one else can run */
+
+			/* User-space processes, that is, device drivers, servers, and INIT. */
+			#define PM_PROC_NR	  0			/* process manager */
+			#define FS_PROC_NR 	  (PM_PROC_NR+1)	/* file system */
+			#define RS_PROC_NR 	  (FS_PROC_NR+1)	/* reincarnation server */
+			#define MEM_PROC_NR 	  (RS_PROC_NR+1)	/* memory driver (RAM disk, null, etc.) */
+			#define LOG_PROC_NR	  (MEM_PROC_NR+1)	/* log device driver */
+			#define TTY_PROC_NR	  (LOG_PROC_NR+1)	/* terminal (TTY) driver */
+			#define DS_PROC_NR	  (TTY_PROC_NR+1)	/* data store server */
+			#define IS_PROC_NR	  (DS_PROC_NR+1) 	/* Information Server*/
+			#define RINIT_PROC_NR	  (IS_PROC_NR+1)    	
+			#define INIT_PROC_NR	  (RINIT_PROC_NR+1)  	/* init -- goes multiuser */
+
+			#define FIRST_USER_NR	   (NR_SYS_PROCS)
+
+20130811:	Supongamos:
+			NODO0:  SYSTASK0, PM, INIT
+			NODO1:  SYSTASK1, RINIT, USER	
+			RINIT1 hace un BIND a KERNEL1  (LISTO)
+			RINIT1 hace un BIND a SYSTASK1 (LISTO)
+			SYSTASK1 le informa por multicast a SYSTASK0 de la existencia de RINIT1 (LISTO)
+			RINIT1 hace FORK al SYSTASK1 para registrar a USER1.(LISTO)
+			RINIT1 hace FORK al PM0 para registrar a USER1.
+			El PM0 verifica si el padre es LOCAL o REMOTO
+				Si es LOCAL hace SYS_FORK
+				Si es REMOTO hace SYS_RFORK -> SYSTASK0 (=>rmtbind)
+			PM0 le envía un mensaje que desbloquea a USER1.
+			Cuando un server hace MOLEXIT hay que hacer el broadcast via SPREAD (LISTO).
+
+20130812:	Funciona el EXIT remoto 
+			Ejemplo: el RINIT1 hace EXIT al PM0. 
+
+
+20130813:	Cada vez que se suma un nuevo nodo:
+			1) La SYSTASK y SPREAD del nuevo nodo debe reflejarse en los nodos activos.
+				* SYSTASK nuevo	Multicast(MOLBINDPROC) 	
+				* Todos los nodos reciben el MOLBINDPROC del resto de los nodos y hacen rmtbind
+			2) Los procesos existentes en los nodos activos deben reflejarse en el nuevo nodo.
+				* SYSTASK nuevo	Multicast(SYS_GET_PROCS)
+				* Todos los otros nodos hacen Multicast(MOLBINDPROC) de todos los procesos del sistema de SU nodo.
+				* Todos los nodos reciben el MOLBINDPROC del resto de los nodos y hacen rmtbind 
+		Se incorporo semaforo sys_mutex para proteger region critica entre SYSTASK y SPREAD
+			
+
+ATENCION:	Que hacer cuando un server muere por un KILL o FAULT ?? el unico que está enterado es el kernel.
+			SOLUCION: Controlar :
+				EMOLSRCDIED
+				EMOLDSTDIED
+				EMOLNOPROXY
+				EMOLNOTCONN
+				EMOLDEADSRCDST
+			PM: Si ocurre algun error de este tipo, hacer el UNBIND al PM y SYSTASK.
+			SYSTASK: Si el proceso es LOCAL y del sistema, hacer BROADCAST UNBIND
+			Si el PM le solicita algo a SYSTASK acerca de un proceso MUERTO, la SYSTASK le reporta alguno de los errores al PM.
+			Reemplazar la salida de errores:
+		  	if((rcode =sys_procinfo(who_p)) != OK) 
+				ERROR_EXIT(rcode);
+			
+			#define ERROR_EXIT(endpoint, rcode) \
+ do { \
+     	printf("ERROR: %s:%u:%d: rcode=%d\n",__FUNCTION__ ,__LINE__,endpoint, rcode); \
+	fflush(stderr);\
+	error_exit(endpoint, rcode); \ 
+	exit(rcode); \
+ }while(0);
+ 
+error_exit(int endpoint, int rcode) 
+{
+	switch(rcode){
+			case	EMOLSRCDIED:
+			case	EMOLDSTDIED:
+			case	EMOLNOPROXY:
+			case	EMOLNOTCONN:
+			case	EMOLDEADSRCDST:
+				/* PM UNBIND */
+				/* SYSTASK UNBIND */
+				break;
+			default:
+				break;
+	}
+}			
+
+
+20130814: 		Se controla en drvs_init() y vm_init() la relación entre los parametros entre si:
+			Parametros BASICOS: NR_NODES, NR_TASKS, NR_SYS_PROCS, NR_PROCS
+			Parametros DERIVADOS:
+			NR_SYSTASKS = (2*NR_NODES) <= (NR_TASKS-3)
+			NR_SERVERS  = (NR_SYS_PROCS-NR_TASKS)
+			NR_USR_PROCS= (NR_PROCS+NR_TASKS)-(NR_SYS_PROCS)
+
+			Se creo en mollib la llamada mol_bindproc() y se cambiaron init/rinit/is para que la usen.
+			Se unificaron INIT y RINIT. 
+			ATENCION: Tiene que haber tantos INIT como NODOS, por lo tanto cada init tendra p_nr = (INIT_PROC_NR+localnodeid)
+			El INIT distingue si es local o remoto segun si el PM está en local_nodeid.
+			Se realizo USER1 que haga getpid() en el PM0 (TODO OK!)
+
+REGLA:		Todo proceso DE SISTEMA LOCAL, SYSTASK lo difunde por SPREAD para que los otros nodos hagan BINDPROC
+			Para todo proceso de usuario, su padre le hace sys_fork a la SYSTASK quien hace BIND al KERNEL
+			Los procesos de sistemas son conocidos en todos los nodos. Tanto BINDPROC como EXIT.
+			Los procesos de usuario son solo conocidos en el nodo donde residen y en el nodo donde está el PM y FS.
+			Los procesos de usuario solo usan slots propiedad del nodo donde residen.
+			Para replicas de procesos del sistema (caso SYSTASK, INIT), establecen slots segun el local_nodeid.
+					
+
+PARA ARRANQUE REMOTO:	Todo proceso de usuario USER1 se comunicará tanto con el FS y PM.
+			Supongamos FS0 y PM0
+			Dado USER1 levanta a través de INIT1 (mol_fork), automaticamente USER1 se registra en:
+				 * SYSTASK1->KERNEL1
+				 * PM0->FS0->SYSTASK0->KERNEL0
+			En el caso que PM0, FS1 y USER2
+			Dado USER2 levanta a través de INIT2 (mol_fork), automaticamente USER2 se registra en:
+				 * SYSTASK2->KERNEL2
+				 * PM0->SYSTASK0->KERNEL0
+				 * PM0->FS1->SYSTASK1->KERNEL1			
+
+ORDER TO LOCK:
+		1- DRVS
+		2- VM
+		3- PROCS
+		4- RPROXY
+		5- SPROXY
+		6- NODES
+
+
+20130816:		Se creo wait4bind(); Es para que el CHILD espere que su padre haga BIND durante el fork().
+
+
+20130819:		Se implemento mol_exit() 
+
+
+20130820:		Se implemento mol_time() , mol_times(), mol_stime()
+
+
+20130827:		getpnbr y derivadas
+
+
+20130827:		sE incorporó el flag BIT_NOTIFY en p_misc_flags que señala si el receptor está esperando un mensaje
+			(receive, rcvrqst) que copie desde su buffer de kernel a su buffer de usuario el mensaje creado 
+			por el notify antes de retornar.
+			Se cambió receive, rcvrqst, notify, y rproxy (notify remoto).
+
+20130902:		Se implementaron correctamente las alarmas en SYSTASK
+			El signal handler del CLOCK se dispara cada 1 segundo, pero cuando la proxima alarma tiene un vencimiento < 1seg
+			se progrograma el interval timer en ONE SHOT con un tiempo de la diferencia entre (next_timeout-realtime)
+			luego prosigue con 1 Segundo o con lo que reste de la proxima alarma.
+			
+
+20130903:		Se termino con la gestion de timers del PM.
+			Se implemento sys_memset para setear memoria.
+
+20130911:		Se implementó el comando mol_migrate que soporta la migracion de procesos.
+			Para ello se crea una nueva cola en los descriptores de procesos en la que se encolan los 
+			procesos emisores durante el tiempo en el que el proceso migrante está en estado MIGRATE
+			Finalizada Exitosamente o Fallidamente la migración, los procesos son despertados y 
+			se ejecutan las primitivas de forma normal, seleccionandose el nodo destino correcto.
+			Aquellos descriptores de procesos YA encolados en las colas de envios de proceso migrante o de
+			los proxies salientes se retorna error EMOLMIGRATE dentro de la propia primitiva lo que hace que
+			se reejecute la primitiva, esta vez encaminando el mensaje al nodo correcto a donde termino de
+			instalarse el proceso migrante.
+
+		TESTS DE MIGRACION:
+			TEST 1: Proceso local que intenta migrar y falla
+			* Arrancar rtest0.sh y rtest1.sh
+			* nodo0:  test/test_receive 0 10 &
+			* nodo0:  test/test_migrate 0 7 0 <pid> 10 1
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+			* nodo0:  test/test_send 0 9 10 &
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+			* nodo0:  test/test_migrate 0 7 2 <pid> 10 1 
+			=> Deberia continuar el SEND ====================> OK!!!
+
+			TEST 2: Proceso remoto que intenta migrar y falla 
+			* Arrancar rtest0.sh y rtest1.sh
+			* nodo0:  test/test_rmtbind 0 10 1 
+			* nodo0:  test/test_migrate 0 7 0 0 10 0
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+			* nodo0:  test/test_send 0 9 10 &
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+
+			* nodo1:  test/test_rmtbind 0 9 0
+			* nodo1:  test/test_receive 0 10 &
+			 
+			* nodo0:  test/test_migrate 0 7 2 <pid> 10 1 
+			=> Deberia continuar el SEND ====================> OK!!!
+
+			TEST 3: Proceso local que intenta migrar y es exitoso
+			* Arrancar rtest0.sh y rtest1.sh
+			* nodo0:  test/test_receive 0 10 &
+			* nodo0:  test/test_migrate 0 7 0 <pid> 10 1
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+			* nodo0:  test/test_send 0 9 10 &
+			* nodo0:  ver el estado /proc/drvs/VMO/procs (bandera BIT_MIGRATE)
+
+			* nodo1:  test/test_rmtbind 0 9 0
+			* nodo1:  test/test_receive 0 10 &
+
+			* nodo0:  test/test_migrate 0 7 1 <pid> 10 1 
+			=> Deberia continuar el SEND ====================> OK!!!
+
+
+20130912:		Se implemento el concepto de proceso BACKUP. Es decir,ahora se pueden tener procesos:
+				- Locales
+				- Remotos
+				- Backup:  El descriptor tiene marca REMOTE, pero tambien tiene marca MIS_RMTBACKUP		
+					Esto permite que a atraves del mol_migrate, un proceso BACKUP se convierta
+					en un proceso LOCAL en el nodo donde reside, sea porque es un proceso migrado
+					o por que realmente es un proceso backup que está PASIVO hasta activarse
+					cuando muere el ACTIVO REMOTO de otro nodo.
+		
+20130915:		Se modifico do_unbind() para que contemple la muerte de los procesos BACKUP.
+				La muerte de un proceso BACKUP debe transformar el descriptor del proceso en REMOTE.
+				Mientras el proceso BACKUP está vivo su comportamiento debe ser identico a REMOTE.
+				Despues de ejecutar migrate() que convierte al BACKUP en PRIMARIO, el proceso 
+				BACKUP se transforma en LOCAL.
+
+20130915:		Se incorporo el campo p_proxy que cuando el bit BIT_RMTOPER está seteado cuando se trata de un proceso local
+			indica el ID del nodo del proxy sender en el que está encolado el descriptor tratando de hacer una operacion 
+			remota.
+			De esta forma, cuando se hace el unbind() es mas sencillo detectar si el proceso está encolado o no en 
+			estado SENDING, RECEIVING (local) o BIT_RMTOPER (remoto) encolado y poder desencolarlo para terminar.
+
+
+20130918:		Se agrego el campo p_nodemap que es un BIT MAP de los nodos donde hay réplicas del proceso.
+			p_nodeid es donde se está ejecutando la réplica PRIMARIA.
+			En el caso de los PROXIES el campo p_nodemap indicará a que nodos representa el proxy.
+
+20130919:		Se implemento mol_node_up y mol_node_down que conectan al par de proxies que lo representa.
+
+
+20131001:		Se hicieron los benchmarks remotos en LAB5
+
+20131002:		Se hicieron los PROXIES UDP
+			Se optimizaron los tests remotos y locales reduciendo el valor de los sleep()
+			Se instalo IPERF para pruebas de bandwidth
+
+20131003:		Se optimizaron los PROXIES UDP para que envíe el header+payload en un solo sendto()
+			Se cambio test_drvs_init para que se puedan ingresar parametros desde modo usuario.
+			Se cambio MAXCOPYBUF(32768) MAXCOPYLEN (En UDP el máximo datagrama es 65400)
+
+20131004: 	Se eliminaron errores de PROXIES
+
+20131005:	Se realizaron los siguientes tests en LAB5.			
+				Realizar los tests REMOTOS con TCP 1 CPU
+				Realizar los tests LOCALES con 4 CPU
+
+				Realizar los tests REMOTOS con UDP 1 CPU
+				Realizar los tests REMOTOS con UDP 4 CPU
+
+				Realizar iperf REMOTO con TCP 1 CPU
+				Realizar iperf REMOTO con TCP 4 CPU
+			HAY PROBLEMAS DE PERFORMANCE EN TCP !!!!!!!
+				Esto se debe a que en la version modificada de TCP;
+					* se solicita memoria alineada para el header y el payload juntos
+					* se envian header y payload en el mismo send() de TCP
+
+20131005:	SOLUCIONADO:
+				* se solicita memoria alineada por separado para el header y el payload 
+				* se envian header y payload en diferentes send() de TCP
+
+20131005:	Se 	genero directorio proxies
+				con archivo info
+				y archivos procs
+			Se hizo primitiva getproxyinfo
+
+20131008:	Probar getproxinfo
+		Se incorporaron LOCKS  para proxies.
+		pruebas de PROXY TCP 
+
+20131009:       Se creo imagen DVD con RWLOCKS 
+		Se corrigieron errores de LOCKs de proxies, nodos y procs
+		Se modifico PROXY SENDER
+		Se distinguen los PROCESOS ENCOLADOS EN PROXY SENDER
+			p_proxy: nro de proxy
+			p_rts_flags: BIT_RMTOPER
+		Por eso en el do_proxy_unbind se pueden detectar mas rápido.
+
+20131012:	Se incorporo a la VM y PROCS el campo cpumask
+		Cuando un proceso hace un bind, su cpumask se setea en la cpumask de la VM
+		Los proxies cuando se bindean tienen todas las CPUs a su disposición.
+		Cuando un proceso hace un UP de otro (incluso un proxy) le setea 
+		el cpuid propio como el unico CPU de la mascara de afinidad del proceso dormido.
+		Cuando el proceso dormido se despierta vuelve a setear su afinidad al valor de su p_cpumask original.
+		Esto se hace para para reducir ping-pong cache.
+		Cada proceso debería bindearse con su cpu_affinity = p_nr/max_cpu_in_system		
+
+
+20131016:	Atencion se anularon los LOCK_TASKS de todas las funciones diferentes de bind() y unbind()
+	
+20131017: 	MIGRACION: Que hacer con un proceso con THREADS ?????
+		Cuando desencola de la lista SENDING del proceso migrante debe:
+			-retornar EMOLMIGRATE  a los procesos LOCALES
+			- retornar EMOLMIGRATE a los procesos REMOTOS - VERIFICAR QUE ESTA ENVIANDO
+		MIGRACION: Que pasa cuando el proceso estaba RUNNING, con NEEDMIGR seteado pero MUERE?
+		
+
+		TRATAMIENTO DE HILOS:
+			- SOLO sobre el HILO PRINCIPAL se puede inicial la migracion (MIGR_START)
+			- Cuando se hace MIGR_START en el nodo LOCAL ORIGEN, este debe SETEAR a TODOS los hilos del PROCESO
+				con el BIT_NEEDMIGR o BIT_MIGRATE.
+			- Cuando se hace MIGR_ROLLBACK en el nodo LOCAL ORIGEN, este debe RESETEAR a TODOS los hilos del PROCESO
+				el BIT_MIGRATE.
+			- Cuando se hace MIGR_COMMIT en el nodo LOCAL ORIGEN se hace solo sobre el HILO PRINCIPAL.
+				Luego se cambia el estado de LOCAL a REMOTO de cada hilo BINDEADO 
+				ATENCION: Los hilos NO BINDEADOS se ignoran.
+			- Cuando se hace MIGR_COMMIT en el nodo LOCAL DESTINO, solo se hace sobre el proceso cuyo PID se indica
+				en el comando.  Es decir, debe haber un comando mol_migrate(MIGR_COMMIT) por cada HILO.
+
+20131021:	Se debuggearon los LOCKS. 	
+			Cuando se probo loop_mol_mperf.sh hubo una colgada pero no se a que atribuirla.
+			
+20131224:	 Se intento instalar el paquete rpcbind pero fallo.
+			Se tomo la maquina virtual MOL-IPC2 y se actualizo
+				1- se genero nuevo archivo de sources para squeeze
+				2- se hizo apt-get update, upt-get upgrade
+				3- luego se genero nuevo archivo de sources para wheeze
+				4- se hizo apt-get update, apt-get dist-upgrade
+				5- se instalo correctamente rpcbind
+			Se uso el programa de trasfernecia de RPC que hizo OSCAR 
+		
+20140322:	Se modifico system.c y spread.c con el nuevo algoritmo basado en Finite State Machine (FSM)
+
+20140323:	Estas variables son constantes durante la ejecucion
+ 				total_slots = (vm_ptr->vm_nr_tasks + vm_ptr->vm_nr_procs) - vm_ptr->vm_nr_sysprocs;
+				min_slots	= (total_slots/vm_ptr->vm_nr_nodes);
+				free_slots_low  = min_slots/2 
+			
+			Estas son las variables globales que hay que proteger y que cambian cuando hay JOIN/DISCONNECT (active_nodes)
+				active_nodes
+				max_slots	= (total_slots - (min_slots*active_nodes));	
+			Estas son las variables globales que hay que proteger	
+				free_slots
+				owned_slots
+
+				
+20140324:	Para probar en NODE0
+			/usr/local/sbin/spread &			/* Arranca spread*/
+			cd /home/jara/mol-ipc/proxy/	
+			./tproxy node1  1 &					/* Arranca el proxy TCP */
+			cd /home/jara/mol-ipc/tests
+			./test_vm_init						/* Arranca la VM */
+			./test_add_node 0 1					/* Asocia el nodo(proxy) a la VM */
+			cd /home/jara/mol-ipc/tasks
+			./systask							/* Arranca la Systask */
+			
+Cuando se arranca SOLO NODO0
+			
+20140406:				local_host			first_mbr			other
+			JOIN		STS_WAIT_VM_INFO	SYS_PUT_VMINFO		ignore
+						STS_WAIT_TABLE		SYS_PUT_TABLE		ignore
+						SYS_REQ_SLOTS
+
+20140414: Se modifico spread, do_fork, system para el algoritmo de SLOTS.
+	
+20140419:	Hay problemas en la VM NODE0 pero no en la VM NODE1 
+			Comparar fuentes de kernels de ambos para ver que fue lo que se cambio.
+			Da error/dump en el copy_usr2usr. 
+	
+20140503:	Se modificaron spread, systask y do_fork para ejecucion sincronizada de nodo0 y nodo1.
+			Quedan algunos errores por solucionar
+			Se modifico minix.sh
+			Se  anulo de la systask la inicializacion de la VM porque reiniciaba los nodos que ya habian
+			sido dados de alta por el script.
+			
+
+20140504:	Se implemento tipcproxy.
+			Se probaron las transferencias entre nodos 0 y 1
+			funciono todo OK excepto NOTIFY (IPC3) que se bloqueo, pero parece ser un problema interno de MOL o del test.
+		
+20140524:	SE MODIFICO SPREAD, SYSTEM Y DO_FORK
+			Se trata que SPREAD no hace ninguna peticion de SLOTS solo las hacen
+				- SYSTASK: Al momento del JOIN
+				- FORK: Cuando necesita
+			Los procesos inicializados estan registrados en el bitmap bm_init
+			Los procesos de los que se esperan donaciones estan en el bitmap bm_donors
+			
+20140525:	SE MODIFICO SPREAD, SYSTEM
+			Ahora para los miembros despues del primero que se agregan, una vez que terminaro de transferirle el estado
+			ya quedan en STS_RUNNING, y el fork forzará la peticion de ranuras, lo hará a demanda.
+			Los bind de las SYSTASK remotas ahora las hace bind_rmt_systass()
+			EL problema se presenta con SYSTASK que debe esperar que un numero de donors le donen ranuras
+			Ahora bien, alguno de esos donors puede morir, por lo tanto no se sabe si ese donor muerto YA DONO o NO DONO ranuras aun
+			por lo que hay que llevar el estado y eso se hace con bm_donors.
+
+20140531:	SE MODIFICO SPREAD
+			Cambios de errores menores
+			se cambio mol_mhyper.c unbind() porque faltaba un desbloqueo.
+			Se cambio do_fork de tal modo que si owned_slots = 0 (es decir, arranco) solicita TANTOS SLOTS como le corresponden!!!	no solo 1.
+
+			 
+
+20140609:		SE MODIFICO SPREAD		 
+			
+PROBLEMA:	Cuando se hace un HALT de un miembro SPREAD lo reporta como NETWORK change !!!
+ spread_loop:697:sender=VM0 Private_group=#1.0#node1 vm_name=VM0 curr_first=0 service_type=8192
+ get_nodeid:24:member=VM0 nodeid=0
+ spread_loop:697:sender=VM0 Private_group=#1.0#node1 vm_name=VM0 curr_first=0 service_type=6144
+ get_nodeid:24:member=#1 nodeid=1
+ spread_loop:772:Received REGULAR membership for group VM0 with 1 members, where I am member 0:
+ spread_loop:808:Due to NETWORK change with 1 VS sets
+ spread_loop:818:LOCAL VS set 0 has 1 members:
+ spread_loop:827:	#1.0#node1
+SOLUCION:
+			Se dio tratamiento a NETWORK CHANGE haciendo que se recalcule toda la configuracion de miembros
+			y se de por caidos aquellos que no integran la nueva configuracion/vista.
+			 
+PROBLEMA:
+			en SYSTASK do_exit se supone que hace mol_unbind() quien deberia limpiar el descriptor del kernel pero no lo hace!!
+SYSTASK:
+ do_exit:30:proc_ep=35767
+ do_exit:34:before nr=165 endp=35767 vmid=0 flags=0 misc=20 lpid=2414 nodeid=0 nodemap=1 name=init 
+ tmrs_clrtimer:17:prev_time=0
+ do_exit:52:proc_nr=165 free_slots=17
+ do_exit:68:UNBIND proc_ep=35767
+ do_exit:76:after nr=165 endp=35767 vmid=0 flags=8 misc=20 lpid=2414 nodeid=0 nodemap=1 name=init 			
+
+KERNEL:
+
+[  284.668667] DEBUG 2319:mol_unbind:1251: vmid=0 proc_ep=35767
+[  284.668671] DEBUG 2319:mol_unbind:1260: RLOCK_VM vm=0 count=0
+[  284.668674] DEBUG 2319:mol_unbind:1270: RLOCK_PROC ep=35767 count=0
+[  284.668677] DEBUG 2319:mol_unbind:1271: RUNLOCK_VM vm=0 count=0
+[  284.668680] DEBUG 2319:mol_unbind:1294: RUNLOCK_PROC ep=35767 count=0
+[  284.668683] DEBUG 2319:mol_unbind:1301: RLOCK_VM vm=0 count=0
+[  284.668685] DEBUG 2319:mol_unbind:1302: WLOCK_PROC ep=35767 count=0
+[  284.668689] DEBUG 2319:do_unbind:1353: vmid=0 endpoint=35767 lpid=2414 nodeid=0 flags=8 pseudosem=-1
+[  284.668693] DEBUG 2319:do_unbind:1378: Caller endpoint=-2 lpid=2319
+[  284.668696] DEBUG 2319:do_unbind:1389: Sending SIGPIPE to pid=2414
+[  284.668706] DEBUG 2319:mol_unbind:1304: WUNLOCK_PROC ep=35767 count=0
+[  284.668709] DEBUG 2319:mol_unbind:1305: RUNLOCK_VM vm=0 count=0
+ 
+PROBLEMA!! ESTO SUCEDE porque el mol_unbind ejecutado por un 3er proceso (PM) que trata de matar a uno de los 
+hijos de INIT, le envia un SIGPIPE, pero mientras esto termina el do_exit entrega el valor ANTERIOR a kill.
+
+20140614:
+SOLUCION: Se modifico do_unbind para que acuando se hace un unbind() de un 3er proceso enviandole un SIGPIPE, entonces 
+se espera en un event_queue por que se de la condicion proc_ptr->p_rts_flags == SLOT_FREE
+
+	if( caller_ptr != proc_ptr){
+		if( IT_IS_LOCAL(proc_ptr)) {
+			MOLDEBUG(INTERNAL,"Sending SIGPIPE to pid=%d\n", proc_ptr->p_usr.p_lpid);
+			rcode = send_sig_info(SIGPIPE, SEND_SIG_NOINFO, proc_ptr->p_task);
+			if(rcode) ERROR_RETURN(rcode);
+			/* Waits until the target process unbinds */
+			old_pid = proc_ptr->p_usr.p_lpid;
+			WUNLOCK_PROC(proc_ptr);
+			ret = wait_event_interruptible(caller_ptr->p_wqhead, (proc_ptr->p_usr.p_lpid!=old_pid));
+			WLOCK_PROC(proc_ptr);
+			return(OK);
+		}
+	}
+
+	Se modifico do_proxies_unbind() y do_vm_end() haciendo mas o menos lo mismo
+
+20140615:	Se modifico exit_unbind(void)
+			Se modifico do_vm_end()
+			Se modifico do_proxies_unbind()
+	
+20140616: 	Se modifico init() con doble fork() para que el INIT de LINUX se haga cargo
+			de los procesos ZOMBIES. 
+
+	
+MEJORA:		Hacer un GETSLOTS para que muestre la tabla de slots el IS.
+	
+ERROR :		
+name=$noname endp=71237 mp_pid=547 mp_parent=8 mp_flags=5 mp_nice=-10
+name=$noname endp=249248 mp_pid=548 mp_parent=8 mp_flags=5 mp_nice=-10
+name=$noname endp=71239 mp_pid=549 mp_parent=8 mp_flags=5 mp_nice=-10
+name=$noname endp=320454 mp_pid=550 mp_parent=8 mp_flags=5 mp_nice=-10
+name=$noname endp=71241 mp_pid=551 mp_parent=8 mp_flags=5 mp_nice=-10
+name=$noname endp=284854 mp_pid=552 mp_parent=8 mp_flags=5 mp_nice=-10
+
+#define IN_USE          0x0001	/* set when 'mproc' slot In use */
+#define ZOMBIE          0x0004	/* set by EXIT, cleared by WAIT *
+
+Esta indicando que al proceso FIRST PARENT nadie le hizo WAIT!!
+
+20140617:	Se soluciono cambiando init() con simple fork()
+			Se agrego GET_SLOTINFO para que el IS imprima
+			MEJORA: El PUT_VMINFO y PUT_TABLE pueden hacerse con FIFO.
+			SLOTS FUNCION OK !!! 
+
+20140630:	Se modifico mol-hyper.c el mol_bind() para que considere que un thread 
+			solo puede hacer un bind si su THREAD LEADER esta bindeado en la misma VM!!!
+				
+20140816:	Manejo de NETWORK PARTITION Y MERGE.
+
+			Cuando se produce una partición, cada partición trabaja en forma independiente 
+			con los slots de los miembros activos de la partición  y mantiene a los slots de 
+			los miembros de las otras particiones como estaban.
+	
+			Definimos la particion primaria aquella que tiene el first_init_mbr del grupo
+			Despues de un PARTITION cada particion tiene su propio first_init_mbr
+			Cuando se hace un MERGE el first_act_mbr de la particion NO PRIMARIA sabe que el no lo es el first member de todo el conjunto.
+			por lo tanto envia un broadcast SYS_MERGE_PST para que lo reciba el first_init_mbr de la particion primaria y de todo el conjunto.
+			luego cuando el first_init_mbr hace un SYS_NEW_PST todos se enteran que el es el first_init_mbr
+			y a traves de la PST obtiene cuales son los miembros inicializados (aquellos dueños de ranuras).
+
+PROBLEMA: 	Podria haber algun miembro inicializado que no tenga ranuras porque recien habia ingresado antes de la PARTITION !!				
+
+SOLUCION:	Se podria hacer lo siguiente: En lugar de enviar un SYS_INITIALIZED a todos los otros nodos
+			basta conque un miembro solicite ranuras para considerarlo INICIALIZADO.
+	
+
+PROBLEMA:	Supongamos que hay una particion y luego un MERGE 
+
+		El first_init_mbr de la particion NO PRIMARIA broadcastea un SYS_MERGE_PST
+		1) Mientras tanto los miembros de todas las particiones pueden seguir operando!!
+		2) Que pasa si el first_init_mbr de la particion PRIMARIA muere antes de enviar SYS_NEW_PST ?
+
+SOLUCION1:	El miembro de la particion primaria SABE que es el first_init_mbr porque el first_init_mbr no cambio
+		los miembros de la particion primaria tambien los saben y asumen su roll.
+
+SOLUCION2:	Cuando se produce un MERGE todos los procesos cambian de estado a SYS_MERGING
+		Cuando se produce un MERGE el first_init_mbr de la particion primaria hace un SYS_MERGE_PST
+		y todos la hacen!!! 
+		Los proceso inicializados cambian su estado a SYS_RUNNING
+		Los proceso no inicializados cambian su estado a JOINING.
+		El first_init_mbr broadcastea el estado.
+					
+SOLUCION3:	TODOS los first_init_mbr hace un broadcast de sus tablas.
+		El receptor rastrea y solo actualiza los SLOTS que NO son de la particion propia 
+		(contrastados contra bm_init) son actualizados
+		Se arma un bm_partition que almacena los bits de esos owners
+		Luego, al finalizar el merge se hace bm_init OR= bm_partition.
+		luego se contrasta el first_act_mbr contra el bm_init y ese es el nuevo first_act_mbr
+	PROBLEMA: El receptor, sabe cuales son slots propios, 
+		pero como sabe cuales slots son propios de la particion del emisor y no de otra?? 
+	SOLUCION: Deberia llenar con OWNER=LOCALNODE aquellos SLOTS que no le pertenecen a su bm_init y broadcastear
+		la PST propia.
+
+
+
+ERROR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	Atencion con los punteros a mensajes cuando se envia la PST.
+
+---------------------------------------------------------------------------------------------------------------
+20140823:	Manejo de NETWORK PARTITION Y MERGE.
+	
+VM0:
+----------------------------------- PARTITION -------------------------------
+ spread_loop:907:sender=VM0 Private_group=#0.0#node0 vm_name=VM0 first_act_mbr=0 service_type=8192
+ spread_loop:1080:received TRANSITIONAL membership for group VM0
+ spread_loop:1084:received incorrecty membership message of type 0x2000
+ spread_loop:907:sender=VM0 Private_group=#0.0#node0 vm_name=VM0 first_act_mbr=0 service_type=6144
+ spread_loop:996:Received REGULAR membership for group VM0 with 1 members, where I am member 0:
+ spread_loop:1031:Due to NETWORK change with 1 VS sets
+ spread_loop:1045:LOCAL VS set 0 has 1 members:
+ spread_loop:1059:	#0.0#node0
+ get_nodeid:24:member=#0 nodeid=0
+ spread_loop:1068:old bm_init=3 bm_active=1 first_act_mbr=0
+ sp_net_partition:545:bm_init=3 bm_active=1
+ sp_net_partition:576:first_init_mbr=0 bm_init=1 bm_donors=0		ESTADO DESPUES DE PARTICION
+ send_status_info:103:Send the VM info to the new members
+ send_status_info:123:Send PST to new members
+
+----------------------------------- MERGE -------------------------------
+spread_loop:907:sender=VM0 Private_group=#0.0#node0 vm_name=VM0 first_act_mbr=0 service_type=6144
+ spread_loop:996:Received REGULAR membership for group VM0 with 2 members, where I am member 0:
+ spread_loop:1031:Due to NETWORK change with 2 VS sets
+ spread_loop:1045:LOCAL VS set 0 has 1 members:
+ spread_loop:1059:	#0.0#node0
+ get_nodeid:24:member=#0 nodeid=0
+ spread_loop:1068:old bm_init=1 bm_active=1 first_act_mbr=0
+ spread_loop:1045:OTHER VS set 1 has 1 members:
+ spread_loop:1059:	#1.0#node1
+ get_nodeid:24:member=#1 nodeid=1
+ spread_loop:1068:old bm_init=1 bm_active=3 first_act_mbr=0			ESTADO DESPUES DE MERGE
+ sp_net_merge:597:
+ sp_net_merge:633:Send the partition's PST to all members 
+ 
+ spread_loop:907:sender=#1.0#node1 Private_group=#0.0#node0 vm_name=VM0 first_act_mbr=0 service_type=4
+ spread_loop:920:message from #1.0#node1, of type 6, (endian 0) to 1 groups (3840 bytes)
+ spread_loop:976:source=27342 type=-1 m3i1=1953066601 m3i2=0 m3p1=(nil) m3ca1=[]
+ get_nodeid:24:member=#1 nodeid=1
+ sp_merge_PST:656:
+ send_status_info:103:Send the VM info to the new members
+ send_status_info:123:Send PST to new members
+
+ 
+ VM1:
+----------------------------------- PARTITION -------------------------------
+ spread_loop:907:sender=VM0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=8192
+ spread_loop:1080:received TRANSITIONAL membership for group VM0
+ spread_loop:1084:received incorrecty membership message of type 0x2000
+ spread_loop:907:sender=VM0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=6144
+ spread_loop:996:Received REGULAR membership for group VM0 with 1 members, where I am member 0:
+ spread_loop:1031:Due to NETWORK change with 1 VS sets
+ spread_loop:1045:LOCAL VS set 0 has 1 members:
+ spread_loop:1059:	#1.0#node1
+ get_nodeid:24:member=#1 nodeid=1
+ spread_loop:1068:old bm_init=3 bm_active=2 first_act_mbr=1
+ sp_net_partition:545:bm_init=3 bm_active=2
+ sp_net_partition:576:first_init_mbr=1 bm_init=2 bm_donors=0			ESTADO DESPUES DE PARTICION
+ send_status_info:103:Send the VM info to the new members
+ send_status_info:123:Send PST to new members
+ 
+----------------------------------- MERGE -------------------------------
+ spread_loop:907:sender=#1.0#node1 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=1 service_type=32
+ spread_loop:920:message from #1.0#node1, of type 1, (endian 0) to 1 groups (36 bytes)
+ spread_loop:926:source=1 type=1 m1i1=47 m1i2=0 m1i3=28 m1p1=(nil) m1p2=(nil) m1p3=(nil) 
+ spread_loop:907:sender=VM0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=1 service_type=6144
+ spread_loop:996:Received REGULAR membership for group VM0 with 2 members, where I am member 1:
+ spread_loop:1031:Due to NETWORK change with 2 VS sets
+ spread_loop:1045:OTHER VS set 0 has 1 members:
+ spread_loop:1059:	#0.0#node0
+ get_nodeid:24:member=#0 nodeid=0
+ spread_loop:1068:old bm_init=2 bm_active=1 first_act_mbr=0
+ spread_loop:1045:LOCAL VS set 1 has 1 members:
+ spread_loop:1059:	#1.0#node1
+ get_nodeid:24:member=#1 nodeid=1
+ spread_loop:1068:old bm_init=2 bm_active=3 first_act_mbr=0				ESTADO DESPUES DE MERGE
+ sp_net_merge:597:
+ sp_net_merge:633:Send the partition's PST to all members 
+ spread_loop:907:sender=#1.0#node1 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=4
+ spread_loop:920:message from #1.0#node1, of type 6, (endian 0) to 1 groups (3840 bytes)
+ spread_loop:976:source=27342 type=-1 m3i1=1953066601 m3i2=0 m3p1=(nil) m3ca1=[]
+ get_nodeid:24:member=#1 nodeid=1
+ sp_merge_PST:656:
+ spread_loop:907:sender=#0.0#node0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=4
+ spread_loop:920:message from #0.0#node0, of type 6, (endian 0) to 1 groups (3840 bytes)
+ spread_loop:976:source=35631 type=0 m3i1=1953066601 m3i2=0 m3p1=(nil) m3ca1=[]
+ get_nodeid:24:member=#0 nodeid=0
+ sp_merge_PST:656:
+ spread_loop:907:sender=#0.0#node0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=4
+ spread_loop:920:message from #0.0#node0, of type 3, (endian 0) to 1 groups (172 bytes)
+ spread_loop:960:SYS_PUT_VMINFO vmid=0
+ sp_put_vminfo:186:
+ spread_loop:907:sender=#0.0#node0 Private_group=#1.0#node1 vm_name=VM0 first_act_mbr=0 service_type=4
+ spread_loop:920:message from #0.0#node0, of type 4, (endian 0) to 1 groups (3840 bytes)
+ get_nodeid:24:member=#0 nodeid=0
+ spread_loop:956:SYS_PUT_PST: first_init_mbr=0 table has 160 slots
+ sp_put_PST:243:
+
+	FUNCIONO OK!!
+	
+
+---------------------------------------------------------------------------------------------------------------
+20140906:	SLOTS Manejo de donaciones interrumpidas
+			Cuando un donante hace el multicast, puede que se detecte un NETWORK PARTITION o un CRASH del DESTINATARIO
+			Para ello  se usa el BIT_DONATING que, cuando el donante hace el broadcast el bit se setea
+			y cuando el mismo recibe su propio mensaje lo borra. 
+			Si esto es interrumpido por un net partition o un crash entonces el donante busca en todos los slots
+			los BIT_DONATING, los recupera como propios y resetea el bit nuevamente.
+			
+			COMPILADO OK, pero no probado.
+		
+---------------------------------------------------------------------------------------------------------------
+20150318:	
+			mol-hyper: se generaron nuevos tipos de error cuyo valor absoluto es mayor a:
+			#define EMOLERRCODE 	(_SIGN 300) 
+			De esa forma no habria conflicto con los valores de endpoints retornadas por los tipos de BIND
+			cuando el valor del p_nr es negativo.
+		
+			Por lo tanto_
+				rcode = mol_bind() 
+				if ( rcode < EMOLERRCODE) HAY ERROR de bind
+				sino retorna el endpoint=rcode.
+
+
+---------------------------------------------------------------------------------------------------------------
+20150319:
+			SE MODIFICO SYSTEM.C la posicion de inicializacion de la tabla de procesos y de slots.
+			Ahora la inicializacion depende si va a haber 1 o mas nodos.
+			
+---------------------------------------------------------------------------------------------------------------
+20150323:
+			Saque los diff entre la VM de oscar y la mia
+			se supone que hice los cambios pero me da error al ttratar de instalar el modulo
+			
+Cree el sitio
+https://sourceforge.net/projects/m3ipc/
+			
+usr: ppessolani
+passwd: <8digitos_renault9><2digito_año_nacimiento> total 10 caracteres
+
+
+---------------------------------------------------------------------------------------------------------------
+20150419:
+		Incorpore el codigo de MARIE del driver de MEMORY
+			- drivers/memory
+			- drivers/libdriver
+			
+		Compila y ejecuta pero falta probar con imagenes de disco.
+		
+---------------------------------------------------------------------------------------------------------------
+20150425:
+		Incorpore el codigo de DIEGO del FS
+			- servers/fs
+		y varios programas de pruebas en tests y cambios en kernel/minix/*.h
+		
+		COMPILA BIEN.
+		ANDA MAL
+		
+---------------------------------------------------------------------------------------------------------------
+20150426:
+		AHORA FUNCIONA OK
+		FALTABA DEFINIR EN FS.H 
+		#DEFINE MOLFS 1
+
+---------------------------------------------------------------------------------------------------------------
+20150501:		
+		El  loop/loop_read_fs funcion MAL si se le define el buffer como posix_align
+		En cambio funciona bien cuando se lo define como estatico.
+		
+Copiar 472 bytes NO ALINEADOS
+[43057.950557] DEBUG 3269:mol_vcopy:1088: COPY_USR2USR_PROC copylen=472
+[43057.950565] DEBUG 3269:copy_usr2usr:275: source=27342 src_pid=3269 dst_pid=3270 bytes=472
+[43057.950573] DEBUG 3269:copy_usr2usr:281: src_off=1332 dst_off=3820
+
+En el origen los datos estan en 1 pagina, pero en el destino estan en 2 !!!!! porque ???????
+[43057.950580] DEBUG 3269:copy_usr2usr:286: src_npag=1 dst_npag=2 <<<<<<<<<<<<<<<<<<<<<<<<<<
+[43057.950589] DEBUG 3269:copy_usr2usr:295: get_user_pages SRC OK
+[43057.950598] DEBUG 3269:copy_usr2usr:302: get_user_pages DST OK
+[43057.950604] DEBUG 3269:copy_usr2usr:305: kmap_atomic SRC OK
+[43057.950610] DEBUG 3269:copy_usr2usr:307: kmap_atomic DST OK
+[43057.950617] DEBUG 3269:copy_usr2usr:320: memcpy 276 bytes
+Copia correctamente los primeros 276 bytes
+
+
+[43057.950623] DEBUG 3269:copy_usr2usr:331: kunmap_atomic SRC OK
+[43057.950629] DEBUG 3269:copy_usr2usr:333: kunmap_atomic DST OK
+[43057.950636] DEBUG 3269:copy_usr2usr:335: set_page_dirty_lock OK
+[43057.950642] DEBUG 3269:copy_usr2usr:337: put_page DST OK
+[43057.950648] DEBUG 3269:copy_usr2usr:339: put_page SRC OK
+[43057.950655] DEBUG 3269:copy_usr2usr:345: src_off=1608 dst_off=0
+[43057.950662] DEBUG 3269:copy_usr2usr:295: get_user_pages SRC OK <<<<<<<<direccion origen OK
+[43057.950938] ERROR: 3269:copy_usr2usr:301: rcode=-71            <<<<<<<<direccion destino ERROR!!!
+
+funciono bien el loop_read_fs con posix_align
+hay que cambiar en el loop de lectura principal 
+bytes = MOL_read(fd, (void *) &buffer, buf_size); 
+por 
+bytes = MOL_read(fd, (void *) buffer, buf_size); 
+fíjate que buffer NO LLEVA el &
+
+loop/loop_read_fs
+==================		
+ MOL_open:121:MOL_open: file1MB.dat 2
+ MOL_open:133:Request: source=-1216873754 type=5 m3i1=12 m3i2=0 m3p1=0xbff5ded8 m3ca1=[file1MB.dat]	
+ main:220:fd=0
+
+  read-->rw_chunk--->get_block--->rw_block--->dev_io---->gen_io
+
+ ESTA ES LA SECUENCIA ABORTADA DMESG
+[ 6365.451821] DEBUG FS:mol_mini_sendrec:450: srcdst_ep=3
+[ 6365.456525] DEBUG FS:mol_mini_sendrec:450: srcdst_ep=3
+[ 6365.456930] DEBUG FS:mol_vcopy:923: src_ep=1 dst_ep=5 bytes=4096
+[ 6365.457039] DEBUG FS:mol_mini_sendrec:450: srcdst_ep=3
+[ 6365.457460] fs[FS]: segfault at 1000 ip 0804ebb4 sp bf916118 error 4 in fs[8048000+9000]
+
+EN EL SERVIDOR 
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 934
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 903 ????
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 935
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 903 ????
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 936
+ get_block:459:rw_block(bp, READING); con bp->b_blocknr 903 ????
+<<<<<< ABORTA AQUI
+rw_block:114: dev_io -> op=1027, dev=256, POS=3833856, BYTES=4096 <<< ESTO DEBERIA SEGUIR 
+
+pero como:
+SVRDEBUG(" dev_io -> op=%d, dev=%d, POS=%d, BYTES=%d\n",  op, dev, pos, block_size);   
+	r = dev_io(op, dev, FS_PROC_NR, bp->b_data, pos, block_size, 0);
+Quiere decir que alli no llego.
+
+ 
+---------------------------------------------------------------------------------------------------------------
+20150509:
+		SE MIGRO A M3-IPC MOD !!!!
+			
+		LOOPS LOCALES: OK
+		
+	TODO:LOOPS REMOTOS
+	
+ 
+================================================================================================================
+================================================================================================================
+================================================================================================================
+
+
+TODO:	TANTO EL FS COMO MEMORY DEBEN BINDEARSE VIA SYSTASK
+
+
+FS: Trabaja con buffers no alineados, esto hace que se tengan doble cantidad de copias
+	PONER BUFFERS tanto de MEMORY como de FS alineados
+[ 6365.445748] DEBUG FS:mol_vcopy:923: src_ep=1 dst_ep=5 bytes=4096
+[ 6365.445750] DEBUG FS:check_lock_caller:77: caller_pid=FS caller_tgid=FS
+[ 6365.445753] DEBUG FS:check_lock_caller:111: WLOCK_PROC ep=1 count=0
+[ 6365.445755] DEBUG FS:check_lock_caller:132: caller_pid=FS 
+[ 6365.445757] DEBUG FS:mol_vcopy:950: vmid=0
+[ 6365.445759] DEBUG FS:mol_vcopy:953: RLOCK_VM vm=0 count=0
+[ 6365.445761] DEBUG FS:mol_vcopy:955: RUNLOCK_VM vm=0 count=0
+[ 6365.445763] DEBUG FS:mol_vcopy:978: LOCK PROCESSES IN ASCENDENT ORDER
+[ 6365.445765] DEBUG FS:mol_vcopy:979: WUNLOCK_PROC ep=1 count=0
+[ 6365.445767] DEBUG FS:mol_vcopy:984: WLOCK_PROC ep=1 count=0
+[ 6365.445770] DEBUG FS:mol_vcopy:984: WLOCK_PROC ep=5 count=0
+[ 6365.445772] DEBUG FS:mol_vcopy:990: CHECK FOR SOURCE/DESTINATION STATUS
+[ 6365.445774] DEBUG FS:mol_vcopy:1065: CALLER vmid=0 caller_pid=FS caller_nr=1 caller_ep=1 
+[ 6365.445777] DEBUG FS:mol_vcopy:1071: CALLER p_endpoint=1 
+[ 6365.445779] DEBUG FS:mol_vcopy:1072: SOURCE p_endpoint=1 
+[ 6365.445781] DEBUG FS:mol_vcopy:1073: DESTIN p_endpoint=5 
+[ 6365.445783] DEBUG FS:mol_vcopy:1074: BYTES  bytes	=4096 
+[ 6365.445785] DEBUG FS:mol_vcopy:1088: COPY_USR2USR_PROC copylen=4096
+[ 6365.445788] DEBUG FS:copy_usr2usr:275: source=27342 src_pid=FS dst_pid=CLIENT bytes=4096
+[ 6365.445790] DEBUG FS:copy_usr2usr:281: src_off=656 dst_off=0
+[ 6365.445793] DEBUG FS:copy_usr2usr:286: src_npag=2 dst_npag=1
+
+
+ERROR,  Hay algun error en mnx_unbind() solo 
+		no parece haber error desde el exit()
+
+
+TODO:	Quizás seria conveniente definir un tipo de endpoint REPLICA_BIND donde indicamos que ese endpoint es local
+		pero que puede estar replicado.
+		Luego, deberia haber un  API que permita convertir este tipo de BIND en un REMOTO para cuando deja de funcionar el local.
+		
+		
+TODO
+M3=IPC.
+= TERMINAR PAPER SLOTS
+- TERMINAR FS Y DISK
+- ARMAR UN ESQUEMA
+      CLIENT ==== FILESERVER ===== DISK
+= TERMINAR SYSTASKS COORDINADAS
+= VER COMO INTEGRAR A CGROUPS
+
+PROBLEMA:	Quedan vivos los procesos INIT, quedan huerfanos del init de LINUX
+
+
+TODO:		Como hacer para que dos threads hijos no puedan bindearse en distintas VMs si el padre no esta
+			bindeado.
+				
+			POSIBLE SOLUCION:
+				Analizar consecuencias
+				Si un thread se bindea y el padre no esta bindeado, copiar en el p_ptr el descriptor del hijo
+				de esa forma los futuros hijos ven que el padre esta bindeado
+				Para distinguir entre padre bindeado y padre afectado por bindeado hay que controlar
+				
+						task_ptr->p_ptr->p_usr->p_lpid con task_ptr->pid
+				Si son distintos estan bindeados.
+			OTRA POSIBLE SOLUCION:
+				Si el padre no esta bindeado, asumir que el primer thread bindea al padre, no a si mismo
+				y por lo tanto sera como que es parte del padre.
+				
+PROBLEMA:	Como hacer para que un proceso REMOTO pueda comunicarse con un servidor LOCAL 
+		sin que la SYSTASK REMOTA le avise a la SYSTASK LOCAL de cada fork()/exit().
+
+Posible solucion:
+		Cuando el RPROXY recibe un mensaje de un proceso cliente REMOTO {nodeid,vmid, endpoint}
+		a través de put2lcl() que no está bindeado, el put2lcl() hace un equivalente a un 
+		sendrec() de un mensaje 
+				m_source = PROXY (nuevo tipo, como ANY o NONE o SELF )
+				m_type = RMTBIND
+				m1_i1 = nodeid
+				m1_i2 = vmid
+				m1_i3 = endpoint
+		El endoint del destinatario (en este caso SYSTASK) debería setearse en 
+		cada PROXY struct proxies_s de proxy.h
+		Si la SYSTASK no existe => retorna EMOLNOTBIND (porque el endpoint no esta registrado)
+		La SYSTASK intenta hacer el rmtbind() del proceso remoto:
+			- Si la SYSTASK lo rechaza por inconsistencia 
+				- retornar error de SYSTASK
+			- Si la SYSTASK detecta que ese slot tenia otro endpoint del mismo nodo
+				- rmtunbind(old_ep)
+				- lclbind(new_ep)
+				- retorna OK
+			- Si la SYSTASK tiene el slot libre hace
+				- lclbind(new_ep)
+				- retorna OK
+		El put2lcl ahora sabe que el proceso esta bindeado y puede continuar.
+		
+
+ERROR: 		Algunas veces al hacer cat /procs/drvs/VM0/procs SE CUELGA!
+
+		
+TODO:  	NOTIFICAR A SYSTASK DE CADA EVENTO QUE OCURRE UNBIND LOCAL (ALGO DE ESTO YA ESTA HECHO)
+TODO:	Deshabilitar del rproxy el REMOTE BIND y REMOTE UNBIND
+	
+ATENCION: Esto tambien se puede necesitar en do_proxies_unbind()
+
+PROBLEMA:	Hay tantos PMs como nodos ????
+				RESPUESTA: NO NECESARIAMENTE : Prueden armarse esquemas
+					* 1 PM POR VM
+					* 1 PM POR VM Y MULTIPLES REPLICAS BACKUP
+					* N PM POR VM administrando cada uno un set de procesos LOCALES
+					* N PM por VM conformando un solo unico VM virtual
+				Cada PM atiende a sus procesos locales?
+					RESPUESTA: NO NECESARIAMENTE - depende el equema elegido
+
+PROBLEMA:	Que pasa con un proceso de usuario en NODE1, denomindado USER1 que ya se registro en PM1 y SYSTASK1 Y KERNEL1
+			Ahora quiere comunicarse con FS0 de NODE0
+	POSIBLE SOLUCION:
+			En el descriptor de proceso crear un nuevo bitmap 
+unsigned long p_bindmap;		/* bitmap of a LOCAL VIEW (not complete) of nodes where this process is binded as LOCAL or REMOTE */
+			Cuando el USER1 intenta enviar un mensaje a FS1 (ya bindeado correctamente en el nodo local), 
+			el kernel y comparar con el bindmap ve que no esta bindeado en el nodo remoto.
+			OPCION 1:
+					SPROXY.NODE1: 
+						* hace get2rmt() este se fija en el bindmap y utilizando el campo de cmd_t denominado rcode con alias cmd_flags setea el flag FLAG_RMTBIND. 
+						* SPROXY1 envia el mensaje original con el CMD_FLASGS seado FLAG_RMTBIND
+					RPROXY.NODE0: 
+						* analiza el campo cmd_flags y ve que esta prendida FLAG_RMTBIND
+						* RPROXY0 construye y envia un falso mensaje RMTBIND con origen SYSTASK1 a destino SYSTASK0
+						* Luego envía el mensaje original de USER1 a FS1.
+					SYSTASK0:
+						* Hace el RMTBIND del proceso en el kernel y en sus propias tablas con get_procinfo()
+						
+			OPCION 2:	La SYSTASK LOCAL es informada con algun tipo de notificacion de que el proceso USER1 no esta bindeado en NODO0
+						Esta envia:
+							- opcion 1: un broadcast a todos los nodos via spread
+							- opcion 2: un mensaje directo via M3IPC de RMTBIND solo al nodo destino.
+			
+			OPCION 3:	Idem OPCION 1 pero en lugar de truchar un mensaje de la SYSTASK1 -> SYSTASK0
+						El RPROXY0 fabrica un mensaje RMT_BIND desde PM1 -> SYSTASK0
+						PROBLEMA: La respuesta enviada de SYSTASK0->PM1 , PM1 dice ????????
+						SOLUCION: IGNORARLA
+						SOLUCION: SYSTASK no responde a otros PMs.
+						
+									
+PROBLEMA:	
+	Que pasa si el NUEVO miembro ya recibio la VM_INFO, la TABLE pero aun no recibio ningun slot ???
+	Y SI AHORA ES EL NUEVO FIRST_MBR?
+		
+PROBLEMA A CONSIDERAR:	En el nuevo miembro
+						1) msg JOIN:  			STS_INIT->STS_WAIT_VM_INFO
+						2) msg SYS_PUT_VM_INFO: STS_WAIT_VM_INFO -> STS_WAIT_TABLE
+						3) msg SYS_PUT_TABLE:	STS_WAIT_TABLE->STS_REQ_SLOTS
+	El problema que se puede dar es que entre el JOIN y el SYS_PUT_TABLE el first_mbr MUERA.
+	Si el first_mbr muere, entonces el nuevo first member deberá hacer el broadcast de VM_INFO y TABLE.
+	Debería haber un timeout si algo de esto falla.
+	Si no falla, cuanto termina de inicializarse, (initialized == TRUE) entonces hacer un broadcast para hacer un SYS_READY
+	Todos los demas procesos ahora hacen un rmt_bind de la SYSTASK remota nueva.
+	
+
+
+TODO:  	NOTIFICAR A SYSTASK DE CADA EVENTO QUE OCURRE UNBIND LOCAL (ALGO DE ESTO YA ESTA HECHO)
+	
+TODO:		Se deberia deshabilitar el algoritmo de NAGLE del proxy TCP de tal forma de no demorar el envio de paquetes pequeños!!!!.
+			7.2 getsockopt and setsockopt Functions 
+			7.9 TCP Socket Options 
+			Ver: http://www.ibase.ru/devinfo/tcp_nodelay.txt
+			If set, this option disables TCP's Nagle algorithm (Section 19.4 of TCPv1 and pp. 858–859 of TCPv2). By default, this algorithm is enabled
+			int flag = 1;
+int result = setsockopt(sock,            /* socket affected */
+                        IPPROTO_TCP,     /* set option at TCP level */
+                        TCP_NODELAY,     /* name of option */
+                        (char *) &flag,  /* the cast is historical cruft */
+                        sizeof(int));    /* length of option value */
+ if (result < 0)
+    ... handle the error ..
+			Something a bit cleaner would be to activate the low latency mode of TCP:
+			!!!!!!!!!!!! echo 1 > /proc/sys/net/ipv4/tcp_low_latency !!!!!!!!!!!!!!!!!!!
+			This will give a hint to the TCP stack as to which decisions to make latency lower 
+			(I guess it's what you are trying to achieve by disabling Nagle's algorithm). 
+			By default, it is set to optimize bandwidth ( "0" will be read from /proc/sys/net/ipv4/tcp_low_latency ).
+
+TODO:	Se puede hacer un proxy con RPC !!!!
+			
+TODO:	Hacer loops
+		- todos contra uno
+		- De a pares
+		- Preparar DVD con SPINLOCKS
+		- Preparar DVD con RWLOCKS
+		
+		
+TODO:	Flexibilizar los PROXIES.
+			1) Que soporten threads 
+				- Cambiar proxy_bind()
+
+
+TODO:	Hacer todos los tests con SPINLOCKS
+		LOCAL
+			- loop_mol_ipc.sh 
+			- loop_sr_peer.c
+			- IPC udp
+			- IPC tcp 
+				
+			
+	p_lpid	p_nodeid	p_rts_flags	p_mis_flags
+LOCAL	PID	local_nodeid	---		---
+REMOTE	NO_PID	nodeid		REMOTE		---
+BACKUP	PID	nodeid		REMOTE		BACKUP
+PROXY	PID	(-1)		---		PROXY
+
+
+
+ 
+TODO:
+			KILL de task Linux:
+				Si es PROXY
+					do_proxies_unbind
+						por cada nodo que representa
+							do_node_end
+								por cada proceso REMOTO de ese nodo
+									do_unbind
+										si es BACKUP termina 
+										Por cada proceso que le quiere enviar mensaje
+											si es LOCAL 
+												retorna error
+											si es REMOTO	 
+												send_ack
+								desconetar nodo de la VM
+								desconetar nodo del proxy
+						enviar signal al otro proxy
+				Si no es proxy
+					do_unbind
+						si es BACKUP termina 
+						Por cada proceso que le quiere enviar mensaje
+							si es LOCAL 
+								retorna error
+							si es REMOTO	 
+								send_ack
+
+			END NODE:
+				do_node_end
+					por cada proceso REMOTO de ese nodo
+						do_unbind
+							si es BACKUP termina 
+							Por cada proceso que le quiere enviar mensaje
+								si es LOCAL 
+									retorna error
+								si es REMOTO	 
+									send_ack
+					desconetar nodo de la VM
+					desconetar nodo del proxy
+			
+			PROXY PAIR END:
+				do_proxies_unbind
+					por cada nodo que representa
+						do_node_end
+							por cada proceso REMOTO de ese nodo
+								do_unbind
+									si es BACKUP termina 
+									Por cada proceso que le quiere enviar mensaje
+										si es LOCAL 
+											retorna error
+										si es REMOTO	 
+											send_ack
+								desconetar nodo de la VM
+								desconetar nodo del proxy
+			
+			VM END:		
+				Por cada proceso 
+					do_unbind
+				Por cada nodo
+					desconectar
+					
+
+
+					
+				
+ESCENARIO DE MIGRACION:
+======================
+	1) El administrador de la VM ordena la migración de un proceso a su SYSTASK
+			migrate(vmid, endpoint, old_node, new_node);
+	2) La SYSTASK envia por MULTICAST un comando MIGRATE al resto de los nodos
+	3) Todas las SYSTASK ejecutan
+			mnx_migrate(MIGR_START, pid, endpoint, dst_node)
+	4) La SYSTASK del OLD NODE 
+			- Si el proceso esta RUNNING 	=> Marca el p_misc_flags NEED_MIGRATE
+			- si el proceso esta bloqueado	=> setear p_rts_flags BIT_MIGRATE		
+
+TODO:	Incluir algun comando que contemple la migración de un endpoint de un nodo a otro.
+			Una SYSTASK envia un broadcast con {vm, endpoint, nodo_destino}.
+			Todas las SYSTASKs (incluyendo origen y destino) ejecutan un comando MIGRATE(MIGR_START, endpoint, src_node, dst_node);
+				SYSTASK origen: cambia el estado del proceso a (MIGRATING | REMOTE) y el p_nodoid
+				SYSTASK destino: Hace el equivalente a un BIND del proceso pero cambia el estado del proceso a MIGRATING, removiendo REMOTE y cambia el p_nodeid
+				OTRAS SYSTASKs: cambia el estado del proceso a MIGRATING y el p_nodoid
+			La SYSTASK DESTINO: Cuando finaliza la migración hace un comando 
+				entonces TODOS los NODOS cambian suprimen la bandera MIGRATE
+			(el vmid se obtiene del descriptor del proceso invocante caller_ptr)
+
+	
+		ATENCION: Se puede reducir el número de los parámetros 
+				mol_migrate(oper, pid, endpoint, nodeid)
+			MIGRATE_START: 	nodeid = oldnode
+				       	pid = (local)?p_lpid:PROC_NO_PID;
+			MIGRATE_END:   	nodeid = newnode
+				       	pid = (local)?p_lpid:PROC_NO_PID;
+			MIGRATE_FAIL:  	nodeid = oldnode	
+			pid = (local)?p_lpid:PROC_NO_PID;
+
+ATENCION NOTIFY: Un proceso local hace un NOTIFY a otro proceso local que luego MIGRAGRA
+			Que hacer con los bits de notificación??
+		 Un proceso remoto hace un NOTIFY a un proceso local que luego MIGRARA
+			Que hacer con los bits de notificación??
+Z
+
+/* PROXIES */
+SI CAMBIO EL NODO DESTINO DE UN COMANDO, ENTONCES RETORNAR ERROR (EMOLBADNODEID) AL PROCESO EMISOR 
+DE ESA FORMA EL PROCESO EMISOR PUEDE VERIFICAR
+
+if( if ret= (EMOLBADNODEID)  && cmd->c_dnode != node[ENDPOINT_P(dst->p_usr.p_endpoint).n_nodeid )
+	/* SIGNIFICA QUE HUBO UNA MIGRACION  hay que REEJECUTAR */
+
+
+
+ 		ATECION: Que hacer con los PROXIES que tienen encolados mensajes para el proceso migrante previo a MIGRATE_START?
+			OLD:REMOTE, NEW:REMOTE:
+				El proxy SENDER del NODO OLD lee el destination node del comando, desencola de su cola OLD 
+				y encola en la del PROXY SENDER del NODO NEW.
+
+			OLD:REMOTE, NEW:LOCAL:
+				El proxy SENDER del NODO OLD lee el destination node del comando, desencola de su cola OLD 
+				y encola en la de recepción del proceso MIGRADO.
+
+
+			OLD:LOCAL, NEW:REMOTE:
+				El mol_migrate desencola de la cola de recepción del proceso migrado y se encola 
+				y encola en la del PROXY SENDER del NODO NEW.
+			
+		ATENCION: 	
+				CON BIT_MIGRATE:
+					Si el proceso receptor es migrante, el PROXY RECEIVER encola en p_mlist.
+				SI EL PROCESO NO EXISTE MAS EN ESE NODO:
+					Solución 1- RETORNA ERROR
+					Socución 2- Encola en el PROXY SENDER del nuevo nodo del MIGRANTE.
+ 
+		
+		ATENCION:	Cuando un proceso LOCAL trata de enviarle un mensaje a un proceso DURANTE la MIGRACION, 
+					es decir con la bandera MIGRATE seteada.
+					El descriptor del emisor deberia encolarse en el descriptor del MIGRANTE y setear su flag WAITMIGR.
+					MIGRANTE es LOCAL pero sera REMOTO: 
+						Si la migración termino OK: En el NODO local deben procesarse todos los mensajes 
+							,encolar los descriptores emisores en el PROXY SENDER del nuevo NODO del MIGRANTE 
+							y borrar la bandera WAITMIGR de cada emisor.
+						Si la migracion FALLO: borrar la bandera WAITMIGR. 
+					MIGRANTE es REMOTO pero en otro NODO: 
+						Si la migración termino OK: Deben desencolarse los descriptores de los emisores
+							,encolar los descriptores en el PROXY SENDER del nuevo NODO del MIGRANTE 
+							y borrar la bandera WAITMIGR de cada emisor.
+						Si la migración FALLO: borrar la bandera WAITMIGR.
+					MIGRANTE es REMOTO pero sera LOCAL: 
+						Si la migración termino OK: En el NODO local se procesaran todos los mensajes de la misma forma
+							que como si no hubiese estado esperando el mensaje y borrar la bandera WAITMIGR de cada emisor.	
+		
+		ATENCION:	Que pasa con los NOTIFY enviados al proceso MIGRANTE durante la migracion?
+					Cuando se hace un NOTIFY de a un proceso MIGRANTE, se debe:
+						* setear el bit notify correspondiente al emisor
+						* encolar el emisor en el lista de espera 
+						* Setear el BIT_WAITMIGR el descriptor del emisor.
+					MIGRANTE es LOCAL pero sera REMOTO: 
+						Si la migración termino OK: En el NODO local deben procesarse todos bits 
+							y encolar en el PROXY SENDER del nuevo NODO del MIGRANTE
+
+						
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	T O D O
+	Que un proceso sea REMOTO implica redundacia de info
+		flat BIT_REMOTE
+		pid = -1
+		node = not(local_nodeid)
+		proc_ptr->p_taks == NULL
+
+	Quizas para hacer BACKUP se podria poner
+		flag BIT_REMOTE
+		pid = (pid del backup local)
+		node = not(local_nodeid)
+		proc_ptr->p_taks = (task del pid local)
+
+	Esto se haria como BACKUP BIND.
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	
+		
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	T O D O
++ Resolver SIGNALS (problema con division x 0 )
++ Resolver EXEC (archivo de ejecucion desde otro FS)
++ Incluir en Containers
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+TODO:			Crear un FS VACIO para hacer los binding correspondientes.
+
+				
+TODO:			CONVERTIR APIs en LIBRERIAS
+			test de transferencia entre 2 nodos con 2 o mas VMs
+		
+	
+
+Que sucede si:
+        El RPROXY recibe un mensaje CMD_SEND_MSG
+		Despierta al proceso local que hace el RECEIVE
+		El proceso local envia un CMD_SEND_MSG al proceso remoto (encola en el SPROXY)
+		El RPROXY encola el CMD_SEND_ACK en el SPROXY
+		ERRROR: La colas del SPROXY queda entonces      1) CMD_SEND_MSG
+														2) CMD_SEND_ACK
+														
+TODO:   PROXY_UNBIND
+		Si un proceso hizo un SEND por ejemplo y quedo esperando un SENDACK del proceso remoto pero el NODO CAE,
+				el emisor queda colgado. (LISTO)
+		Hacer lo mismo para el requester que esta esperando alguna respuesta SOURCE/DESTINATION
+
+TODO: 	Desarrollar tests de loops remotos e instructivos.
+
+TODO:   POWERPOINT:  Falta definir RPROXY funciones de Acks 
+		Definir maquina de estados de PROXIES	
+		Puede suceder que un proceso espere recibir un mensaje o comando específico pero le llega otro? 
+
+
+TODO:	Cuando el sender trata de enviar algo al dest pero hay un problema, el descriptor queda bloqueado- Desbloquearlo
+		
+TODO:   Proxies:
+		* controlar todo tipo de error
+		* signal para guardar info estadistica (x tipo de header, tamaño paquete, x VM, bandwith)
+		* Leer parametros de archivo de configuracion.
+											
+cambiar en kernel NBR2PTR por PROC2PTR
+
+	
+
+
+
+
+
+	
+
+
+ 
+
+
+ 
+
+
+		

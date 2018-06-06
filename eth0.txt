@@ -1,0 +1,123 @@
+ eth.c:main:1390:Starting ETH on vmid=0
+ eth.c:main_init:1090:main_lpid=2881
+ eth.c:main_init:1097:ETH mi_ptr=0x9bd4000
+ eth.c:main_init:1103:ETH mo_ptr=0x9bd5000
+ eth.c:main_init:1124:Starting INET requests thread
+ eth.c:main_init:1127:INET requests thread  thread_id=-1217983680
+ eth.c:main_init:1132:clockTicks =100
+ eth.c:init_cards:950:
+ eth.c:init_cards:958:init card eth_card0 on tap tap0 device /dev/net/tun
+ eth.c:low_level_probe:646:tap0
+ eth.c:low_level_probe:668:tap0 MACADDR BE:EB:49:5F:7C:64:
+ eth.c:low_level_probe:675:eth_card0 MTU 1500
+ eth.c:init_cards:977:Starting tap0 device receiving thread
+ eth.c:init_cards:980:Receiver thread ec_nr=0 thread_id=-1226376384
+ eth.c:init_cards:986:Starting tap0 device sending thread
+ eth.c:init_cards:989:Sender thread ec_nr=0 thread_id=-1234769088
+ eth.c:init_rings:920:ec_nr=0
+ eth.c:main:1393:MTX_LOCK main_mutex 
+ eth.c:main:1395:waiting on barrier
+ eth.c:main:1396:COND_WAIT main_barrier main_mutex
+ eth.c:send_thread:796:fs_ltid=2885 ec_port=0
+ eth.c:send_thread:809:MTX_LOCK send_mutex[ec_ptr->ec_port] 
+ eth.c:send_thread:811:waiting send_barrier[0]
+ eth.c:send_thread:812:COND_WAIT send_barrier[ec_ptr->ec_port] send_mutex[ec_ptr->ec_port]
+ eth.c:receive_thread:885:fr_ltid=2884 ec_port=0
+ eth.c:eth_init:1023:eth_lpid=2883
+ eth.c:eth_init:1030:Get the DRVS info from SYSTASK
+ eth.c:eth_init:1034:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ eth.c:eth_init:1036:Get the VM info from SYSTASK
+ eth.c:eth_init:1040:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ eth.c:eth_init:1042:Get endpoint info from SYSTASK
+ eth.c:eth_init:1046:nr=6 endp=6 vmid=0 flags=8 misc=20 lpid=2881 nodeid=0 nodemap=1 name=eth 
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=0
+ eth.c:eth_thread:1070:source=9 type=2055 m2i1=0 m2i2=9 m2i3=134738260 m2l1=0 m2l2=134513704 m2p1=0xb771fac0
+ eth.c:eth_thread:1071:MTX_LOCK main_mutex 
+ eth.c:eth_thread:1074:COND_SIGNAL main_barrier
+ eth.c:eth_thread:1075:COND_WAIT eth_barrier main_mutex
+ eth.c:main:1405:rqst_source=2
+ eth.c:main:1436:source=9 type=2055 m2i1=0 m2i2=9 m2i3=134738260 m2l1=0 m2l2=134513704 m2p1=0xb771fac0
+ eth.c:do_init:1253:Port=0
+ eth.c:do_init:1283:port_name=eth_card#0 if_name=tap0 fd=3 ifr_ifindex=0 flags=210 mode=2 ec_port=0 ec_owner=9 
+ eth.c:do_init:1290:BE:EB:49:5F:7C:64
+ eth.c:do_init:1291:source=0 type=2324 m3i1=0 m3i2=1 m3p1=(nil) m3ca1=[¾ëI_|d]
+ eth.c:mess_reply:1144:source=0 type=2324 m3i1=0 m3i2=1 m3p1=(nil) m3ca1=[¾ëI_|d]
+ eth.c:M3IPC_send:246:dst_ep=9
+ eth.c:main:1451:COND_SIGNAL eth_barrier
+ eth.c:main:1395:waiting on barrier
+ eth.c:main:1396:COND_WAIT main_barrier main_mutex
+ eth.c:eth_thread:1076:MTX_UNLOCK main_mutex 
+ eth.c:eth_thread:1062:rcode=0
+ eth.c:eth_thread:1070:source=9 type=2054 m2i1=0 m2i2=9 m2i3=3 m2l1=1 m2l2=0 m2p1=0x86d9144
+ eth.c:eth_thread:1071:MTX_LOCK main_mutex 
+ eth.c:eth_thread:1074:COND_SIGNAL main_barrier
+ eth.c:eth_thread:1075:COND_WAIT eth_barrier main_mutex
+ eth.c:main:1405:rqst_source=2
+ eth.c:main:1436:source=9 type=2054 m2i1=0 m2i2=9 m2i3=3 m2l1=1 m2l2=0 m2p1=0x86d9144
+ eth.c:do_vread:1206:port=0 count=3 client=9 vectored=1 
+ eth.c:get_userdata:303:user_proc=9 count=24
+ eth.c:M3IPC_vcopy:274:src_ep=9 dst_ep=35534 bytes=24
+ eth.c:calc_iovec_size:331:
+ eth.c:calc_iovec_size:344:size=1518
+ eth.c:ec_recv:405:port=0 flags=210
+ eth.c:reply:1160:if_name=tap0 err=0 may_block=0 flags=0x     210
+ eth.c:reply:1172:client=9 now =521
+ eth.c:reply:1181:source=0 type=2325 m2i1=0 m2i2=9 m2i3=0 m2l1=0 m2l2=521 m2p1=0x804f9cb
+ eth.c:M3IPC_send:246:dst_ep=9
+ eth.c:main:1451:COND_SIGNAL eth_barrier
+ eth.c:main:1395:waiting on barrier
+ eth.c:main:1396:COND_WAIT main_barrier main_mutex
+ eth.c:eth_thread:1076:MTX_UNLOCK main_mutex 
+ eth.c:eth_thread:1062:rcode=0
+ eth.c:eth_thread:1070:source=9 type=2055 m2i1=0 m2i2=9 m2i3=-1217269760 m2l1=12 m2l2=-1218592868 m2p1=0xb771fac0
+ eth.c:eth_thread:1071:MTX_LOCK main_mutex 
+ eth.c:eth_thread:1074:COND_SIGNAL main_barrier
+ eth.c:eth_thread:1075:COND_WAIT eth_barrier main_mutex
+ eth.c:main:1405:rqst_source=2
+ eth.c:main:1436:source=9 type=2055 m2i1=0 m2i2=9 m2i3=-1217269760 m2l1=12 m2l2=-1218592868 m2p1=0xb771fac0
+ eth.c:do_init:1253:Port=0
+ eth.c:mess_reply:1144:source=0 type=2324 m3i1=0 m3i2=1 m3p1=(nil) m3ca1=[¾ëI_|d]
+ eth.c:M3IPC_send:246:dst_ep=9
+ eth.c:main:1451:COND_SIGNAL eth_barrier
+ eth.c:main:1395:waiting on barrier
+ eth.c:main:1396:COND_WAIT main_barrier main_mutex
+ eth.c:eth_thread:1076:MTX_UNLOCK main_mutex 
+ eth.c:eth_thread:1062:rcode=0
+ eth.c:eth_thread:1070:source=9 type=2057 m2i1=0 m2i2=9 m2i3=-1217267008 m2l1=-1218592868 m2l2=-1217267008 m2p1=0x80f1e78
+ eth.c:eth_thread:1071:MTX_LOCK main_mutex 
+ eth.c:eth_thread:1074:COND_SIGNAL main_barrier
+ eth.c:eth_thread:1075:COND_WAIT eth_barrier main_mutex
+ eth.c:main:1405:rqst_source=2
+ eth.c:main:1436:source=9 type=2057 m2i1=0 m2i2=9 m2i3=-1217267008 m2l1=-1218592868 m2l2=-1217267008 m2p1=0x80f1e78
+ eth.c:do_getstat:1316:port=0
+ eth.c:M3IPC_vcopy:274:src_ep=35534 dst_ep=9 bytes=64
+ eth.c:reply:1160:if_name=tap0 err=0 may_block=0 flags=0x     210
+ eth.c:reply:1172:client=9 now =521
+ eth.c:reply:1181:source=0 type=2325 m2i1=0 m2i2=9 m2i3=0 m2l1=0 m2l2=521 m2p1=0x9
+ eth.c:M3IPC_send:246:dst_ep=9
+ eth.c:main:1451:COND_SIGNAL eth_barrier
+ eth.c:main:1395:waiting on barrier
+ eth.c:main:1396:COND_WAIT main_barrier main_mutex
+ eth.c:eth_thread:1076:MTX_UNLOCK main_mutex 
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61
+ eth.c:eth_thread:1062:rcode=-61
+ eth.c:eth_thread:1066:rcode=-61

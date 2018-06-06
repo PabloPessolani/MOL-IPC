@@ -1,0 +1,6 @@
+#define SYNC_SECS	60L
+
+#define TIMEOUT_SECS	30
+
+#define INTERVAL_SECS	1
+#define INTERVAL_USECS	0

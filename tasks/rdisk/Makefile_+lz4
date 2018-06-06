@@ -1,0 +1,58 @@
+BINS= lz4_data_cd
+
+# Which compiler
+CC = gcc
+
+
+# Where are include files kept
+INCLUDE = ..
+#LIBS = ../../lib/syslib/libsyslib.so ../../lib/mollib/libmollib.so ../../stub_syscall.o
+CFLAGS = -MMD -MP -ldl -lm -lrt -lnsl -pthread -rdynamic
+LZ4FLAGS = $(CFLAGS)  
+LZ4FLAGS += -std=c99 -Wall -Wextra -Wundef -Wshadow -Wcast-align -Wstrict-prototypes
+
+LZ4LIBS = $(LIBS) 
+LZ4LIBS += 	../../../lz4-r131/lib/lz4frame.o \
+			../../../lz4-r131/lib/lz4.o \
+			../../../lz4-r131/lib/lz4hc.o \
+			../../../lz4-r131/lib/xxhash.o		
+	
+
+# Options for development
+# CFLAGS = -v -O3 -Wall -ansi
+
+all: $(BINS)
+
+#socat_up: socat_up.c 
+#	$(CC)  $(CFLAGS)  -o socat_up socat_up.c $(LIBS) -I$(INCLUDE)
+	
+#socat_rproxy: socat_rproxy.c 
+#	$(CC)  $(CFLAGS)  -o socat_rproxy socat_rproxy.c $(LIBS) -I$(INCLUDE)
+
+#socat_sproxy: socat_sproxy.c 
+#	$(CC)  $(CFLAGS)  -o socat_sproxy socat_sproxy.c $(LIBS) -I$(INCLUDE)
+	
+lz4_data_cd: lz4_data_cd.c 
+	$(CC)  $(LZ4FLAGS)  -o lz4_data_cd lz4_data_cd.c $(LZ4LIBS) -I$(INCLUDE) 
+
+#tcp_th_proxy: tcp_th_proxy.c 
+#	$(CC)  $(CFLAGS)  -o tcp_th_proxy tcp_th_proxy.c $(LIBS) -I$(INCLUDE)	
+
+#tcp_proxy: tcp_proxy.c 
+#	$(CC)  $(CFLAGS)  -o tcp_proxy tcp_proxy.c $(LIBS) -I$(INCLUDE)	
+
+#udp_proxy: udp_proxy.c 
+#	$(CC)  $(CFLAGS)  -o udp_proxy udp_proxy.c $(LIBS) -I$(INCLUDE)	
+
+#tipc_proxy: tipc_proxy.c 
+#	$(CC)  $(CFLAGS)  -o tipc_proxy tipc_proxy.c $(LIBS) -I$(INCLUDE)	
+
+#svr_proxy: svr_proxy.c 
+#	$(CC)  $(CFLAGS)  -o svr_proxy svr_proxy.c $(LIBS) -I$(INCLUDE)	
+
+#clt_proxy: clt_proxy.c 
+#	$(CC)  $(CFLAGS)  -o clt_proxy clt_proxy.c $(LIBS) -I$(INCLUDE)	
+
+	
+clean:
+	rm $(BINS) *.o

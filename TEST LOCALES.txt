@@ -1,0 +1,68 @@
+
+SETEAR NRO DE CPUS
+# echo 0 > /sys/devices/system/cpu/cpu1/online
+
+========================================================
+TCP
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_tcp.sh <loops>
+
+========================================================
+MQ
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_mq.sh <loops>
+
+========================================================
+UNIX
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_unix.sh <loops>
+
+========================================================
+PIPE
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_pipe.sh <loops>
+
+========================================================
+SIMPL
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_simpl.sh <loops>
+
+========================================================
+SRR
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_srr.sh <loops>
+
+========================================================
+TIPC
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_tipc_server.sh <loops> &
+/home/jara/mol-ipc/loops/scripts/loop_tipc_client.sh <loops> &
+
+========================================================
+FIFO
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_fifo.sh <loops>
+
+========================================================
+LPC
+========================================================
+/home/jara/mol-ipc/loops/scripts/loop_lpc.sh <loops>
+
+========================================================
+M3-IPC
+========================================================
+
+root@node0:~# cd /lib/init/rw
+
+root@node0:/lib/init/rw# /home/jara/mol-ipc/tests/test_dvs_init -n 0 -D 0
+Initializing DRVS. Local node ID 0... 
+d_nr_vms=32 d_nr_nodes=32 d_nr_procs=189 d_nr_tasks=67 d_nr_sysprocs=96 
+d_max_copybuf=32768 d_max_copylen=524288
+d_dbglvl=0 version=2.1
+
+root@node0:/lib/init/rw# /home/jara/mol-ipc/tests/test_dc_init 
+dc_vmid=0 dc_nr_procs=189 dc_nr_tasks=67 dc_nr_sysprocs=96 dc_nr_nodes=32 flags=0 dc_nodes=0 dc_name=VM0
+Virtual machine 0 has been initialized on node 0
+
+
+

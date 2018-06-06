@@ -1,0 +1,1559 @@
+
+
+UNBIND REMOTO AUTOMATICO
+
+Si un proceso remoto con un ENDPOINT2, pero que su P_NR = ENDPOINT_P(ENDPOINT2) 
+ya esta ocupado con otro proceso con ENDPOINT1 ( ENDPOINT_P(ENDPOINT2) =  ENDPOINT_P(ENDPOINT1), 
+es porque el proceso REMOTO murio y su lugar lo ocupo uno nuevo 
+(incluso el proceso remoto de otro nodo).
+En este caso hay que hacer el BIND del nuevo proceso.
+
+
+CADA PROCESO puede tener un bitmap de nodos inicializado en cero, que se setea en 1 
+cuando se intercambio informacion con algun proceso de ese nodo
+de esa forma se puede saber a quienes avisar eventos respecto al proceso en el unbind
+y tener un mapa de concectividad del proceso.
+
+==========================================================================
+	COMO EVITAR LOS RMTBIND ??
+==========================================================================
+Para que un proceso local pueda enviar un mensaje a un proceso remoto, el 
+proceso remoto debe estar bindeado en la VM del nodo local.
+Como evitar que se haga el rmtbind?
+
+Solucion 1: Se supone que las SYSTASK de los diferentes nodos intercambiaran
+info sobre los proceso que contienen y que quieren hacerse publicos (rmtbind),
+es decir los procesos del sistema. 
+No es necesario intercambiar TODOS los procesos bindeados por una SYSTASK a 
+las otras SYSTASK.
+AUTO-REMOTE-BINDING:
+Si cuando un proceso REMOTO contacta a proceso LOCAL (put2lcl) y el proceso 
+REMOTO no está bindeado (FREE), entonces el put2lcl primero hace un 
+rmtbind en el kernel y luego continua con el put2lcl.
+ 
+Ventaja: se hace la resolucion a nivel de usuario y no de kernel	
+
+Solucion 2: Si un proceso local hace un IPC a un proceso remoto que no está
+bindeado:
+	1- el proceso local se bloquea en WAIT4BIND 
+	2- se le envía un NOTIFY a la SYSTASK desde el kernel con el endpoint faltante
+	3- la SYSTASK intercambia info con las otras SYSTASK para ver quien tiene ese endpoint.
+	4- la SYSTASK hace un rmtbind del proceso remoto
+	5- Se rastrean todos los procesos de la VM para ver aquellos que tenian WAIT4BIND del proceso
+	6- El proceso continua con la operacion de IPC
+Ventaja: Automatizacion
+Desventaja: 
+	1- Notify desde el kernel a SYSTASK 
+	2- Kernel mas complejo por el nuevo estado del proceso.
+
+
+	
+==========================================================================
+	REDEFINICION DE ENDPOINTS 
+==========================================================================
++ Que pasa si a los endpoints los definimos como:
+struct endpoint {
+     int generation : 16;
+     int node : 8;
+     int slot : 8;
+     };
+Ventaja: ya se conoce el nodo donde se encuentra el proceso
+Problema: como identificar a procesos del sistema con _ENDPOINT(SYSTEM)=0 
+en el caso de que SYSTEM esté en otro nodo que no sea 0?
+VALE LA PENA??
+	
+==========================================================================
+	USO DE RANURAS 
+==========================================================================
+A futuro, cada nodo es owner de sus ranuras (Algoritmo de Donacion)
+El nodo usa sus ranuras en forma libre.
+cuando un proceso de una ranura local requiere enviar un mensaje a un proceso
+remoto, 
+	1)se fija si esta dado de alta en el proxy correspoindiente
+			proc_ptr->p_proxy_bitmap
+	2) Si no esta dado de alta, envia un BIND al nodo destino
+		* Esto requiere conocer el nodo destino.
+			a) con rmtbind
+			b) con broadcast a cada nodo de la VM
+
+	
+==========================================================================
+	do_unbind
+==========================================================================
+Se deben remover los mensajes PROPIOS encolados en el PROXY.
+CMD_COPYIN_DATA: estoy enviando datos al remoto para que los tome
+CMD_COPYOUT_RQST: estoy pidiendo datos al remoto para que los envie
+CMD_SNDREC_MSG
+CMD_SEND_MSG
+CMD_NOTIFY_MSG
+
+==========================================================================
+	VERIFICAR LOCKS
+==========================================================================
+DRVS:
+	dc_init	
+	dvs_init
+	proxy_bind
+		lock(dvs)
+		inc_counter(dvs)
+		unlock(dvs)
+		
+	dvs_end
+	proxy_unbind
+	dc_end
+		lock(dvs)
+		dec_counter(dvs)
+		unlock(dvs)
+
+PROXY:
+	proxy_bind
+		lock(task)
+		inc_counter(task)
+		unlock(task)
+
+	proxy_unbind
+		lock(task)
+		dec_counter(task)
+		unlock(task)
+
+VM:
+	dc_init
+	proc_bind
+		lock(vm)
+		inc_counter(vm)
+		unlock(vm)
+
+	dc_end
+	proc_unbind
+		lock(vm)
+		dec_counter(vm)
+		unlock(vm)
+
+PROC:
+	proc_bind
+		lock(task)
+		inc_counter(task)
+		unlock(task)
+	
+	proc_unbind
+		lock(task)
+		dec_counter(task)
+		unlock(task)
+
+NODOS
+	add_node
+	proxy_bind
+		lock(node)
+		inc_counter(node)
+		unlock(node)
+		
+	rmv_node
+	proxy_bind
+		lock(node)
+		dec_counter(node)
+		unlock(node)
+
+
+==========================================================================
+	FINALIZACION DE ENTIDADES
+==========================================================================
+
+DRVS
+	- PROXIES
+		-devolver error a todos los mensajes en cola para enviar (SPROXY)
+		-enviar un UNBIND a cada PROXY REMOTO (RPROXY)
+	- VMS
+		-Terminar procesos
+			- remover con error todos los procesos que esperaban enviar mensajes
+			- devolver error a todos los procesos que esperaban recibir mensajes
+
+		-remover de nodos
+				
+		
+		
+
+==========================================================================
+	BIND y FORK
+==========================================================================
+
+
+METODOS PERMITIDOS DE FORK
+•	Procesos del sistema:  hacen el mnx_bind al kernel directamente y luego hacen MOLBINDPROC
+•	Proceso de usuario: Solo a través de minix_fork() 
+•	Es decir, se anula el AUTO BIND en el FORK de LINUX !!!
+ 
+minix_fork
+(  
+     mutex = 0;
+ 
+      if ( (lpid =fork) == 0) {  /* CHILD */
+                      down(mutex)           /* se bloquea hasta que el padre haga los tramites */
+                      rcode = mnx_receive(PM, &m); /* !!! ver si el PM tiene q hacer notify !!!!*/
+                      if(rcode) exit();     /*  si es ERROR finaliza*/
+		      if(m_type != OK)
+                              exit();
+                      return(0);            /* sino retorna 0 al CHILD */
+       }                                    /* PARENT, necesita el LPID del hijo para hacer el bind */
+      mpid  = pm_fork(lpid)                 /* Hace el BIND en el PM->SYSTASK->KERNEL btiene el MINIX PID */
+      up(mutex)                             /* Libera al CHILD una vez obtenido el resultado  */
+      if( mpid < 0)                                          
+                        errno= mpid;
+                        return(-1);
+      return(mpid);       
+)
+ 
+El PM y SYSTASK cuando recibe el FORK para crear el CHILD lo señalan con alguna bandera tipo PREFORK.
+Cuando el proceso CHILD hace pm_child(), se borra esa bandera.
+ 
+pm_child(): es un sendrec al PM, en el cual el proceso que se supone BINDEADO espera la autorización el PM para continuar
+Si el proceso no fue BINDEADO el sendrec() resultará en ERROR.
+ 
+Que pasa si el padre hizo el FORK, pero el CHILD murió antes de hacer el pm_child() ??
+Entonces el KERNEL ejecutara do_unbind() que enviará un kill_unbind()  al PM para que suprima al CHILD de sus tablas y este a la SYSTASK.
+
+PARA MEDIR PERFORMANCE DE FORK/EXIT
+
+for(i = 0; i < nr_forks; i++)
+    if( mnx_fork() == 0)
+           exit();
+    
+for(i = 0; i < nr_forks; i++)
+  waitall()
+
+
+
+        
+
+
+
+
+==========================================================================
+	BIND IN FORK	- CANCELADO - CANCELADO - CANCELADO - CANCELADO ==========================================================================
+
+PARENT: 
+	kernel_sendrec(PM, BIND)
+
+PM: 	
+	decide el child_nr 
+	fija el estado del proceso como IN_USE y RESERVED
+	send(PARENT, chil_nr)
+
+PARENT:
+	lclbind(child_nr, child_pid);
+	kernel_sendrec(PM, FORK);
+
+PM:	sys_fork(FORK) !!!! problema: como distinguir un FORK automatico de un FORK invocado ?? !!!!
+	Solución: algun campo del mensaje que indique el tipo de FORK
+		
+SYSTASK: 
+	Hace un SYS_FORK que solo registra en sus tablas al nuevo proceso
+	registra el proceso en su tabla local y de kernel
+        Responde al PM
+
+PM: 	registra el proceso en su tabla local y de kernel
+	reply(PARENT);
+
+
+PARENT	        			PM                SYSTASK
+Sendrec(PM, BIND)        "------->"    get child_nr                
+lclbind(child_nr, child_pid)        "<--------"        send(PARENT, child_nr)                
+Sendrec(PM, FORK)        "------->"        sys_fork(child_nr)        "------->"        sys_fork()
+                                register proc
+                                get kproc
+                register mproc        "<--------"        reply(PM)
+                register kproc                
+end fork        "<--------"        reply (PARENT)                
+
+
+==========================================================================
+sendsys_killed
+==========================================================================
+FALTA LA PARTE REMOTA - > PROXY SENDER
+
+==========================================================================
+	TEMA A RESOLVER
+==========================================================================
+Que hacer cuando un proceso termina solo, sin avisarle a SYSTASK ni PM 
+porque ejecuto EXIT o lo finalizaron con SIGNAL.
+Posible solución:
+
+NOTIFY A SYSTASK:
+	+ Cuando finaliza le envia un NOTIFY a SYSTASK: para ello la SYSTASK debe estar arrancada
+		y en forma fija debe setearse siempre la SYSTASK.
+	+ Deberia construirse un mensaje diferente que diga que es un UNBIND, por lo que se requiere
+		el endpoint del proceso a unbindear.
+
+SIGNAL:
+	+ Cuando finaliza le envia un SIGNAL a SYSTASK: como sabe la SYSTASK que paso?
+ 	Las SIGNALS NO SE ENCOLAN, por lo que pueden terminar multiples procesos pero solo un handler ejecuta.
+
+PSEUDO SENDREC:
+	+ Cuando un proceso hace un exit() por si mismo o por un KILL, entonces antes de salir
+	se fija si tiene asociado en el campo notify_to a un proceso (SYSTASK)
+	Si la SYSTASK está activa, entonces le hace un pseudo sendrec() con un m_type=UNBIND.
+	Cuando la SYSTASK recibe UNBIND entonces hace un unbind en SU TABLA DE PROCESOS pero no en el kernel ya que
+	esto está en marcha.
+	Luego la SYSTASK envia una respuesta cualquiera y desbloquea al proceso para que pueda finalizar.
+
+
+==========================================================================
+	EXEC !!! PROBLEMA
+==========================================================================
+Cuando un proceso hace un FORK, el hijo hace un BIND el nombre del proceso se 
+obtiene del kernel y se copia en el descriptor del proceso. Es el nombre del proceso hijo.
+Si luego hace EXEC, entonces queda el nombre del programa viejo.
+
+prog_AAA()
+{
+    if( (child_pid = fork()) == 0) {	/* CHILD */
+		mnx_bind(child_pid, child_nr); /*aqui se copia el nombre desde la task a proc */
+						/* es decir child_ptr->p_usr.pname = prog_AAA */
+		exec("prog_BBB");		/* no cambia el nombre			      */
+    }		
+}
+
+SOLUCION!!:
+	PARA PROCESOS LOCALES:
+ 		NO tener el nombre del proceso en el descriptor del proceso sino directamente en la TASK
+		task_ptr->comm
+	PARA PROCESOS REMOTOS:
+		Mantener el nombre del proceso en el descriptor
+
+==========================================================================
+	SYSTEM TASK
+==========================================================================
+
+La SYSTASK recibe un pedido de una tarea por el seteo de un SYNC_ALARM_TIMER
+La systask genera el nodo de la lista enlazada x menor tiempo al vencimiento
+El handler del TIMER ejecuta cause_alarm que básicamene es un NOTIFY.
+PROBLEMA: Si la SYSTASK está haciendo un receive() habria q ver si puede hacer un notify.
+PROBLEMA2: El SOURCE debe ser TIMER.
+	SOLUCION: Cambiar notify para que incluya el parametro source y hacer una nueva llamada
+			mnx_src_notify(source, destination)
+		   la llamada tradicional hará mnx_notify que se transformara en mnx_src_notify(SELF, destination)
+
+
+La systask tiene varias entradas de peticiones:
+	- La de los procesos locales via receive() o rcvrqst()
+	- La de los procesos remotos que debería derivarse a un thread 
+	- La de las SYSTASK remotas via spread. Para ello hay que crear un thread que 
+		cuando viene un bind o unbind de un proceso remoto hace el
+		bind/unbind en el kernel local de ese proceso remoto
+		Otro tipo de peticiones podría ser que se envíe al proceso 
+		remoto via spread, las entradas de procesos locales con p_nr > 0
+		al proceso remoto para que pueda actualizar su estado.
+
+- CLOCK TASK es un proceso separado porque el SIGNAL puede ser enviado a cualquier de lo threads de un proceso!!
+
+- RESUMEN DE THREADS 
+	- MAIN: Atiende requerimientos de procesos locales
+	- REMOTE: Atiende requerimiento de proceso remotos
+	- REPLICA: Atiende las peticiones de las SYSTASK remotas via spread
+
+- Se requiere obtener los parametros del kernel de IPC (VM y procs) 
+- Por cada nodo remoto crea un THREAD que espera peticiones en una COLA DE MENSAJES
+- thread MAIN 
+    while( true)
+	rcode = receive(&request)
+	if (rcode == OK) /* message from kernel */
+		requester = request.m_source 
+		if (requester is LOCAL) 	
+			lock(requester)
+        		resolver_peticion(&request)
+        		unlock(requester)
+	        	reply(caller)
+		else	/*enviar la peticion a un THREAD */
+			sendmq(request);
+	else /* reply from other thread */
+		receive_mq(&reply)
+		mnx_send(&reply)
+
+- thread NODOx
+    while( true)
+	rcode = receive_mq(&request)
+	requester = request.m_source 
+	lock(requester)
+	resolver_peticion(&request)
+	unlock(requester)
+	send_mq(&reply);
+	send_signal(MAIN_THREAD, SIGRUSR1)
+
+
+==========================================================================
+	NIVELES DE PRIVILEGIOS
+==========================================================================
++ Cada proceso tendria un nivel de privilegios MAX_PRIV <= priv < MIN_PRIV
+	+ PRIV_HARDWARE = MAX_PRIV = 0
+	+ PRIV_KERNEL = 1
+	+ PRIV_TASK = 2
+	+ PRIV_SERVER = 3
+	+ PRIV_USER = 4
+
++ Cada primitiva puede ser usada en un nivel de privilegios
+	+ NOTIFY: Siempre que priv(src) < priv(dst) y
+		priv(src) = PRIV_HARDWARE | PRIV_KERNEL
+		priv(dst) = PRIV_KERNEL | PRIV_TASK 
+
+	+ SEND: Siempre que priv(src) <= priv(dst) 
+		priv(src) = PRIV_KERNEL | PRIV_TASK | PRIV_SERVER
+
+	+ SENDREC: Si priv(src) = PRIV_USER 
+			priv(dst) < PRIV_USER
+		   sino 
+			priv(src) >= priv(dst)
+
+	+ RECEIVE: priv(caller) < PRIV_USER
+
+	+ VCOPY: Solo si priv(caller) = PRIV_KERNEL
+
++ A FUTURO: Se podría presentar una lista de procesos a los que se puede enviar mensajes
+
+	/*listas de destinos PERMITIDOS  hacia ARRIBA */
+	priv_up_dests = {NONE, ANY_LOCAL, ANY_REMOTE, ANY_GLOBAL, LIST_LOCAL, LIST_REMOTE, LIST_GLOBAL}
+	priv_up_dlist = {NULL if priv_dests=LIST | linked list of permited endpoints to send messages UP}
+
+	/*listas de destinos PERMITIDOS  hacia ABAJO */
+	priv_down_dests = {NONE, ANY_LOCAL, ANY_REMOTE, ANY_GLOBAL, LIST_LOCAL, LIST_REMOTE, LIST_GLOBAL}
+	priv_down_dlist = {NULL if priv_dests=LIST | linked list of permited endpoints to send messages DOWN}
+
+	/*listas de destinos PERMITIDOS  como PEERS */
+	priv_peer_dests = {NONE, ANY_LOCAL, ANY_REMOTE, ANY_GLOBAL, LIST_LOCAL, LIST_REMOTE, LIST_GLOBAL}
+	priv_peer_dlist = {NULL if priv_dests=LIST | linked list of permited endpoints to send messages PEER} 
+
+
+
+==========================================================================
+	CONSIDERACIONES DE FALLOS M3-IPC
+==========================================================================
++ PROBLEMA 1: Cuando uno de los procesos locales espera un ACK (o DATAOUT) quedarán a 
+  la espera en forma eterna si el destino se cae
+
+SOLUCION:
+	PROXY RECEIVER: 
+		+ Setea un handler de SIGALARM 
+		+ Por cada mensaje recibido almacena el last_received= time();
+ 		+ Si esta haciendo un read(socket) o un put2lcl() ambos pueden ser interrumpidos por SIGALARM
+  			do  {
+			   	rcode = put2lcl();
+  			} while( rcode == TIMEOUT) ;
+  			do  {
+				rcode = read(socket);
+   				if( rcode == OK && hdr_cmd == HELLO) { 
+					signal(PROXYSENDER);
+    					rcode == TIMEOUT;
+   				}
+
+			} while( rcode == TIMEOUT) ;
+		+ El handler de SIGALARM envia un SIGUSR1 a el proxy SENDER
+
+	PROXY RECEIVER: 
+		+ Setea un handler de SIGUSR1 
+		+ El proxy sender tambien tiene que preveerse de ser interrumpido
+  		do  {
+   			rcode = get2rmt();
+  		} while( rcode == SIGUSR1) ;
+  		do  {
+   			rcode = write(socket);
+  		} while( rcode == SIGUSR1);
+ 		+ El handler de SIGUSR1 hace un write(socket) de HELLO.
+  
+
+PROBLEMA 2: el proxy detecta que se le cae la sesión TCP 	
+SOLUCION : tiene que hacer exit() o proxy_unbind()
+
+
+
+
+==========================================================================
+	PENDIENTES
+==========================================================================
+ + PROXY_UNBIND cuando hay KILL
+ + ZCOPY REMOTO 
+ + BIND REMOTO- Debería incluir el nombre del proceso remoto
+
+
+
+==========================================================================
+	PARA PAPER O ARTICULO DE REVISTA
+==========================================================================
+Aqui hay mucho para copiar para la parte de IPC E IPC Remoto.
+group communications in distributed sytems.pdf
+
+
+==========================================================================
+	PROTOCOLO REMOTO
+==========================================================================
+
+ENVIO AL NODO REMOTO (DESDE EL SENDER PROXY VIA GET2RMT)
+ 	Para todo estos tipos de mensajes (Que son PETICIONES) se encolará el descriptor LOCAL del emisor en la cola del SPROXY 
+		CMD_SEND_MSG,		/*  Send a message to a process 				*/
+		CMD_NTFY_MSG,		/* Send a NOTIFY message to remote proces  			*/
+		CMD_SNDREC_MSG,		/*  Send a message to a process and wait for reply 		*/
+		CMD_REPLY_MSG,		/*  Send a REPLY message to a process 				*/
+		CMD_COPYIN_DATA,	/* Request and data to copy data to remote process 		*/
+		CMD_COPYOUT_RQST,	/* Request to copy data from remote process to local process	*/
+	
+ 	Para todo estos tipos de mensajes (que son RESPUESTAS) se encolará el descriptor REMOTO del emisor en la cola del SPROXY 
+		CMD_SEND_ACK,		/* The message was sent OK or with an error 			*/
+		CMD_COPYIN_ACK,		/* The data has been copied by the remote process		*/
+		CMD_COPYOUT_DATA,	/* The remote process send to local process the data requested 	*/
+	Como el descriptor REMOTO puede ser requerido por mas de un proceso a la vez 
+	(Ej: dos procesos que han recibido un mensaje del mismo emisor remoto y ahora deben AMBOS enviarle el ACK) 
+		REGLA: 	Quien setea el flag RMTOPER es quien encola el comando en el proxy
+			Quien clear el flag RMTOPER es el proxy sender cuando proceso el comando.
+
+
+
+
+
+       
+==========================================================================
+	ZCOPY( SREMOTO, DREMOTO)
+==========================================================================
+Aqui lo mejor es:
+si node(DREMOTO) != node(SREMOTO))
+	RQTR->SREMOTO CMD_COPYRMT_RQST  (Le indica a DREMOTO que inicie el envio de datos a DREMOTO)
+	SREMOTO->DREMOTO COPYIN_DATA  (envia datos de SREMOTO->DREMOTO)
+	DREMOTO->SREMOTO COPYIN_ACK
+sino     
+	RQTR->SREMOTO CMD_COPYLCL_RQST  (Le indica a DREMOTO que haga la copia local)
+	ZCOPY
+SREMOTO->RQTR COPYTO_ACK
+
+==========================================================================
+	FINALIZACION DE PROXIES
+==========================================================================
+Cuando un proxy (nodo) finaliza, entonces hay que rastrear toda las
+tablas de procesos de todas las VMs para buscar los procesos que 
+tiene el BIT 
+RMTOPER process blocked waiting for the Sender PROXY completes a request for a remote operation
+RMTACK  process blocked waiting for the Receiver PROXY receives an ACK of a remote operation 	
+
+==========================================================================
+	CADA PROXY(es decir cada NODO) tendrá asociado un MAX MTU
+==========================================================================
+Buscar File2net.c 
+LINUX getsockopt IP_MTU
+
+EN /include/linux/in.h ya se encuentra incluido
+#define IP_MTU		14
+que puede ser usado por getsockopt 
+
+==========================================================================
+INCLUIR CONTROLES COMO ESTE
+==========================================================================
+#if (NR_BOOT_PROCS > NR_SYS_PROCS)
+#error NR_SYS_PROCS must be larger than NR_BOOT_PROCS
+#endif
+
+
+==========================================================================
+RESOLVER EL TEMA DE PRIVILEGIOS SEGUN MINIX
+==========================================================================
+
+ver kernel/system/do_privctl.c
+
+
+mnx_setpriv(p_endpoint, s_id)
+incluir el paramentro p_endpoint para poder dar de alta procesos remotos
+IF (ep = local)
+    check pid->proc->p_endpoint = p_endpoint
+else
+	if(current_euid() != USER_ROOT) return(-EPERM);
+		setear s_id 
+
+EN LUGAR DE TENER UN NRO LIMITADO DE ESTRUCTURAS PRIV CREAR
+- UNA ESTRUCTURA PRIV PARA TODOS LOS PROCESOS (ORDINARIOS) AL CREAR LA VM
+- UNA ESTRUCTURA PRIV PRIVADA CUANDO SE INVOCA SETPRIV (TAREA/SERVER)
+
+- AL FINALIZAR EL PROCESO (TAREA/SERVER) DEVOLVER LA ESTRUCTURA PRIV
+- AL FINALIZAR LA VM SE RETORNA LA PRIV COMUN
+
+
+==========================================================================
+PRUEBA DE TRANSFERENCIAS REMOTAS 
+==========================================================================
+LOCAL		SPROXY	---SENDQ -----> PSEUDO REMOTO
+LOCAL		RPROXY  <-----SENDQ---- PSEUDO REMOTO
+
+==========================================================================
+DIFF: diferencia entre archivos 
+==========================================================================
+diff -rN dir1 dir2
+r: recursivo
+w: ingnores space
+B: blank lines
+N: new files 
+
+==========================================================================
+	PROTOCOLO REMOTO
+PRINCIPIO: Todo envio de mensaje debe terminar con una respuesta o con un CMD_SEND_ACK. Excepto NOTIFY
+PRINCIPIO: Los mensajes remotos se envian con comandos que reflejan el API ejecutado en  
+			el nodo local para cambiar p_rts_flags del proceso emisor en el nodo remoto
+==========================================================================
+LOCAL				REMOTO
+CMD_SEND_MSG -----> 
+	<-------------- CMD_SEND_ACK
+
+CMD_NOTIFY -----> 
+local ACK <---XXXXX  No Reply
+	
+CMD_SNDREC   ------> 
+	<-------------- CMD_SEND_MSG | CMD_REPLY_MSG
+CMD_SEND_ACK ------> 
+
+ENVIOS AL NODO REMOTO CON DESCRIPTORES LOCALES DE PROCESOS LOCALES:
+	- SEND
+	- SENDREC
+	- NOTIFY
+	- REPLY
+Por lo tanto todos los descriptores quedan bloqueados esperando un ACK
+excepto NOTIFY que es liberado no bien el descriptor es procesado localmente.
+
+ENVIOS AL NODO REMOTO CON DESCRIPTORES LOCALES DE PROCESOS REMOTOS:
+Cada vez que se usa un descriptor REMOTO debe BLOQUEARSE y poner 
+el flag RMTOPER diciendo que esta siendo utilizado para una peticion remota.
+	- SEND_ACK: Envia un ACK de SEND y REPLY recibidos 
+	- COPYOUT_RQST: solicita al proceso remoto que envíe datos
+	- COPYOUT_DATA: Envia datos al proceso remoto que los solicito 
+	- COPYIN_DATA: Envia datos al proceso remoto 
+	- COPYIN_ACK:  Envia ACK al proceso remoto que envió datos 
+ERROR: ATENCION, en el codigo se opera sobre BIT_RMTOPER y se duerme al proceso que 
+intenta usar el descriptor remoto. El problema es que nadie lo va a despertar.
+Para ello, aquellos procesos locales quieren utilizar el descriptor remoto que está ocupado
+deberian encolarse y cuando el proxy finaliza la operacion del descriptor, debería extraer
+el proximo proceso y hacerle UP.
+
+TESTS
+======
+ENVIO:
+	SEND REMOTO: OK
+	SENDREC REMOTO: OK
+	NOTIFY REMOTO: OK
+RECEPCION:
+	RECEIVE REMOTO: OK
+	NOTIFY REMOTO: OK
+	SENDREC REMOTO:
+	
+==========================================================================
+	PARA CONSIDERAR
+==========================================================================
++ Costo de llamada a getpid()
++ Thughtput de fork() nulo. [forks/s]
+
+==========================================================================
+	PARA CONSIDERAR   MAPA DE affinity X NODE X VM
+==========================================================================
+Cuando se hace dc_init se podría establecer la mascara de CPUs válidas para 
+la VM en el nodo actual. De esa forma todo proceso de esa VM que haga BIND
+se le hará asociara un processor affinity.
+En la migración de un proceso el campo affinity se cambiará al de la 
+VM del nodo destino.
+
+==========================================================================
+		REMOTIZACION
+==========================================================================
+PROTEGER CON MUTEX LOS NODOS Y CON CONTADORES DE REFERENCIA
+1- proxy bind
+2- start vm
+3- addnode (vm, nodeid)
+4- rmtbind(vm, endpoint, p_nr)
+
+mnx_proxy_bind(nodeid, spid, rpid): registra los proxies sender y receiver
+para un NODO dado. VARIANTE: podria pasar un bitmap de nodos en lugar de un unico NODEID
+
+mnx_add_node(vmid, nodeid): simplemente incorpora un nodo a la VM
+mnx_del_node(vmid, nodeid): simplemente remueve   un nodo a la VM
+
+mnx_proxy_unbind(nodeid): deregistra el sender y receiver proxies del NODEID 
+        => Elimina de todas las VMs el NODEID => mnx_del_node(vmid, nodeid)
+	=> se hace un unbind de todos los procesos remotos nodeid=NODEID
+		=> todos los procesos que estan esperando mensajes terminan MOLSRCDIED
+
+mnx_dvs_parms(struct dvs): retorna los paramentros del dvs a modo usuario
+
+
+*******************************************
+  NUEVAS PRIMITIVAS
+*******************************************
+sendrec()  ---> rcv_rqst() solo puede recibir peticiones de ANY y hechas con sendrec => (SEND | RECEIVE) (no es bloqueante)
+           <--- reply() solo puede enviar a un cliente que esta esperando este mensaje (no es bloqueante)
+
+      
+
+*******************************************
+  STRUCT PROC CREADA DINAMICAMENTE
+*******************************************
+La struct proc se crea en forma dinamica al 
+hacer el bind. 
+La struct VM tiene una lista enlazada de 
+struct proc.
+Tambien deberia tener una lista hash para 
+localizar rapidamente en funcion del:
+endpoint->p_nr->struct proc *
+Otra forma mas rapida y sencilla es tener como
+hizo tanenbaum 
+pproc[dc_ptr->dc_nrprocs] punteros a procs
+que cuando se hace el bind de p_nr, entonces
+pproc[p_nr] ) = valloc(struct proc);
+
+
+*******************************************
+  COLISION DE VECTORES !!!!!!!
+*******************************************
+arch\x86\include\asm\irq_vectors.h
+/*
+ * Reserve the lowest usable priority level 0x20 - 0x2f for triggering
+ * cleanup after irq migration.
+ */
+#define IRQ_MOVE_CLEANUP_VECTOR		FIRST_EXTERNAL_VECTOR
+
+puede ser por
+# CONFIG_PARAVIRT_GUEST is not set
+# CONFIG_LGUEST is not set
+
+
+==========================================
+PROCESSO AFFINITY
+Para saber en que CPU se ejecuta un proceso raw_smp_processor_id()
+get_cpu() will do the same and will also disable preemption so that you will stay on that CPU until put_cpu() is called
+O SEA 
+	get_cpu: preempt disable
+		raw_smp_processor_id()
+	calcular nueva CPU
+	put_cpu: fija nueva cpu
+		preempt enable
+		
+En la VM hay un parametro de ingreso dc_cpumask
+if( dc_cpumask == 0) ERROR
+
+Luego el bind de los procesos LOCALES se hace con 
+        p_cpumask = dc_cpumask
+Tambien hay un campo de p_cpuid;
+		p_usr.cpuid = NR_CPUS
+		
+Cuando un proceso hace el UP de otro hace
+		if (other_ptr->p_usr.cpuid != (-1)) 	
+			other_ptr->p_usr.cpuid = get_cpu(); <= CPUID del despertaror
+			
+Cuando el proceso other despierta:
+	if (other_ptr->p_usr.cpuid == NR_CPUS) no hace NADA pero este campo puede ser cambiado por el proceso DESPERTADOR.
+	if (other_ptr->p_usr.cpuid == (-1) ) no hace NADA pero este campo no se puede cambiar.
+	
+	sino {
+	    sched_getaffinity(getpid(), sizeof(unsigned long), &tmp_mask);
+		verifica que el other_ptr->p_usr.cpuid se encuentre en la mascara de
+					(other_ptr->p_usr.p_cpumask & tmp_mask);
+		si esta hace put_cpu(other_ptr->p_usr.cpuid);
+	}
+	
+		
+
+1) POR VM??? (las vms son multinodo)
+2) por proceso??? se debe hacer en el bind.
+3) O directamente hacerlo en modo usuario 
+RESPUESTA: Directamente hacerlo en modo usuario
+==========================================
+VER OPERACIONES DE MASCARAS DE CPU EN MODO KERNEL
+linux/include/linux/cpumask.h
+VER OPERACIONES DE MASCARAS DE CPU EN MODO USUARIO
+/usr/include/sched.h
+
+ver What Every Programmer Should Know About Memory- LEYENDO.pdf
+A.3 Measure Cache Line Sharing Overhead
+
+EN MODO USUARIO
+==========================================================================
+#define _GNU_SOURCE
+#define  __USE_GNU
+#include <sched.h>
+
+	cpu_set_t cpu_mask;
+
+	/* toma vieja mascara */
+        ret = sched_getaffinity(getpid(), sizeof(unsigned long), &cpu_mask);
+	if(ret){
+		printf("ERROR sched_getaffinity %d\n",errno);
+	}
+	printf("Processor affinity OLD mask = %X\n", cpu_mask);
+
+	/* Elimina la CPU 1 de la mascara */
+	if( CPU_ISSET(1, &cpu_mask))	
+		CPU_CLR(1, &cpu_mask);
+	
+	/* setea la nueva mascara sin CPU 1*/
+     	ret = sched_setaffinity(getpid(), sizeof(unsigned long), &cpu_mask);
+	if(ret){
+		printf("ERROR sched_setaffinity %d\n",errno);
+	}
+
+    	/* OBTIENE LA MASCARA DEL PROCESO. Nota getpid puede ser 0 */
+	ret = sched_getaffinity(getpid(), sizeof(unsigned long), &cpu_mask);
+	if(ret){
+		printf("ERROR sched_getaffinity %d\n",errno);
+	}
+	printf("Processor affinity NEW mask = %X\n", cpu_mask);
+
+
+
+EN MODO KERNEL
+==========================================================================
+		if ( (ret = sched_getaffinity(pid, &proc_ptr->p_cpumask)))
+			ERROR_RETURN(ret);
+MOLDEBUG(DBGLVL1,"OLD CPU affinity for PID=%d cpumask=%X \n",pid, proc_ptr->p_cpumask);
+
+		cpumask_clear_cpu(0, &proc_ptr->p_cpumask);
+		if ( (ret = sched_setaffinity(pid, &proc_ptr->p_cpumask)))
+			ERROR_RETURN(ret);			
+
+		if ( (ret = sched_getaffinity(pid, &proc_ptr->p_cpumask)))
+			ERROR_RETURN(ret);
+MOLDEBUG(DBGLVL1,"NEW CPU affinity for PID=%d cpumask=%X \n",pid, proc_ptr->p_cpumask);
+==========================================================================
+
+http://www.cyberciti.biz/tips/setting-processor-affinity-certain-task-or-process.html
+http://www.spinics.net/lists/newbies/msg50334.html
+
+
+PERF
+=====
++ Utilizar el parámetro -k para solo estadisticas de kernel
+https://perf.wiki.kernel.org/index.php/Tutorial#Options_controlling_event_selection
+The per-process mode is a variant of per-thread where all threads of the process are monitored. Counts and samples are aggregated at the process level. The perf_events interface allows for automatic inheritance on fork() and pthread_create(). By default, the perf tool activates inheritance. 
+
+==================================
+REALIZAR BENCHMARKS EN 4 CPUS
+==================================
+1- Transferir a la PC VIEJA todo el directorio MOL-IPC
+2- Controlar desde PC VIEJA
+
+
+ANOTAR!!!! EN TORMENTA DE IDEAS DE TESIS
+AL SURGIR LOS SISTEMAS MULTIKERNEL ES APLICABLE EL DRVS A ELLOS
+VER ARTICULO The Multikernel: A new OS architecture for scalable multicore systems
+
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+The following command will disable a CPU:
+# echo 0 > /sys/devices/system/cpu/cpu1/online
+verificar con 
+cat /proc/cpuinfo
+
+ATENCION: PARA LOS TESTS BAJAR TODOS LOS SERVIDORES
+===================================================
+http://www.debuntu.org/how-to-managing-services-with-update-rc-d/
+
+Verificar si al reemplazar NR_TASKS + NR_PROCS por variables hace falta modificar en los calculos de ENDPOINTS.
+RESPUESTA:
+   En teoria podría trabajar con el máximo porque simplemente se evita
+   NO se hace bind() de procesos con vm->dc_nr_procs < p_nr < NR_PROCS
+
+
+INCLUIR COMPILACION CONDICIONAL EN .CONFIG
+===========================================
+http://www.mjmwired.net/kernel/Documentation/kbuild/kconfig-language.txt
+
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+========================================================================================
+========================================================================================
+
+PARA PENSAR: PROXIES REMOTOS.
+En lugar de tener un par de proxies por DRVS tener un par de proxies por NODO REMOTO!!
+
+Cada proxy escuchara en: (BASE_PORT + Remote_node_ID)
+
+Si BASE_PORT = 7000
+El nodo 1 escuchara al nodo 3 en:  (7000+3) 
+El nodo 2 escuchara al nodo 3 en:  (7000+3) 
+El nodo 1 escuchara al nodo 2 en:  (7000+2) 
+El nodo 3 escuchara al nodo 2 en:  (7000+2) 
+El nodo 3 escuchara al nodo 1 en:  (7000+1) 
+El nodo 2 escuchara al nodo 1 en:  (7000+1) 
+
+En el nodo (BASE_PORT + local_nodeid) escuchara el DRVS. Es decir
+nodo 1: 7001
+nodo 2: 7002
+nodo 3: 7003
+
+========================================================================================
+========================================================================================
+
+
+ATENCION
+========
+LIMPIAR SYSCALLS
+RMTUNBIND
+ZCOPY X VCOPY
+
+A FUTURO
+========
+Se podrían cambiar los parámetros de la VM haciendo
+WLOCK_VM()
+  cambiar parametros
+WUNLOCK_VM()
+
+LIMPIAR VARIABLES NO USADAS!!
+===========================
+
+PROBLEMA A RESOLVER
+===================
+Como hace el PM para asignar el p_nr (o endpoint) a un preceso despues q otro hizo fork() ???????
+SOLUCION:
+básicamente el hijo, lo primero que hace es el bind y luego hace el exec del programa.
+
+main()
+{
+ if(pid== fork()) {
+ /*PADRE */
+ }else{
+ /* HIJO */
+ 	mol_bind(vmid, p_nr);
+ }
+}
+
+ 
+A FUTURO:
+=========
+Pensando en un servidor con multiples hilos y cada hilo bindeado podríamos hacer:
+1- modificar bind() para que el hilo solicite el p_nr mas alto de tal forma de no tocar los de Servicios.
+2- crear una primitiva sendas(src, dst, &mesg) donde el thread se hace pasar por el main thread para responder a una peticion del proceso que hizo sendrec.
+De esa forma:
+cliente()
+{
+	sendrec(SERVER, &msg);
+}
+
+int vmid;
+endpoint_t svr_ep;
+
+server()
+{
+
+	svr_ep = bind(vmid, SERVER_NR);  	
+	while(TRUE) {
+		msg = malloc(sizeof(message);
+		receive( ANY, &msg);
+		create_tread( &msg);
+	}
+}
+
+#define HIGHER 	SELF
+
+thead( message *m_ptr);
+{
+	message reply;
+	endpoint_t my_ep;
+
+	my_ep = bind(vmid, HIGHER);  
+			
+	build_reply(&reply); /* atiende la peticion y construye la respuesta*/
+
+	sendas(svr_ep, &msg); 
+
+	my_ep = bind(vmid, HIGHER);  
+	
+}
+
+
+==================================
+PARA REMOTO:
+Estudiar el codido de
+SIMPL
+SRR
+==================================
+
+OTRA A FUTURO
+=============
+Hacer un receive en un endpoint en el que esperen multiples procesos.
+Un proceso main hace un 
+
+server()
+{
+	svr_ep = bind(vmid, SERVER_NR);
+
+	while(true) {
+		ret = mlisten(ANY);	/* si no llegan mensajes se duerme */
+					/* si llega mensaje se lo da a algun thread que esté encolado y se liberan ambos procesos */
+					/* resultado: endpoint del proceso que recibio el mensaje o NONE en caso de error 	  */
+					/* si llega mensaje y no hay thread esperando se duerme hasta q un thread haga mreceive() */
+	}
+}
+
+thread()
+{
+	my_ep = bind(vmid, HIGHER);
+	mreceive(svr_ep, &msg);			/* coloca en la listas de receivers del server al thread 	*/
+	reply procesar(msg)
+	sendas(svr_ep, &reply)			/* responde como si fuese el server 				*/ 
+}
+
+
+LINDA FRASE: GENERAL PURPOSE WORKLOAD!!!
+
+INCLUIR PARAMETRO DE CONFIG
+===========================
+5.5 Locking Strategies 
+It's usually best to begin with a single lock, and refine later if that proves too slow. It's considered established wisdom in the Linux community that too many locks lead to unmaintainability and complicated deadlock problems. [FIXME: Get LM to elucidate this with horror stories maybe?]. 
+If you need multiple spinlocks to do a single operation make sure they are always grabbed in the same order. 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+A technique widely used in the networking code is atomic reference counts, and a `dead' marker, for example `struct sock' <include/net/sock.h>) and `struct in_device' <include linux/inetdevice.h>. In this scheme, the structure is initialized with a reference count of 1, and dead set to zero. 
+This technique works with objects which have a well-defined event which deletes the object. When this event occurs, it simply marks the object dead, and decrements the reference count. 
+The objects are kept in a hash table or linked list: this is locked by a spinlock or a rwlock as normal. When searching for an object, those which are marked dead are ignored. When an object is found, the reference is incremented, and the lock released. When the object is finished with, the reference count is decremented. 
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Whoever decrements the reference count to zero is responsible for the actual freeing of the object (the object must be marked dead unless there is a bug). 
+Fine-grained locking comes at a cost, however. In a kernel with thousands of locks, it can be very hard to know which locks you need—and in which order you should acquire them—to perform a specific operation. Remember that locking bugs can be very difficult to find; more locks provide more opportunities for truly nasty locking bugs to creep into the kernel. Fine-grained locking can bring a level of complexity that, over the long term, can have a large, adverse effect on the maintainability of the kernel.
+
+
+Para paper
+==========
+FUTURE WORKS: Convertir a MODULO RECARGABLE
+Configuracion via LDAP.
+INTEGRACION CON CONTAINERS 
+
+============================================================
+		ATENCION
+Las pruebas en maquina real tiene 2 CPUs por lo que LINUX
+tiene una ventaja sobre MINIX.
+Ver la forma de que se pueda ejecutar en una sola CPU
+Por ejemplo compilando el kernel.
+============================================================
+
+REALIZAR PRUEBAS DE TODO SEGUN SI LOS BUFFERS ESTAN ALINEADOS O NO
+==================================================================
+http://www.makelinux.net/ldd3/chp-15-sect-3
+void page_cache_release(struct page *page)
+An alias for __free_page(). The reference count is decremented and if it drops to 0, the page will be freed		
+
+								
+================================
+RESOLVER EL TEMA DE LOS NOTIFY!!
+================================
+
+
+
+PROBAR TRANSFERENCIAS DE BLOQUES DE DATOS SIN CACHE EN MINIX!
+
+- Probar con multiples procesos concurrentes: IPC1 : send/receive y receive/send
+
+El CD bootea correcto desde 
+ramdisk /dev/c0d2p1
+/usr    /dev/c0d2p2
+En la VM está configurado como 
+DISCO: IDE 0:0
+CDROM: IDE 1:0
+c is the number of the controller the drive is on
+d is the position of the drive on that controller
+p is the number of the partition on that drive
+s is the number of the sub-partition on that partition
+
+INCLUIR EN task_struct el puntero a proc_struct
+de tal forma de no necesitar la conversion 
+PID2PROC
+
+CODIGO EQUIVALENTE A ZCOPY - REVISAR Y COMPARAR
+http://git.kernel.org/?p=linux/kernel/git/torvalds/linux-2.6.git;a=blob;f=mm/process_dc_access.c;h=e920aa3ce104c35b902e8412864c78102fa3177e;hb=fcf634098c00dd9cd247447368495f0b79be12d1
+http://lxr.free-electrons.com/source/mm/memory.c?v=2.6.32#L640
+http://lxr.free-electrons.com/source/mm/mremap.c?v=2.6.32#L72
+
+
+VER COMO TERMINAN LOS PROXIES CON KILL O EXIT
+=============================================
+
+HACER TODAS LAS FUNCIONES EN MODULO
+===================================
+
+
+PARA PAPER: EXCELENTE - TOMAR MODELO MESSAGE PASSING IN A FACTORED OS.pdf
+==========
+
+MUY BUENO PARA BANDERAS!!
+==========================
+  30 */
+  31enum x86_pf_error_code {
+  32
+  33        PF_PROT         =               1 << 0,
+  34        PF_WRITE        =               1 << 1,
+  35        PF_USER         =               1 << 2,
+  36        PF_RSVD         =               1 << 3,
+  37        PF_INSTR        =               1 << 4,
+  38};
+  39
+
+
+MALLOC ALIGNMENT!!
+==================
+3456 void *malloc_aligned(size_t size) {    void *ptr = malloc(size + alignment-1);    if (!ptr) return NULL;    ptr = (void *)(((IntPtr_t)(ptr) + alignment-1) & ~alignment; } 
+
+
+IPC Y COPY REMOTO
+=================
+Send:
+EMISOR:
+	- completar los campos de proxy_hdr_t y hacer
+			rmt_send(proxy_hdr_t *ph, payload *pp)
+	- Si SPROXY no esta esperando, encolar el descriptor del proceso, bloquerase por RMTSEND | RMTACK, 
+	- Si SPROXY esta esperando, copiarle el header y el payload (que es el mensaje) y luego bloquerase por RMTACK, despertar SPROXY
+SPROXY:
+	- Recibe el header, y envia el mensaje al nodo correspondiente como {header, payload}
+
+
+RPROXY Remoto:	- Recibe el mensaje desde la red y hace copy_to_local()
+		- Envía al RPROXY (local) un ACK.
+
+RPROXY Local:	- despierta al proceso emisor
+
+
+COPY TO REMOTE:
+==============
+SOURCE:
+	Divide el envío en (bytes/MAXPAYLOAD)
+	Por cada segmento
+		- completar los campos de proxy_hdr_t y hacer
+			rmt_copyin(proxy_hdr_t *ph, payload *pp)
+		- Si SPROXY no esta esperando, encolar el descriptor del proceso, bloquerase por RMTCOPYIN, 
+		- Si SPROXY esta esperando, copiarle el header y el payload (que es el mensaje), despertar SPROXY
+		- Actualizar los campos de src_addr, dst_addr y bytes a transferrir
+		- Si no es el ultimo segmento marcar flag como HDR_PAYLOAD_MASK (cambiar nombre a HDR_PAYLOAD_MORE)
+	Se bloquea con RMTCOPYINACK
+
+SPROXY:
+	- Recibe el header, y envia el bloque de datos al nodo correspondiente como {header, payload}
+
+RPROXY Remoto:	- Recibe el mensaje desde la red y hace vcopy()
+		- Si es un Envía al RPROXY (local) un COPYINACK.
+
+
+RPROXY Local:	- despierta al proceso emisor
+
+
+EJECUTAR
+=========
+LMbench measure various operating system routines such as
+context switching, local communications, memory bandwidth, and file operations
+http://debian.utalca.cl/debian/pool/non-free/l/lmbench/
+http://linuxpoison.blogspot.com.ar/2011/12/utilities-to-benchmark-unix-systems.html
+
+FLUSHING THE CACHE
+=================
+http://www.kernel.org/doc/man-pages/online/pages/man2/cacheflush.2.html
+http://www.tldp.org/LDP/khg/HyperNews/get/memory/flush.html
+
+REEMPLAZAR INT 0X80 x SYSENTER/SYSEXIT
+======================================
+NO hace falt (por ahora) pues la idea es emular la INT 0X20 de MINIX
+
+VER:
+http://tuxthink.blogspot.com.ar/2012/07/module-to-find-task-from-its-pid.html
+https://s3-ap-northeast-1.amazonaws.com/booksikindle/html/Understanding%20the%20Linux%20Kernel1/dummy_split_259.html
+
+
+
+
+Para PAPER M3-IPC
+=================
+Hacer test para UNIX DOMAIN SOCKETS. (ver netperf)
+Hacer test para NETLINK SOCKETS.
+Como integrar M3-IPC a LINUX en el descriptor del proceso y system calls relacionadas (fork, exec, signal, kill, exit)
+Como crear un DVD con LINUX
+	http://www.escomposlinux.org/lfs-es/recetas/txt/boot-cd_easy.txt
+Como crear un DVD con MINIX
+	ver MINIX3 LIVE CD (usa /usr/src/tools/release.sh
+
+PARA EL FUTURO
+==============
++ VCOPY: Si alguno de los procesos es REMOTEO => MAXBUFSIZE=1432 else MAXBUFSIZE=4096
++ Sustituir la copia de buffers > 4 (PAGESIZE) por copia de referencia de página segun ECBM (enviado por italiano)
++ Para transferencias remotas usar COLAS DE MENSAJES desde el KERNEL.
++ Usar UPD desde el kernel hacia los PROXIES EMISORES.
++ probar transferencia msg remota
++ probar vcopy remota
++ modificar IF() para optimizar
+If a compiler can know in advance which branch of an if statement is more likely to be
+taken, then when laying out the code it can give a tiny margin of advantage to one rather
+than the other. The macros likely() and unlikely() have been provided to facilitate
+this (see Figure 1.2, from ,linux/compiler.h.). An example of its use would be
+instead of writing if (x == y), to write if (likely(x == y)).
+
+
+BENCHMARKS
+LOCALES
+- SEND/RECEIVE
+- SENDREC/RECEIVE-SEND
+- NOTIFY-RECEIVE/RECEIVE-NOTIFY
+- VCOPY REQUESTER->DESTINATION
+- VCOPY SOURCE->DESTINATION
+
+
+INCORPORAR AL DESCRIPTOR DE PROCESOS LOS ATRIBUTOS DE MINIX
+===========================================================
++ Ver cuanto ocupa sizeof(struct task_struct)
+
+DRDVD
+=====
+
+Posibles mejoras de transferencia:
+1- netlink entre kernel y user
+2- msgq entre kernel y user: => modificar el kernel
+3- UDP directo desde el kernel => mas complejidad al kernel
+4- MSGQ entre SENDER y Threads: Asi esta implemenado hoy
+5- listas enlazadas entre SERDER y THREADs para evitar copias
+
+
+No usar colas de mensajes desde el SENDER a los THREADS.
+Utilizar listas enlazadas con locks.
+
+El tread principal SENDER pone en un buffer dinámico tanto el header como el payload.
+hace el get2rmt(header, payload)
+pone en la lista enlazada del nodo correspondiente los punteros a header y payload.
+
+El thread del nodo, busca en la lista el 1ro o aquel de una longitud < a una dada.
+Una vez que lo termino de usar lo devuelve a la lista de libres.
+
+
+http://cursuri.cs.pub.ro/~apc/2003/resources/pthreads/uguide/document.htm
+Using a condition variable in the producer-consumer example
+pag 645
+
+
+
+REEMPLAZAR COMANDOS POR FIFOS
+
+PIGGYBACKING DE ACK
+Distinguir entre SEND y SENDREC
+Para hacer piguibacking de ACK
+Cuando llega un SEND remoto, que es el replay de un SENDREC, el SEND2LCL deberia verificar si el
+destinatario local tiene prendidas SEND y RECEIVE.
+En este caso es porque es un SENDREC, por lo que primero envia un comand SENDACK y luego un SEND
+MODIFICAR send2lcl
+WARNING!!
+Como sabe el proceso remoto que es un SENDREC y no un SEND? porque el enviará el ACK de todos modos.
+
+Dump a modo usuario /proc
+http://tldp.org/LDP/lkmpg/2.6/html/lkmpg.html#AEN708	
+JERARQUICAMENTE ESTAN PARA /PROC:
+/proc/dvs(D)							LISTO
+     |-lclnode(F) : <name>(F): <nodeid> <flags> <VMbitmap>   	LISTO
+     |-sproxy(F)  : <pid> <msg_sent>				
+     |-rproxy(F): <pid> <ip-addr> <port> <msg_received>
+     |
+     |-nodes(D)							LISTO
+     |   |<name>(F): <nodeid> <flags> <VMbitmap>      
+     |
+     |-<VMx>(D)
+         |-info(F)						LISTO
+         |-nodes(F): <nodeid> <flags> 
+         |-procs(F)						LISTO
+	      |-<endpoint>(F): <lpid> <flags> <msg_sent> <msg_rcvd>  
+/proc/<PID>
+       |-proc(F): <vmid> <endpoint>
+  
+
+
+(D) Directory
+(F) File
+
+
+
+DETECCION DE PROXY CAIDO
+========================
++ En el RECEIVER poner una alarma por cada SERVER  -  Ver MOL .
++ Cuando se recibe un paquete de un destino el mismo no se testeará 
++ Si por el contrario, hace mucho que no envía un mensaje, inserta en la cola del thread correspondiente un mensaje HELLO.
++ Cuando el RECEIVER destinatario recibe un HELLO, envia via la cola de mensajes del thread correspondiente un mensaje HELLO-ACK. 
+
+
+ATENCION: WAIT FOR CMD utiliza un TIMEOUT.
+EN REALIDAD por ahora las primitivas NO DEBEN TENER TIMEOUT, dejar todo listo para implementar otras on TIMEOUT.
+Si se hace una operacion de copia durante ese tiempo, fallara si se vence el timeout
+por lo tanto habra que detener el timer, tomar nota de cuanto le faltaba, y luego de terminada
+la trasnferencia volver a iniciar el timer. 
+
+PROXIES
+=======
+  Tener un HILO para cada NODO que lee de una MSGQ propia del nodo, empaqueta, zippea, encripta y firma.
+  El hilo principal es el unico que hace get2rmt y segun el nodo deposita en la cola correspondiente
+
+PARA PENSAR
+===========
+SYSTASK REPLICADA
+transferencia de mensajes: entre procesos en diferentes nodos no hay problemas
+El problema se presenta con los COPY
+
+agregar un campo de lista enlazada en cada proceso el que apuntara en principio a NULL.
+Cuando se crea una replica se agrega al primer proceso en la lista.
+
+Las operaciones de COPYIN y COPYOUT remotas deben incluir no solo el endpoint del requester sino 
+el nodo del requester en caso de replicas. De esa forma, el descriptor de la replica es el que almacena el dato copiado desde el proceso remoto o el dato a copiar al proceso remoto.
+
+
+PSEUDO MIGRACION DE SYSTASK O SERVIDORES
+========================================
+Deben atender un mensaje MIGRATE_TO al que responde haciendo un syscall STATE_TRANSFER_TO
+Se genera otro procesos SYSTASK remoto, el cual arranca y se le envia un mensane MIGRATE_FROM
+entonces hace un syscall STATE_TRANSFER_FROM, 
+Cuando ambos terminan, se hace un chgbind que cambia el proceso local por uno remoto.
+y en el remoto se cambia por uno local.
+
+PROBLEMA CON SYSTASK UNICA Y FORK
+start_proc <vm> <nodo> <p_nr> <programa> 
+
+si nodo = getlocalnode() 
+    pid = fork
+    child
+	pid = getpid;
+	ep = bind(vm, pid, ANY, nodo);
+	exec(programa)
+else 
+    ep = bind(vm, pid, ANY, nodo);  
+    rexec start_proc <vm> <nodo> <p_nr> <programa> 
+
+MODIFICAR BIND para que en el caso local o remoto siempre utilizar p_nr.
+    
+Debe existir un proceso START_PROC que arranque un proceso, lo asocie a una VM y a un NODO
+Si el proceso es local
+     bind y fork
+si es remoto
+     bind y rexec START_PROC <programa a ejecutar> <vmid> <nodo> o rsh o algo por el estilo
+     
+PROBLEMA CON SYSTASK DISTRIBUIDA Y VCOPY
+Si un proceso P1 del NODO1 hace una peticion a la SYSTASK1, y la SYSTASK hace un COPYIN o COPYOUT a un proceso P2  del NODO2, entonces P2 tendra como requester al ENDPOINT de la SYSTASK2!!! cuando deberia ser SYSTASK1
+Esto se debe a la superposicion de ENDPOINTS de las SYSTASKS.
+Eventualmente se podria solucionar incluyendo en el comando cmd_t el requester_node requested_node.
+De esa forma cuando se copia se analiza si el requester_node es remoto se lo envia al endpoint remoto.
+En realidad habria que cambiar WAIT FOR COMAND
+El problema es donde almacenar los datos de la SYSTASK remota, dado que ese slot esta siendo usado por las SYSTASK LOCAL.
+Una posible solucion es la SYSTASK local le envie un MENSAJE a la SYSTASK remota via SPREAD acerca de la operacion a realizar.
+NO ME GUSTA NINGUNA!!!
+
+Y si el propio proceso REMOTO que debe hacer COPYOUT se bloquea encolado en el proxy llevando los datos en su descriptor?
+Actualmente inserta el descriptor remoto 
+Aqui surge otro problema. como el proceso remoto estaba en wait for command, otro proceso remoto lo puede estar desbloqueando y ahora el proceso no sabe si fue desbloqueado por el proxy o por el proceso del que esperaba el comando. 
+
+OTRA SOLUCION
+Supongamos que el proceso2 de nodo2 le pide algo al proceso1 del nodo1
+El proceso 1 ahora le pide una VCOPY a la systask1 para copiar algo desde proceso2 a proceso1.
+La systask1 debe reproducir el pedido a la systask2 quien realiza el COPYOUT desde el proceso2 
+al espacio de la systask1.
+luego las systask2 le copia los datos a la systask1 y esta los copia a proceso2
+Es decir
+    proceso1--vcopy-->systask1
+    systask1--copyout-->systask2
+    systask2--copyout-->proceso2
+    proceso2--data--->systask2
+    systask2--data--->systask1
+    systask1--data--->proceso1
+
+ESTA ME GUSTA!! 
+quizas se podria solucionar asi:
+    proceso1--vcopy-->systask1
+    systask1--copyout-->systask2
+    systask2--copyout-->proceso2
+    proceso2--data--->systask2
+    systask2--data--->proceso1
+
+OTRA 
+    Si se envia un COPYOUT desde la systask hacia Proceso2 pero con requester proceso1???
+
+OTRA:
+    Que en la copia se envie al endpoint%nodeid como requester.
+    Los datos se almacenan en el p_data del proceso remoto.
+
+OTRA DEFINITIVA:
+    Como la unica tarea q puede hacer VCOPY es la SYSTASK y esta es distribuida y replicada dar una solucion SOLO para ella.
+
+Tambien se podria analizar la utilizacion de ETHERNET puro.
+==========================================================
+
+PARA EMPAQUETAR MULTIPLES MENSAJES EN UN PAQUETE
+================================================
++ COMPRIMIR DATOS
++ ENCRIPTAR - SIGNING
++ HACER una estructura NODO en SENDER 
++ ANALIZAR EL USO DE TCP EN LOS PROXIES.
+
+
+OTROS MECANISMOS DE ENCOLAMIENTO
+===============================
++ NETLINK
++ KFIFO
++ MSGQ (MODIFICA KERNEL)
++ MSGQ PROPIA
+
+MEJORAS EN LA COMUNICACION ENTRE NODOS
+======================================
++ PIGGYBACKING
++ Mejorar el SENDREC
+          SENDREC -----------> 
+		          <----------- SEND ACK
+				  <----------- SEND (REPLAY)
+		  SEND ACK-----------> 
+para que sea
+          SENDREC -----------> 
+		          <----------- SEND ACK, SEND (REPLAY)
+		  SEND ACK-----------> 
+  
+		  
+RESPONSABILIDADES DE SYSTASK
+============================
+
+PROBLEMAS A RESOLVER:
+  Gestion de slots/endpoints: tiene una tabla de procesos y sabe cuales son los que estan libres y cuales ocupados, cuales locales y cuales remotos. 
+  Cuando se muere un proceso remoto, la systask remota lo informa por broadcast y hace rmtunbind
+  Cuando se muere un NODO, se hace un unbind de todos los proceso de ese nodo (obviamente el IPC obtiene el vmid de la SYSTASK y hace el unbind de los procesos de esa VM)
+  
+  El KERNEL es el representante del HYPERVISOR
+  Es el responsable de informarle a la systask de que un NODO de su VM ha muerto y de que un nuevo NODO se ha incorporado a su VM.
+  Es necesario que cada systask le envie a la nueva SYSTASK del nuevo NODO un informe de sus procesos locales. 
+  Cuando se finaliza una VM, el KERNEL local le envia un mensaje a la SYSTASK de SHUTDOWN y esta informa via SPREAD del SHUTDOWN a las otras SYSTASK de la misma VMID
+
+  En definitiva, la SYSTASK es responsable de la creacion y muerte de los procesos
+  el KERNEL es responsable de la adicion y suprecion de nodos de una VM.
+  Cada adicion o supresion  de nodos debe ser informada a los proxies. por ejemplo, insertando en la MSGQ del thread de ese NODO un mensaje SHUTDOWN.
+
+LA SYSTASK ES DISTRIBUIDA pero no FAULT TOLERANT
+Atiende las peticiones de sus procesos LOCALES solamente.
+Ahora bien, muerta la SYSTASK local, puede cambiarse el IPC kernel para que la SYSTASK sea una remota
+o en su defecto, arrancar una nueva SYSTASK local, y syncronizar con los procesos remotos.
+El problema se da con el estado de los procesos locales. 
+Quizas podria ponerse el estado de la SYSTASK como MIGRATING 
+
+UNA SYSTASK POR VM
+
+ELECCION DE LIDER: En base al ID de cada nodo se tiene un lider para hacer las membresias
+
+DETECCION LIDER MUERTO: Si alguno de los nodos detecta al lider muerto, llama a eleccion.
+
+BASE DE NODOS DEL PROXY: debe actualizar la lista de nodos de su VM.
+
+BIND/UNBIND: Es responsabilidad de la SYSTASK acordar con el resto de las SYSTASK de las demás VMs el bind de un nuevo PROCESO a una VM.
+	Finalizado el conceso CORRECTAMENTE cada SYSTASK REMOTA hace un BIND REMOTO y la SYSTASK local hace un bind local.
+
+ADD/DEL NODE: Tambien es responsabilidad de la systask hacerlo.
+
+mol_del_node: Actualmente remueve los procesos remotos q ejecutan en ese nodo, pero en realidad no deberia hacer eso.
+Simplemente la SYSTASK que YA SABE que procesos son locales y cuales REMOTOS enviará primero sucesivos RMTUNBIND y luego
+suprimirá el NODO.
+
+MODELO 1: SYSTASK transparente.
+Una única SYSTASK, 
+Si la systask cada vez que quiere ejecutar un nuevo proceso, invoca a mol_fork(). Si el proceso es del sistema lo crea en 
+la máquina local, de lo contrario lo crea en la maquina remota, en principio con politica ROUND ROBIN.
+
+USAR  ON_EXIT
+Process Termination 535
+LIBRO Linux programming interface
+
+SOPORTE DE THREADS A NIVEL DE USUARIO - FALTA PROBAR
+
+DAR TRATAMIENTO AL ENDPOINT "SELF"
+
+POR SEGURIDAD: SETEAR LOS BUFFERS EN 0 - MEMSET
+
+MODELO MULTIPLES SYSTASKS TRASPARENTES
+=====================================
+Se ejecuta una systask en cada nodo y todas las operaciones
+de procesos las hace contra un subkernel
+este subkernel es trabajando distribuido y es quien debe gestionar
+los endpoints/p_nr
+Como quien crea en un principio un proceso es el FORK de MINIX en el PM
+en lugar de buscar en la tabla propia de procesos le pide a la systask
+que le de uno libre.
+getnewep(ANY): Busca el primero libre
+getnewep(p_nr): verifica primero si esta libre, sino le retorna el EP.
+
+La operacion mol_bind utiliza SPREAD
+si retorna > 0 es porque el resto de los procesos remotos acepto el endpoint e hicieron sus
+rmtbind
+si < 0, es porque ese enpoint esta utilizado por otro proceso
+
+el unbind no es problema porque solo el owner lo informa o despues de haber detectado que el nodo owner se cayo.
+
+
+OSCAR
+======
+	- SPREAD
+	- PROXIES: HACER QUE SEAN MULTICLIENTE y MULTISERVER 
+	- LDAP: Configuracion 
+	- DUMP de info DRVS, VMs, NODOS y PROCs a MODO USUARIO.
+
+transferencia copyin, copyout para multiples bloques
+
+
+El DRVS soportará nr_vms que será un parámetro al iniciar.
+
+Hacer un programa para cada PROXY que tenga los parámetros necesarios para arrancar.
+
+Por ahora los parámetros que esten en un archivo <params.h> como #define
+
+EL DRVSD es el demonio que inicializa el DRVS y luego arranca configura los proxies para los nodos.
+Cuando se incorporan nuevos NODOS se hacen en el DRVS.
+Cuando se incorporan NODOS EXISTENTES a las VMs, lo hace la SYSTASK.
+
+LDAP:
+ftp://sdk.provo.novell.com/ndk/ndkdoc/aux_files/cldap/README-linux.html
+http://www.yolinux.com/TUTORIALS/LinuxTutorialLDAP-SoftwareDevelopment.html
+
+PARSING CONFIGURATION FILE
+http://packages.debian.org/search?keywords=LIBCONFIG&searchon=names&suite=stable&section=all
+http://www.hyperrealm.com/libconfig/
+
+
+INFO DE NODOS
+=============
+Sería interesante saber:
+- PAra una VM cuantos procesos remotos hay en diferentes nodos
+   node1: 3 procs
+   node3: 4 procs
+- Para un NODO dado cuantas procesos de cada VM tiene
+   VM1: 3
+   VM2: 0
+   VM3: 5
+
+Actualizar manual de APIs y de pruebas.
+
+Mejorar los .H (incluir #ifdef __ARHIVO_H)
+
+Funciones como modulos:
+=======================
+Se instala un componente básico en el kernel que marca a la DRVS como NO INICIALIZADA
+Todas las funciones apuntadas por la INTx80 están vacias y retornan error.
+Cuando se instala el modulo se "toca" la tabla de funciones para que apunten a las funciones
+desarrolladas dentro del módulo.
+http://stackoverflow.com/questions/2103315/linux-kernel-system-call-hooking-example
+http://networksecurity.org.ua/0596007949/networkst-chp-7-sect-2.html
+http://articles.manugarg.com/systemcallinlinux2_6.html
+https://bbs.archlinux.org/viewtopic.php?id=139406
+
+Ejemplo mol_nodeid para leer la variable global del NODO
+
+Constantes globales como variables de la VM
+
+Hacer debugging por tipo de mensaje Ver doc libn._doc_core.
+
+malloc MINIX modo usuario
+===================
+Si el proceso MINIX de usuario hace malloc cuando llega a la systask a traves de una primitiva 
+setea un bit de operacion pendiente y sus argumentos en el desc del proc. 
+De tal modo q antes de hacer el up, al igual q con vcopy, ejecuta una syscall 
+la cual conforma los parametros e invoca a la int 80 de linux para q lo haga 
+o directamente a la syscall para q luego regrese y haga el up final del senrec.
+
+LEER Linux Credentials document 
+/Documentation/credentials.txt
+ESTA EN EL MISMO LINUX
+
+Kernel Memory Leak Detector
+http://www.mjmwired.net/kernel/Documentation/kmemleak.txt
+
+CIRCULAR BUFFERS
+http://www.mjmwired.net/kernel/Documentation/circular-buffers.txt
+See also Documentation/memory-barriers.txt for a description of Linux's memory
+234	barrier facilities
+
+
+
+

@@ -1,0 +1,108 @@
+make: Warning: File `Makefile' has modification time 5.1e+05 s in the future
+sr.c: In function ‘sr_open’:
+sr.c:231: warning: passing argument 3 of ‘sr_fd->srf_open’ from incompatible pointer type
+sr.c:231: note: expected ‘get_userdata_t’ but argument is of type ‘struct acc_t * (*)(int,  vir_bytes,  vir_bytes,  int)’
+sr.c:231: warning: passing argument 4 of ‘sr_fd->srf_open’ from incompatible pointer type
+sr.c:231: note: expected ‘put_userdata_t’ but argument is of type ‘int (*)(int,  vir_bytes,  struct acc_t *, int)’
+generic/psip.o: In function `psip_read':
+psip.c:(.text+0xb87): undefined reference to `ipps_get'
+generic/psip.o: In function `psip_write':
+psip.c:(.text+0xe7f): undefined reference to `ipps_put'
+generic/psip.o: In function `psip_close':
+psip.c:(.text+0xfbe): undefined reference to `ipps_get'
+generic/ip.o: In function `ip_prep':
+ip.c:(.text+0x27): undefined reference to `icmp_prep'
+generic/ip.o: In function `ip_init':
+ip.c:(.text+0x165): undefined reference to `ipeth_init'
+ip.c:(.text+0x1bb): undefined reference to `ipps_init'
+ip.c:(.text+0x2dd): undefined reference to `icmp_init'
+ip.c:(.text+0x2e2): undefined reference to `ipr_init'
+ip.c:(.text+0x349): undefined reference to `ip_write'
+ip.c:(.text+0x351): undefined reference to `ip_read'
+generic/tcp.o: In function `tcp_select':
+tcp.c:(.text+0x76e): undefined reference to `tcp_sel_read'
+tcp.c:(.text+0x7d9): undefined reference to `tcp_sel_write'
+generic/tcp.o: In function `tcp_get_data':
+tcp.c:(.text+0x9fe): undefined reference to `tcp_port_write'
+generic/tcp.o: In function `tcp_put_pkt':
+tcp.c:(.text+0xe74): undefined reference to `tcp_pack_oneCsum'
+tcp.c:(.text+0x130e): undefined reference to `tcp_frag2conn'
+generic/tcp.o: In function `tcp_ioctl':
+tcp.c:(.text+0x19ad): undefined reference to `tcp_fd_write'
+tcp.c:(.text+0x19cf): undefined reference to `tcp_conn_write'
+tcp.c:(.text+0x1a85): undefined reference to `tcp_set_send_timer'
+tcp.c:(.text+0x1a98): undefined reference to `tcp_conn_write'
+tcp.c:(.text+0x1c25): undefined reference to `tcp_bytesavailable'
+generic/tcp.o: In function `find_empty_conn':
+tcp.c:(.text+0x2a3b): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `find_conn_entry':
+tcp.c:(.text+0x2b5d): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `read_ip_packets':
+tcp.c:(.text+0x2bbb): undefined reference to `ip_read'
+generic/tcp.o: In function `find_best_conn':
+tcp.c:(.text+0x30ce): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `tcp_write':
+tcp.c:(.text+0x3583): undefined reference to `tcp_set_send_timer'
+tcp.c:(.text+0x35cb): undefined reference to `tcp_fd_write'
+tcp.c:(.text+0x35ed): undefined reference to `tcp_conn_write'
+generic/tcp.o: In function `tcp_read':
+tcp.c:(.text+0x36f9): undefined reference to `tcp_fd_read'
+generic/tcp.o: In function `tcp_close':
+tcp.c:(.text+0x3abb): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x3ac8): undefined reference to `tcp_shutdown'
+tcp.c:(.text+0x3b0d): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x3bb5): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x3ca1): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x3d48): undefined reference to `tcp_shutdown'
+tcp.c:(.text+0x3d8d): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `tcp_cancel':
+tcp.c:(.text+0x4060): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `tcp_su4connect':
+tcp.c:(.text+0x4486): undefined reference to `tcp_set_send_timer'
+tcp.c:(.text+0x4499): undefined reference to `tcp_conn_write'
+generic/tcp.o: In function `tcp_buffree':
+tcp.c:(.text+0x4a46): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x4ac9): undefined reference to `tcp_close_connection'
+generic/tcp.o: In function `tcp_notreach':
+tcp.c:(.text+0x4b28): undefined reference to `tcp_close_connection'
+tcp.c:(.text+0x4b86): undefined reference to `tcp_conn_write'
+generic/tcp.o: In function `tcp_mtu_exceeded':
+tcp.c:(.text+0x4c2d): undefined reference to `tcp_conn_write'
+tcp.c:(.text+0x4cd9): undefined reference to `tcp_conn_write'
+generic/udp.o: In function `read_ip_packets':
+udp.c:(.text+0x135d): undefined reference to `ip_read'
+generic/udp.o: In function `udp_ip_arrived':
+udp.c:(.text+0x19f1): undefined reference to `oneC_sum'
+udp.c:(.text+0x1a10): undefined reference to `oneC_sum'
+udp.c:(.text+0x1a2f): undefined reference to `oneC_sum'
+udp.c:(.text+0x1a51): undefined reference to `oneC_sum'
+udp.c:(.text+0x1f4d): undefined reference to `icmp_snd_unreachable'
+generic/udp.o: In function `restart_write_fd':
+udp.c:(.text+0x25a4): undefined reference to `oneC_sum'
+udp.c:(.text+0x25c8): undefined reference to `oneC_sum'
+udp.c:(.text+0x25ef): undefined reference to `oneC_sum'
+udp.c:(.text+0x2611): undefined reference to `oneC_sum'
+udp.c:(.text+0x26f3): undefined reference to `ip_write'
+generic/udp.o: In function `pack_oneCsum':
+udp.c:(.text+0x2809): undefined reference to `oneC_sum'
+udp.c:(.text+0x285d): undefined reference to `oneC_sum'
+udp.c:(.text+0x289f): undefined reference to `oneC_sum'
+generic/ip_ioctl.o: In function `ip_ioctl':
+ip_ioctl.c:(.text+0xcba): undefined reference to `ipr_get_oroute'
+ip_ioctl.c:(.text+0xedb): undefined reference to `ipr_add_oroute'
+ip_ioctl.c:(.text+0x100e): undefined reference to `ipr_del_oroute'
+ip_ioctl.c:(.text+0x1139): undefined reference to `ipr_get_iroute'
+ip_ioctl.c:(.text+0x1350): undefined reference to `ipr_add_iroute'
+ip_ioctl.c:(.text+0x1483): undefined reference to `ipr_del_iroute'
+generic/ip_ioctl.o: In function `ip_setconf':
+ip_ioctl.c:(.text+0x1842): undefined reference to `ip_nettype'
+ip_ioctl.c:(.text+0x184a): undefined reference to `ip_netmask'
+ip_ioctl.c:(.text+0x192e): undefined reference to `ipr_chk_itab'
+ip_ioctl.c:(.text+0x1961): undefined reference to `ipr_chk_otab'
+generic/ip_ioctl.o: In function `ip_checkopt':
+ip_ioctl.c:(.text+0x19ca): undefined reference to `ip_chk_hdropt'
+generic/ip_ioctl.o: In function `report_addr':
+ip_ioctl.c:(.text+0x1bc8): undefined reference to `ip_hdr_chksum'
+ip_ioctl.c:(.text+0x1c1e): undefined reference to `ip_packet2user'
+collect2: ld returned 1 exit status
+make: *** [inet] Error 1

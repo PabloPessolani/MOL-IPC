@@ -1,0 +1,233 @@
+/********************************************************/
+/* Ethernet driver access via raw socket                */
+/*                                                      */
+/* Paulo Pedreiras, Out.2005                            */
+/*                                                      */
+/* RCAI 05/06                                           */
+/********************************************************/
+
+
+/* Includes */
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <math.h>
+#include <string.h>
+#include <sys/time.h>
+#include <ctype.h>
+
+
+#include <signal.h>
+#include <sys/ioctl.h>
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+
+#include <linux/if.h>
+#include <netpacket/packet.h>
+#include <net/ethernet.h>     /* the L2 protocols */
+#include <asm/types.h>
+
+
+/* Defines */
+#define DEVICE "eth0"
+#define ETH_TYPE_FIELD 	0x8FF0
+#define D_SIZE 100 /* Data size of messages to send */
+
+
+/* Global Vars */
+int s = 0; // Socket descriptor
+struct sockaddr_ll socket_address;
+
+unsigned char src_mac[6];		/*Local host NIC MAC address*/
+unsigned char bcast_mac[6] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};	/*Brodacast address - all 1's*/
+
+void * buffer = NULL;
+
+/* Function prototypes */
+void sigint(int signum);
+int eth_raw_init();
+
+
+/**************************/
+/*       Main             */
+/**************************/
+
+int main(int argc, char **argv) 
+{
+
+  
+  int op_mode;
+  int i;
+
+  unsigned char* eth_head;	/* byte pointer to ethenet header*/
+  unsigned char* eth_data;	/* byte pointer to ethernet data field*/
+  struct ethhdr *eh;            /* structured pointer to ethernet header*/
+   
+
+  /* Check input parameters */
+  if(argv[1] != NULL) 
+    if(argv[1][0] > 'Z')
+      op_mode = argv[1][0]-('a'-'A');
+  
+  if(argc != 2 || (op_mode != 'S' && op_mode != 'R'))
+    {
+      printf("\n Usage: raw-sr {s,r} ");
+      printf("\n     s: send packets");
+      printf("\n     r: receive packets");
+      printf("\n");
+      exit(0);
+    }
+  
+  /* Create socket */
+  eth_raw_init();
+  
+  /* Prepare data structures */
+  /* Ethernet frame: Target MAC (6)+ Src MAC(6) + Type (6)+ Data(+Padd)(46..1500) + CRC (4) */
+  buffer = (void*)malloc(ETHER_MAX_LEN); /* Buffer for ethernet frame (maximum size)*/
+  eth_head = buffer;                     /* eth_head points to beginning of buffer (ethernet header fields) */
+  eth_data = buffer + ETH_HLEN;          /* eth_data points to data field of the ethernet frame */
+  eh = (struct ethhdr *)eth_head;
+  
+  
+  if(op_mode == 'S'){
+    /*Send packets ....*/
+    printf("Sending packets...\n");
+    while(1) {
+      
+      /* Build ethernet header*/
+      memcpy((void *)eh->h_dest,(void*)bcast_mac, ETH_ALEN);
+      memcpy((void *)eh->h_source,(void*)src_mac, ETH_ALEN);
+      eh->h_proto = htons(ETH_TYPE_FIELD);
+      
+      /*Put data ....*/
+      for (i = 0; i < D_SIZE; i++) eth_data[i] = 'a'+i%10;
+      
+      /*Send packet*/
+      i = sendto(s, buffer, D_SIZE+ETHER_HDR_LEN, 0, (struct sockaddr*)&socket_address, sizeof(socket_address));
+      if (i == -1) {
+	perror("sendto():");
+	exit(1);
+      }
+      
+      sleep(1); /* Pause 1 second */
+      
+    }
+  }
+  else {
+    /* op_mode == R -> receive packets */
+    while(1){
+      
+      /*Wait for incoming packet...*/
+      i = recvfrom(s, buffer, ETHER_MAX_LEN, 0, NULL, NULL);
+      if (i == -1) {
+	perror("recvfrom():");
+	exit(1);
+      }
+      
+      /* Process packet */
+      if(eh->h_proto == ntohs(ETH_TYPE_FIELD)){
+	printf("\n Packet received from ");
+	for(i=0;i<5;i++)
+	  printf(":%02X",eh->h_source[i]);
+	
+	printf("\n First 20 data bytes):");
+	for(i=0;i<20;i++)
+	  printf("%c", eth_data[i]);
+      }
+    }
+    
+  }
+  
+  return 0;
+  
+}
+
+
+/* Function implementation */
+
+/***************************************/
+/* eth_raw_init()                      */
+/***************************************/
+int eth_raw_init()
+{
+  
+  /* Vars */
+  int i;
+  struct ifreq ifr;
+  int ifindex = 0;			/*Ethernet Interface index*/
+  
+  /* Open socket */
+  s = socket(PF_PACKET, SOCK_RAW, htons(ETH_P_ALL));
+  if (s == -1) {
+    perror("socket():");
+    exit(1);
+  }
+  printf("Successfully opened socket: %i\n", s);
+  
+  /*Get ethernet interface index*/
+  strncpy(ifr.ifr_name, DEVICE, IFNAMSIZ);
+  if (ioctl(s, SIOCGIFINDEX, &ifr) == -1) {
+    perror("SIOCGIFINDEX");
+    exit(1);
+  }
+  ifindex = ifr.ifr_ifindex;
+  printf("Successfully got interface index: %i\n", ifindex);
+  
+  /*retrieve corresponding MAC*/
+  if (ioctl(s, SIOCGIFHWADDR, &ifr) == -1) {
+    perror("SIOCGIFINDEX");
+    exit(1);
+  }
+  for (i = 0; i < 6; i++) {
+    src_mac[i] = ifr.ifr_hwaddr.sa_data[i];
+  }
+  printf("Host MAC address: %02X:%02X:%02X:%02X:%02X:%02X\n", 
+	 src_mac[0],src_mac[1],src_mac[2],src_mac[3],src_mac[4],src_mac[5]);
+  
+  /*prepare sockaddr_ll*/
+  socket_address.sll_family   = PF_PACKET;
+  socket_address.sll_protocol = htons(ETH_TYPE_FIELD);
+  socket_address.sll_ifindex  = ifindex;
+  //socket_address.sll_hatype   = ARPHRD_ETHER;
+  socket_address.sll_pkttype  = PACKET_BROADCAST;
+  socket_address.sll_halen    = ETH_ALEN;
+  socket_address.sll_addr[0]  = bcast_mac[0];
+  socket_address.sll_addr[1]  = bcast_mac[1];
+  socket_address.sll_addr[2]  = bcast_mac[2];
+  socket_address.sll_addr[3]  = bcast_mac[3];
+  socket_address.sll_addr[4]  = bcast_mac[4];
+  socket_address.sll_addr[5]  = bcast_mac[5];
+  socket_address.sll_addr[6]  = 0x00; 
+  socket_address.sll_addr[7]  = 0x00;
+														
+  
+  /*establish signal handler*/
+  signal(SIGINT, sigint);
+  printf("Successfully established signal handler for SIGINT\n");
+  
+  return 0;
+  
+}
+
+void sigint(int signum) {
+	/*Clean up.......*/
+
+	struct ifreq ifr;
+	
+        if (s == -1)
+	  return; /* No socket has beeen created */
+	
+	strncpy(ifr.ifr_name, DEVICE, IFNAMSIZ);
+	ioctl(s, SIOCGIFFLAGS, &ifr);
+	ifr.ifr_flags &= ~IFF_PROMISC;
+	ioctl(s, SIOCSIFFLAGS, &ifr);
+	close(s);
+
+	free(buffer);
+	
+	printf("Client terminating....\n");
+
+
+	exit(0);
+}

@@ -1,0 +1,26 @@
+
+
+Cuando el nodo SPREAD arranca hace spread_view=0  y bm_view=0
+todos los nodos al arrancar tiene spread_view=0
+
+Cuando el nodo SPREAD recibe un JOIN/DISCONNECT hace spread_view++ 
+y envia por cada enlace de salida un mensaje tipo NEW_VIEW con valor (spread_view)
+
+Todos los nodos almacenan el nuevo valor spread_view y todos responden con VIEW_ACK(view) y 
+se quedan a la espera de un mensaje de tipo JOIN/DISCONNECT
+ 
+Todos los nodos envian los OTROS sus mensajes transportando el valor view = spread_view
+
+Todos los mensajes que recibe el nodo SPREAD que pertenecen a un (view < spread_view) los debe 
+multicastear SOLO en los nodos de esa vista hasta que reciba de todos los nodos el
+VIEW_ACK(view)
+
+Cuando recibio de todos los nodos de la vista anterior un VIEW_ACK entonces puede incluir/remover
+del bm_view al nodo que cambio.
+
+Luego envía el JOIN/DISCONNECT a todos los nodos de la vista y pueden continuar con su ejecucion.
+
+
+
+
+

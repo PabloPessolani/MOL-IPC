@@ -1,0 +1,279 @@
+ pm.c:pm_init:170:PM: address of m_in=0x8056000 m_out=0x8055000
+ pm.c:pm_init:174:local_nodeid=0
+ pm.c:pm_init:180:Binding process 2743 to VM0 with pm_nr=0
+ pm.c:pm_init:205:Register PM into SYSTASK pm_lpid=2743
+ pm.c:pm_init:212:Get the DRVS info from SYSTASK
+ pm.c:pm_init:217:d_nr_vms=32 d_nr_nodes=32 d_nr_procs=221 d_nr_tasks=35 d_nr_sysprocs=64 
+ pm.c:pm_init:218:Get the VM info from SYSTASK
+ pm.c:pm_init:222:dc_vmid=0 dc_nr_procs=221 dc_nr_tasks=35 dc_nr_sysprocs=64 dc_nr_nodes=32 flags=0 dc_nodes=3 dc_name=VM0
+ pm.c:pm_init:225:Alloc dynamic memory for the Kernel process table nr_procs+nr_tasks=256
+ pm.c:pm_init:231:Alloc dynamic memory for the PM process table nr_procs=221
+ pm.c:pm_init:237:Alloc dynamic memory for the Kernel priviledge table nr_procs+nr_tasks=256
+ pm.c:pm_init:243:Alloc dynamic memory for the SYSTASK Slots allocation table nr_procs+nr_tasks=256
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ utility.c:mproc_init:146:nr=0 endp=0 vmid=0 flags=0 misc=0 lpid=0 nodeid=0 nodemap=0 name= 
+ pm.c:pm_init:253:Initialize PM entry in the PM's process table
+ pm.c:pm_init:270:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=3001 mp_nice=-10 
+ pm.c:pm_init:276:change PRIVILEGES of PM
+ utility.c:sys_proctab:65:Sending SYS_GETINFO request 2 to SYSTEM
+ pm.c:pm_init:288:clockTicks =100
+ pm.c:pm_init:293:boottime =176
+ pm.c:main:40:This is PM's main loop-  get work and do it, forever and forever.
+ pm.c:get_work:123:Wait for the next message and extract useful information from it.
+ pm.c:get_work:128:Request received from who_e=2, call_nr=96
+ utility.c:pm_isokendpt:40:endpoint=2 
+ utility.c:pm_isokendpt:42:*proc=2
+ utility.c:pm_isokendpt:43:kproc.p_endpoint=2
+ pm.c:get_work:145:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ forkexit.c:do_bindproc:469:
+ forkexit.c:do_bindproc:476:source=2 type=96 m7i1=2 m7i2=2746 m7i3=2 m7i4=1 m7p1=(nil) m7p2=(nil)
+ utility.c:sys_procinfo:105:Sending SYS_GETINFO request 11 to SYSTEM for p_nr=2
+ utility.c:sys_procinfo:109:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ forkexit.c:do_bindproc:491:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ forkexit.c:do_bindproc:492:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ forkexit.c:do_bindproc:507:sysproc_nr=2 sysproc_ep=2 new_pid=2
+ utility.c:sys_procinfo:105:Sending SYS_GETINFO request 11 to SYSTEM for p_nr=2
+ utility.c:sys_procinfo:109:nr=2 endp=2 vmid=0 flags=8 misc=20 lpid=2746 nodeid=0 nodemap=1 name=rs 
+ forkexit.c:do_bindproc:514:sysproc_nr=2
+ forkexit.c:do_bindproc:537:mp_endpoint=2 mp_pid=0 mp_parent=0 mp_flags=2001 mp_nice=-10 
+ pm.c:main:70:call_nr=96 result=2
+ pm.c:setreply:312:proc_nr=2 result=2
+ pm.c:main:80:Send out all pending reply messages
+ pm.c:main:90:Replying to 2
+ pm.c:get_work:123:Wait for the next message and extract useful information from it.
+ pm.c:get_work:128:Request received from who_e=3, call_nr=1
+ utility.c:pm_isokendpt:40:endpoint=3 
+ utility.c:pm_isokendpt:42:*proc=3
+ utility.c:pm_isokendpt:43:kproc.p_endpoint=3
+ pm.c:get_work:145:mp_endpoint=0 mp_pid=0 mp_parent=0 mp_flags=1 mp_nice=0 
+ forkexit.c:do_pm_exit:240:who_p=3 who_e=3 lnx_pid=-1 status=474369
+ forkexit.c:pm_exit:322:mnx_pid=0 status=474369 proc_nr=3 proc_ep=3 oper=1
+ forkexit.c:pm_exit:336:parent_pid=0
+ forkexit.c:pm_exit:353:nr=3 endp=3 vmid=0 flags=1000 misc=0 lpid=-1 nodeid=1 nodemap=2 name=rdisk 
+ utility.c:sys_procinfo:105:Sending SYS_GETINFO request 11 to SYSTEM for p_nr=3
+ utility.c:sys_procinfo:109:nr=3 endp=3 vmid=0 flags=1008 misc=0 lpid=-1 nodeid=1 nodemap=2 name=rdisk 
+ forkexit.c:pm_exit:364:nr=3 endp=3 vmid=0 flags=1008 misc=0 lpid=-1 nodeid=1 nodemap=2 name=rdisk 
+ signal.c:sig_proc:212:sending signal 17 to minix PID 0
+ forkexit.c:pm_exit:413:PID=0 pgrp=0 ruid=-1 euid=-1 rgid=-1 egid=-1 flags=0
+ pm.c:main:70:call_nr=1 result=-998
+ pm.c:main:80:Send out all pending reply messages
+ pm.c:get_work:123:Wait for the next message and extract useful information from it.

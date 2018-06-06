@@ -1,0 +1,64 @@
+BENCHMARKS DE FATFS DESDE DVD 
+
+Para generar las pruebas se modificaron 
+	/etc/bootcd/bootcdwrite
+		APPEND="mem=nopentium mem=960M"
+		RAMDISK_SIZE=235520
+		
+Se creo un dispositivo virtual de 100MB en /home/MoL_Module/mol-ipc/servers/diskImgs
+	dd if=/dev/zero of=FAT100M.img bs=1024k count=100
+Se creo el FS
+	mkfs.vfat FAT100M.img
+Luego se monto
+	mount FAT100M.img /mnt/
+	
+Luego dentro de /mnt/ se crearon multiples archivos de texto
+
+base64 /dev/urandom | head -c $[1024*1024*5]  > 5Mb.txt
+base64 /dev/urandom | head -c $[1024*1024*10] > 10Mb.txt	
+base64 /dev/urandom | head -c $[1024*1024*30] > 30Mb.txt	
+base64 /dev/urandom | head -c $[1024*1024*40] > 40Mb.txt	
+
+total 97280
+-rwxr-xr-x 1 root root 10485760 Nov 28 20:49 10Mb.txt
+-rwxr-xr-x 1 root root 31457280 Nov 28 20:49 30Mb.txt
+-rwxr-xr-x 1 root root 41943040 Nov 28 20:50 40Mb.txt
+-rwxr-xr-x 1 root root  5242880 Nov 28 20:52 5Mb.txt
+
+==========================================================================================================
+BOOTEO DESDE DVD
+==========================================================================================================
+
+	!!!!!!!!!!!!!!!!!!!!!!!! ATENCION !!!!!!!!!!!!!!!!!!!!!!
+	En el script se setearon el DVS y la VM con los siguientes parametros para reducir el consumo de memoria
+		/home/MoL_Module/mol-ipc/tests/test_drvs_init 	-n $lcl -V 2 -N 2 -P 96 -T 32 -S 64 -D 0
+		/home/MoL_Module/mol-ipc/tests/test_vm_init 	-v $vmid -p 96 -t 32 -s 64 -n 2 -P 0 -m 1 
+
+Cuando arranca el DVD poner dispositivo de root: sr0
+
+Luego hay que hacer varias cosas a mano:
+	/etc/init.d/networking restart
+	ifconfig lo 127.0.0.0
+	cd /lib/init/rw
+	
+Hacer ps -ef y ver que procesos se pueden matar 
+NOTA: SSH no funciona bien
+	killall perl  <= para matar webmin
+	
+con vmwastat o top se puede ver cuanta memoria libre queda.
+
+Luego ejecutar en NODE0 
+	/lib/init/rw# /home/MoL_Module/mol-ipc/fatfs0.sh <opcion> 
+	
+
+
+	
+
+
+
+
+
+
+
+	
+	

@@ -1,0 +1,23 @@
+all: fs
+# Which compiler
+CC = gcc
+
+# Where are include files kept
+INCLUDE = ..
+
+# Options for develofsent
+# CFLAGS = -v -O3 -Wall -ansi
+
+OBJS = main.o table.o utility.o open.o super.o inode.o cache.o misc.o \
+	../../stub_syscall.o
+
+LIBS = ../../lib/syslib/libsyslib.so ../../lib/timers/libtimers.so
+
+fs: $(OBJS)    
+	$(CC)  $(CFLAGS) -MMD -MP -ldl -pthread -o fs $(OBJS)  $(LIBS) -I$(INCLUDE)
+	
+.c.o:
+	$(CC) $(CFLAGS) -c -o $@ $< -I$(INCLUDE)
+
+clean:
+	rm fs  *.o

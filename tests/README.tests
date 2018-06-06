@@ -1,0 +1,601 @@
+TEST DE MOL-IPC
+===============
+BINS= 	test_dc_init test_dc_dump test_proc_dump test_bind \
+	test_receive test_send test_getep test_rs test_rs2 \
+	test_rs3 test_rs_perf test_rs_mperf test_sendrec \
+	test_sendrec2 test_notify test_notify2 test_vcopy \
+	test_vcopy2 test_vcopy3 test_vcopy4 \
+	test_server  test_client test_server2  test_client2 \
+	test_unbind test_unbind2 test_unbind3 test_unbind4 test_unbind5 \
+	mol_system mol_pm test_getpid  test_rmtbind test_relay
+	
+test_dc_init
+============
+Usage: ./test_dc_init <dcid>
+
+root@debian:/home/jara/mol-ipc# ./test_dc_init 0
+Initializing virtual machine 0...
+root@debian:/home/jara/mol-ipc# ./test_dc_init 1
+Initializing virtual machine 1...
+root@debian:/home/jara/mol-ipc# ./test_dc_init 2
+Initializing virtual machine 2.
+
+Haciendo dmesg
+[  176.741746] DEBUG 1861:mol_dc_init:146: Initializing DC=0
+[  176.742227] DEBUG 1861:mol_dc_init:153: Initializing DC=0 proc[] table
+[  177.789469] DEBUG 1862:mol_dc_init:146: Initializing DC=1
+[  177.789480] DEBUG 1862:mol_dc_init:153: Initializing DC=1 proc[] table
+[  179.192918] DEBUG 1863:mol_dc_init:146: Initializing DC=2
+[  179.192929] DEBUG 1863:mol_dc_init:153: Initializing DC=2 proc[] table
+
+
+test_dc_dump
+============
+root@debian:/home/jara/mol-ipc# ./test_dc_dump
+Dump DCs
+
+Haciendo dmesg
+[  254.826840] DCID     FLAGS   NAME
+[  254.826919] 0        0       DC0
+[  254.826941] 1        0       DC1
+[  254.826945] 2        0       DC2
+[  254.826979] -1047381028      0
+[  254.826985] 0        0
+[  254.826990] 0        0
+
+test_bind
+==========
+Usage: ./test_bind <dcid> <p_nr
+Prueba mol_bind, mol_unbind y mol_proc_dump
+
+root@debian:/home/jara/mol-ipc# ./test_bind 0 1
+Binding process 1938 to DC0 with p_nr=1
+Dump procs of DC0
+Unbinding process 1938 from DC0 with p_nr=1
+
+Haciendo dmesg
+[  318.006917] DEBUG 1938:mol_bind:243: dcid=0 p_nr=1
+[  318.007033] DEBUG 1938:mol_bind:273: i=5 p_nr=1 dcid=0 lpid=1938 endpoint=35540
+[  318.008467] DCID     NR      ENDP    LPID    NODE    FLAGS   GETF    SNDT   WITM
+[  318.008572] 0        1       35540   1938    0       0       27342   27342  27342
+[  318.008874] DEBUG 1938:mol_unbind:882: dcid=0 lpid=1938 nr=1 endpoint=35540
+
+test_getep
+==========
+Usage: ./test_getep <dcid> <p_nr>
+Prueba mol_bind, mol_getep, mol_unbind y mol_proc_dump
+
+root@debian:/home/jara/mol-ipc# ./test_getep 0 1
+Binding process 1946 to DC0 with p_nr=1
+Process endpoint=71079
+Dump procs of DC0
+Unbinding process 1946 from DC0 with endpoint=71079
+
+Haciendo dmesg
+[  482.416656] DEBUG 1946:mol_bind:243: dcid=0 p_nr=1
+[  482.416669] DEBUG 1946:mol_bind:273: i=5 p_nr=1 dcid=0 lpid=1946 endpoint=71079
+[  482.416768] DEBUG 1946:mol_getep:819: pid=1946
+[  482.416914] DEBUG 1946:mol_getep:842: p_lpid=1946 p_nr=1 p_endpoint=71079
+[  482.416982] DCID     NR      ENDP    LPID    NODE    FLAGS   GETF    SNDT   WITM
+[  482.416989] 0        1       71079   1946    0       0       27342   27342  27342
+[  482.418133] DEBUG 1946:mol_unbind:882: dcid=0 lpid=1946 nr=1 endpoint=71079
+
+
+test_dc_receive y test_dc_send
+==============================
+Usage: ./test_receive <dcid> <p_nr>
+
+Usage: ./test_send <dcid> <src_nr> <dst_ep>
+
+Arrancar en una terminal 
+root@debian:/home/jara/mol-ipc# ./test_receive 0 1
+Binding process 2028 to DC0 with p_nr=1
+Process endpoint=106618
+Dump procs of DC0
+
+En otra terminal colocar el ENDPOINT de la primera, en este ejemplo 106618
+root@debian:/home/jara/mol-ipc# ./test_send 0 2 106618
+Binding process 2031 to DC0 with src_nr=2
+Process src_ep=35541
+Dump procs of DC0
+SEND msg: m_source=-1218403387, m1_i1=1, m1_i2=2, m1_i3=3
+Unbinding process 2031 from DC0 with src_nr=2
+
+En la primer terminal aparece
+RECEIVE msg: m_source=35541, m_type=255, m1_i1=1, m1_i2=2, m1_i3=3
+Unbinding process 2028 from DC0 with endpoint=106618
+
+haciendo dmesg
+RECEIVER
+[  676.996642] DEBUG 2028:mol_bind:243: dcid=0 p_nr=1
+[  676.996731] DEBUG 2028:mol_bind:273: i=5 p_nr=1 dcid=0 lpid=2028 endpoint=106618
+[  676.996777] DCID     NR      ENDP    LPID    NODE    FLAGS   GETF    SNDT   WITM
+[  676.996837] 0        1       106618  2028    0       0       27342   27342  27342
+[  676.996921] DEBUG 2028:mol_mini_receive:411: src_ep=31438
+[  676.996952] DEBUG 2028:mol_mini_receive:419: src_nr=31438
+[  676.997000] DEBUG 2028:mol_mini_receive:433: caller_pid=2028 dcid=0
+[  676.997038] DEBUG 2028:mol_mini_receive:448: caller_nr=1 caller_ep=106618
+[  676.997108] DEBUG 2028:mol_mini_receive:519: Any suitable message was not found.
+SENDER
+[  711.489555] DEBUG 2031:mol_bind:243: dcid=0 p_nr=2
+[  711.489571] DEBUG 2031:mol_bind:273: i=6 p_nr=2 dcid=0 lpid=2031 endpoint=35541
+[  711.489611] DCID     NR      ENDP    LPID    NODE    FLAGS   GETF    SNDT   WITM
+[  711.489655] 0        1       106618  2028    0       8       31438   27342  27342
+[  711.489660] 0        2       35541   2031    0       0       27342   27342  27342
+[  711.489746] DEBUG 2031:mol_mini_send:303: dst_ep=106618
+[  711.489778] DEBUG 2031:mol_mini_send:310: dst_nr=1
+[  711.489842] DEBUG 2031:mol_mini_send:325: caller_pid=2031 dcid=0
+[  711.489874] DEBUG 2031:mol_mini_send:333: caller_nr=2 caller_ep=35541
+[  711.489909] DEBUG 2031:mol_mini_send:340: dcid=0 caller_pid=2031 caller_nr=2 dst_ep=106618
+[  711.490078] DEBUG 2031:dump_message1:129: size:36, source:35541 type:255 m1i1:1 m1i2:2 m1i3:3
+[  711.490086] DEBUG 2031:mol_mini_send:357: destination is waiting. Enqueue at the HEAD and wakeup destination
+[  711.490086] DEBUG 2031:mol_mini_send:379: blocks the caller anyway
+RECEIVER
+[  711.490317] DEBUG 2028:test_copy_cmd:94: Testing p_misc_flags =0
+[  711.490379] DEBUG 2028:mol_mini_receive:500: Found acceptable message. Copy it and update status.
+[  711.490419] DEBUG 2028:dump_message1:129: size:36, source:35541 type:255 m1i1:1 m1i2:2 m1i3:3
+[  711.490541] DEBUG 2028:mol_unbind:882: dcid=0 lpid=2028 nr=1 endpoint=106618
+SENDER
+[  711.494543] DEBUG 2031:test_copy_cmd:94: Testing p_misc_flags =0
+RECEIVER
+[  711.494626] DEBUG 2031:mol_unbind:882: dcid=0 lpid=2031 nr=2 endpoint=35541
+
+test_rs y test_rs2
+==================
+Testean send y receive entre RECEIVER(padre) y SENDER(hijo).
+Usage: ./test_rs <dcid> <src_nr> <dst_nr>
+
+test_rs: 
+-------
+El receptor pausa antes del RECEIVE para que el SENDER para que tenga q esperar
+En dmesg aparece el mensaje
+  944.220331] DEBUG 2090:mol_mini_send:369: destination is not waiting dst_ptr->p_rts_flags=0. 
+Enqueue at the TAIL.
+
+
+test_rs2: 
+--------
+El emisor pausa antes del SEND para que el RECEIVER tenga q esperar
+En dmesg aparece el mensaje
+[ 1107.182741] DEBUG 2094:mol_mini_receive:500: Found acceptable message. Copy it and update status
+
+
+test_rs_perf:
+============
+Mide performance de send y receive.
+Toma parametros por default
+#define 	DCID	0
+#define 	SRC_NR	1
+#define 	DST_NR	2
+#define		LOOPS	10
+
+root@debian:/home/jara/mol-ipc# ./test_rs_perf
+BIND DESTINATION dcid=0 dst_pid=2144 dst_nr=2 dst_ep=213236
+Dump procs of DC0
+RECEIVER pause before RECEIVE
+BIND SOURCE dcid=0 src_pid=2145 src_nr=1 src_ep=284313
+SEND msg: m_type=255, m1_i1=0, m1_i2=2, m1_i3=3
+RECEIVE msg: m_source=284313, m_type=255, m1_i1=9, m1_i2=2, m1_i3=3
+UNBIND DESTINATION dcid=0 dst_pid=2144 dst_nr=2 dst_ep=213236
+t_start=1343134300.89 t_stop=1343134300.89 t_total=0.01
+Loops = 10
+Time for a pair of SEND/RECEIVE= 0.755501[ms]
+Throuhput = 1323.625347 [SEND-RECEIVE/s]
+UNBIND SOURCE dcid=0 src_pid=2145 src_nr=1 src_ep=284313
+
+test_rs_mperf:
+=============
+Mide performance de send y receive con multiples THREADS SENDERS.
+Toma parametros por default
+#define 	DCID	0
+#define 	DST_NR	1
+#define 	SRC_NR	10
+#define 	FORKS   5
+#define		LOOPS	2
+
+root@debian:/home/jara/mol-ipc# ./test_rs_mperf
+BIND DESTINATION dcid=0 dst_pid=2148 dst_nr=1 dst_ep=319852
+Dump procs of DC0
+RECEIVER pause before SENDREC
+FORK 1
+BIND SOURCE dcid=0 src_pid=2150 src_nr=11 src_ep=35550
+SEND msg: m_type=255, m1_i1=2150, m1_i2=1, m1_i3=3
+FORK 2
+BIND SOURCE dcid=0 src_pid=2151 src_nr=12 src_ep=35551
+SEND msg: m_type=255, m1_i1=2151, m1_i2=2, m1_i3=3
+FORK 3
+BIND SOURCE dcid=0 src_pid=2152 src_nr=13 src_ep=35552
+SEND msg: m_type=255, m1_i1=2152, m1_i2=3, m1_i3=3
+FORK 4
+BIND SOURCE dcid=0 src_pid=2153 src_nr=14 src_ep=35553
+SEND msg: m_type=255, m1_i1=2153, m1_i2=4, m1_i3=3
+BIND SOURCE dcid=0 src_pid=2154 src_nr=15 src_ep=35554
+SEND msg: m_type=255, m1_i1=2154, m1_i2=5, m1_i3=3
+SERVER receive 0
+SERVER receive 1
+SERVER receive 2
+SERVER receive 3
+SERVER receive 4
+SERVER receive 5
+SERVER receive 6
+SERVER receive 7
+SERVER receive 8
+SERVER receive 9
+UNBIND SOURCE dcid=0 src_pid=2152 src_nr=13 src_ep=35552
+UNBIND SOURCE dcid=0 src_pid=2151 src_nr=12 src_ep=35551
+UNBIND SOURCE dcid=0 src_pid=2150 src_nr=11 src_ep=35550
+UNBIND SOURCE dcid=0 src_pid=2153 src_nr=14 src_ep=35553
+RECEIVE msg: m_source=35554, m_type=255, m1_i1=1, m1_i2=5, m1_i3=3
+UNBIND DESTINATION dcid=0 dst_pid=2148 dst_nr=1 dst_ep=319852
+t_start=1343134390.45 t_stop=1343134390.46 t_total=0.01
+Loops = 2
+Time for a pair of SEND/RECEIVE= 4.838943[ms]
+Throuhput = 206.656681 [SEND-RECEIVE/s]
+UNBIND SOURCE dcid=0 src_pid=2154 src_nr=15 src_ep=35554
+
+test_sendrec y test_sendrec2
+============================
+Usage: ./test_sendrec <dcid>  <svr_nr> <clt_nr>
+El cliente pausa antes de SENDREC
+
+Usage: ./test_sendrec2 <dcid>  <svr_nr> <clt_nr>
+El server pausa antes de RECEIVE
+
+
+test_notify y test_notify2
+==========================
+Usage: ./test_notify <dcid> <src_nr> <dst_nr>
+El server pausa antes de RECEIVE
+
+Usage: ./test_notify2 <dcid> <src_nr> <dst_nr>
+El client pausa antes de NOTIFY
+
+
+test_vcopy /2/3/4
+=================
+test_vcopy
+----------
+Usage: ./test_vcopy <dcid>  <svr_nr> <clt_nr>
+Permite copiar datos desde un proceso SERVER a un proceso CLIENT.
+En este caso el propio SERVER:
+1- ordena la copia con vcopy() 
+2- hace receive() para recibir pedido
+3- hace send() para retornar respuesta
+El CLIENT usa
+1-send() para hacer pedido
+2-receive() para obtener respuesta
+
+root@debian:/home/jara/mol-ipc# ./test_vcopy  0 1 2
+BIND SERVER dcid=0 svr_pid=1897 svr_nr=1 svr_ep=35540
+Dump procs of DC0
+SERVER pause before VCOPY
+BIND CLIENT dcid=0 clt_pid=1898 clt_nr=2 clt_ep=35541
+CLIENT pause before SENDREC
+SEND msg: m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+SERVER BUFFER:THIS MESSAGE IS FOR PARENT AND CLIENT
+RECEIVE msg: m_source=35541, m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+REPLY msg: m_source=35540, m_type=240, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND SERVER dcid=0 svr_pid=1897 svr_nr=1 svr_ep=35540
+CLIENT BUFFER:THIS IS A MESSAGE FROM SERVER TO CLIENT <<<<<<<<< TEXTO COPIA DE SERVER A CLIENT
+UNBIND CLIENT dcid=0 clt_pid=1898 clt_nr=2 clt_ep=35541
+
+test_vcopy2
+-----------
+Usage: ./test_vcopy2 <dcid>  <svr_nr> <clt_nr>
+Permite copiar datos desde un proceso SERVER a un proceso CLIENT.
+En este caso el propio SERVER:
+1- hace receive() para recibir pedido
+2- ordena la copia con vcopy() 
+3- hace send() para retornar respuesta
+El CLIENT usa
+1-sendrec() para hacer pedido y obtener respuesta
+
+root@debian:/home/jara/mol-ipc# ./test_vcopy2  0 1 2
+BIND SERVER dcid=0 svr_pid=1962 svr_nr=1 svr_ep=71079
+Dump procs of DC0
+BIND CLIENT dcid=0 clt_pid=1964 clt_nr=2 clt_ep=71080
+CLIENT pause before SENDREC
+SEND msg: m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+RECEIVE msg: m_source=71080, m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+SERVER pause before VCOPY
+SERVER BUFFER:THIS MESSAGE IS FOR PARENT AND CLIENT
+REPLY msg: m_source=71079, m_type=240, m1_i1=1, m1_i2=2, m1_i3=3
+CLIENT BUFFER:THIS IS A MESSAGE FROM SERVER TO CLIENT <<<<<<<<<<<<<< TEXTO COPIADO DE SERVER A CLIENT
+UNBIND CLIENT dcid=0 clt_pid=1964 clt_nr=2 clt_ep=71080
+UNBIND SERVER dcid=0 svr_pid=1962 svr_nr=1 svr_ep=71079
+
+test_vcopy3
+-----------
+Usage: ./test_vcopy3 <dcid>  <svr_nr> <clt_nr>
+Permite copiar datos desde un proceso CLIENT a un proceso SERVER.
+En este caso el propio SERVER:
+1- hace receive() para recibir pedido
+2- ordena la copia con vcopy() 
+3- hace send() para retornar respuesta
+El CLIENT usa
+1-sendrec() para hacer pedido y obtener respuesta
+
+root@debian:/home/jara/mol-ipc# ./test_vcopy3 0 1 2
+BIND SERVER dcid=0 svr_pid=1961 svr_nr=1 svr_ep=106618
+Dump procs of DC0
+SERVER pause before VCOPY
+BIND CLIENT dcid=0 clt_pid=1962 clt_nr=2 clt_ep=106619
+CLIENT pause before SENDREC
+SEND msg: m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+CLIENT BUFFER:THIS MESSAGE IS FOR PARENT AND CLIENT
+RECEIVE msg: m_source=106619, m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+SERVER BUFFER:THIS IS A MESSAGE FROM CLIENT TO SERV <<<<<<<<<<<<<< TEXTO COPIADO DE CLIENT A SERVER
+UNBIND SERVER dcid=0 svr_pid=1961 svr_nr=1 svr_ep=106618
+REPLY msg: m_source=106618, m_type=240, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND CLIENT dcid=0 clt_pid=1962 clt_nr=2 clt_ep=106619
+
+
+NOTA: Puede que el texto en este ejemplo aparezca cortado dado que se toma la longitud 
+del mensaje original ("THIS MESSAGE IS FOR PARENT AND CLIENT")
+[  245.816117] DEBUG 1962:test_copy_cmd:103: COPY_OUT p_bytes=37 p_requester=1 <<<<< indica 37 bytes
+
+test_vcopy4
+-----------
+Usage: ./test_vcopy4 <dcid>  <svr_nr> <clt1_nr> <clt2_nr>
+Permite copiar datos desde un proceso CLIENT1 a un proceso CLIENT2 ordenado por un SERVER.
+En este caso el propio SERVER:
+1- espera un tiempo para asegurarse que ambos clientes (hijos) hagan bind
+2- hace receive() para recibir pedido del primer hijo
+3- ordena la copia con vcopy() 
+4- hace send() para retornar respuesta
+5- ace receive() para recibir pedido del segundo hijo
+6- hace send() para retornar respuesta
+
+El CLIENT usa
+1- sendrec() para hacer pedido y obtener respuesta
+
+
+root@debian:/home/jara/mol-ipc# ./test_vcopy4 0 1 2 3
+BIND SERVER dcid=0 svr_pid=2009 svr_nr=1 svr_ep=142157
+REQUESTER pause before VCOPY
+BIND RECEIVER dcid=0 clt2_pid=2011 clt2_nr=3 clt2_ep=71081
+SEND msg: m_type=15, m1_i1=7, m1_i2=8, m1_i3=9
+BIND SENDER dcid=0 clt1_pid=2010 clt1_nr=2 clt1_ep=142158
+SEND msg: m_type=15, m1_i1=1, m1_i2=2, m1_i3=3
+Dump procs of DC0
+RECEIVE msg: m_source=71081, m_type=15, m1_i1=7, m1_i2=8, m1_i3=9
+REQUESTER BUFFER:THIS MESSAGE IS FOR ALL PROCESSES
+RECEIVE msg: m_source=71081, m_type=240, m1_i1=7, m1_i2=8, m1_i3=9
+REPLY msg: m_source=142157, m_type=240, m1_i1=7, m1_i2=8, m1_i3=9
+RECEIVER OUT: BUFFER:SENDER BUFFER BEFORE SENDREC           <<<<<<<<<<<<<<<< EL RECEIVER RECIBIO EL TEXTO DEL SENDER
+UNBIND RECEIVER dcid=0 clt2_pid=2011 clt2_nr=3 clt2_ep=71081
+REQUESTER BUFFER:THIS MESSAGE IS FOR ALL PROCESSES
+UNBIND SERVER dcid=0 svr_pid=2009 svr_nr=1 svr_ep=142157
+SENDER BUFFER OUT:SENDER BUFFER BEFORE SENDREC
+REPLY msg: m_source=142157, m_type=240, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND SENDER dcid=0 clt1_pid=2010 clt1_nr=2 clt1_ep=142158
+
+
+test_unbind /2/3/4/5
+====================
+test_unbind
+-----------
+Usage: ./test_unbind <dcid> <src_nr> <dst_nr>
+
+El RECEIVER nunca hace receive() y el SENDER envia un mensaje
+El RECEIVER hace unbind y por lo tanto el SENDER debe notificarse que su mensaje no se envió.
+
+root@debian:/home/jara/mol-ipc# ./test_unbind 0 1 2
+BIND DESTINATION dcid=0 dst_pid=2075 dst_nr=2 dst_ep=177697
+RECEIVER NEVER RECEIVE and pause before UNBIND o kill it
+BIND SOURCE dcid=0 src_pid=2076 src_nr=1 src_ep=177696
+SEND msg: m_type=255, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND DESTINATION dcid=0 dst_pid=2075 dst_nr=2 dst_ep=177697
+SEND ret=-109 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERROR RETORNADO (EMOLDSTDIED)
+UNBIND SOURCE dcid=0 src_pid=2076 src_nr=1 src_ep=177696
+
+haciendo dmesg
+[  488.498864] DEBUG 2075:mol_unbind:940: Wakeup SENDER with error ep=177696  pid=2076 <<< UP del SENDER
+[  488.500904] MOLDOWN: pid=2076 p_rcode=-109 <<<< ERROR RETORNADO AL SENDER (EMOLDSTDIED)
+
+
+test_unbind2
+------------
+Usage: ./test_unbind2 <dcid> <src_nr> <dst_nr>
+
+El SENDER nunca hace send() y el RECEIVER espera el mensaje
+El SENDER hace unbind y por lo tanto el RECEIVER debe notificarse que su SENDER MURIO
+
+root@debian:/home/jara/mol-ipc# ./test_unbind2 0 1 2  
+BIND DESTINATION dcid=0 dst_pid=2090 dst_nr=2 dst_ep=213236
+SENDER NEVER SEND and pause before UNBIND o kill it
+BIND RECEIVER dcid=0 src_pid=2091 src_nr=1 src_ep=213235
+UNBIND SENDER dcid=0 dst_pid=2090 dst_nr=2 dst_ep=213236
+SEND ret=-108 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERROR RETORNADO (EMOLSRCDIED)
+UNBIND RECEIVER dcid=0 src_pid=2091 src_nr=1 src_ep=213235
+
+haciendo dmesg
+[  711.368670] DEBUG 2090:mol_unbind:956: Wakeup RECEIVER with error ep=213235  pid=2091 <<< UP del RECEIVER
+[  711.369183] MOLDOWN: pid=2091 p_rcode=-108 <<<< ERROR RETORNADO (EMOLSRCDIED)
+
+
+test_unbind3
+------------
+Usage: ./test_unbind3 <dcid> <src_nr> <dst_nr>
+
+El RECEIVER nunca hace receive() y el SENDER envia un mensaje con notify();
+El RECEIVER hace unbind y por lo tanto el bit de notificación debe borrarse.
+
+
+root@debian:/home/jara/mol-ipc# ./test_unbind3 0 1 2
+BIND DESTINATION dcid=0 dst_pid=2161 dst_nr=2 dst_ep=248775
+RECEIVER NEVER RECEIVE......
+BIND SOURCE dcid=0 src_pid=2163 src_nr=1 src_ep=248774
+SET SOURCE PRIVILEDGES s_id=2
+NOTIFY dst_ep=248775
+SOURCE waits before unbind .....
+UNBIND DESTINATION dcid=0 dst_pid=2161 dst_nr=2 dst_ep=248775
+UNBIND SOURCE dcid=0 src_pid=2163 src_nr=1 src_ep=248774
+
+
+
+test_unbind4
+------------
+Usage: ./test_unbind4 <dcid> <src_nr> <dst_nr>
+
+El RECEIVER nunca hace receive() y el SENDER envia un mensaje con sendrec();
+El RECEIVER hace unbind y por lo tanto el SENDER debe notificarse que su mensaje no se envió.
+
+root@debian:/home/jara/mol-ipc# ./test_unbind4 0 1 2
+BIND DESTINATION dcid=0 dst_pid=2210 dst_nr=2 dst_ep=284314
+RECEIVER NEVER RECEIVE and pause before UNBIND o kill it
+BIND SOURCE dcid=0 src_pid=2211 src_nr=1 src_ep=284313
+SEND msg: m_type=255, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND DESTINATION dcid=0 dst_pid=2210 dst_nr=2 dst_ep=284314
+SENDREC ret=-109 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERROR RETORNADO (EMOLDSTDIED)
+UNBIND SOURCE dcid=0 src_pid=2211 src_nr=1 src_ep=284313
+
+haciendo dmesg
+[ 1204.176446] DEBUG 2210:mol_unbind:940: Wakeup SENDER with error ep=284313  pid=2211 <<< UP del SENDER
+[ 1204.178738] MOLDOWN: pid=2211 p_rcode=-109 <<<< ERROR RETORNADO AL SENDER (EMOLDSTDIED)
+
+
+test_unbind5
+------------
+Usage: ./test_unbind5 <dcid> <src_nr> <dst_nr>
+
+El RECEIVER hace receive() pero nunca hace send() de la respuesta y 
+el SENDER envia un mensaje con sendrec() y espera respuesta
+El RECEIVER hace unbind y por lo tanto el SENDER debe notificarse que el RECEIVER murio.
+
+
+root@debian:/home/jara/mol-ipc# ./test_unbind5 0 1 2
+BIND DESTINATION dcid=0 dst_pid=2264 dst_nr=2 dst_ep=319853
+BIND SOURCE dcid=0 src_pid=2265 src_nr=1 src_ep=319852
+SEND msg: m_type=255, m1_i1=1, m1_i2=2, m1_i3=3
+RECEIVER RECEIVE but never REPLAY then pause before UNBIND o kill it
+UNBIND DESTINATION dcid=0 dst_pid=2264 dst_nr=2 dst_ep=319853
+SENDREC ret=-108 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< ERROR RETORNADO (EMOLSRCDIED)
+UNBIND SOURCE dcid=0 src_pid=2265 src_nr=1 src_ep=319852
+
+haciendo dmesg
+[ 1376.646303] DEBUG 2264:mol_unbind:956: Wakeup RECEIVER with error ep=319852  pid=2265  <<< UP del RECEIVER
+[ 1376.648394] MOLDOWN: pid=2265 p_rcode=-108 <<<< ERROR RETORNADO (EMOLSRCDIED)
+
+
+mol_system, mol_pm, test_getpid
+-------------------------------
+Mol_system emula a MINIX SYSTEM TASK.
+   - Hace un bind al kernel con p_nr = SYSTEM
+   - Hace un fork para cargar el mol_pm
+   - El hijo hace un bin al kernel con p_nr = PM_PROC_NR
+   - El hijo hace execv para cargar mol_pm ejecutable
+
+El padre queda haciendo un loop 
+   - While(TRUE)
+   -  receive(peticion)
+   -  send(respuesta)
+
+El hijo (mol_pm) queda haciendo un loop 
+   - While(TRUE)
+   -  receive(peticion)
+   -  Si la peticion es GETPID retorna un falso pid=3333 y falso ppid=2222
+   -  send(respuesta)
+
+root@debian:/home/jara/mol-ipc# ./mol_system 0
+Initializing virtual machine 0...
+Binding ./mol_system to DC 0 with p_nr=-2 pid=3714
+./mol_system has binded with p_endpoint=-2
+Binding PM to DC 0 with p_nr=0 pid=0
+MOL_PM has binded with p_endpoint=0
+MOL_PM pid=3715 p_nr=0 endpoint=0
+
+test_getpid 
+-----------
+Usage: ./test_getpid <dcid> <clt_nr>
+	- hace un bind al kernel
+ 	- hace sendrec para pedir GETPID a PM_PROC_NR
+	- hace unbind
+
+root@debian:/home/jara/mol-ipc# ./test_getpid  0 30
+BIND CLIENT dcid=0 clt_pid=3746 clt_nr=30 clt_ep=35569
+Client send GETPID to MOLPM
+RECEIVE from PM: dest=0 m_type=0, m2_i1=2222, m2_i2=3333
+FAKE  PID=3333
+FAKE PPID=2222
+UNBIND CLIENT dcid=0 clt_pid=3746 clt_nr=30 clt_ep=35569
+
+MOL_PM muestra:
+PM RECEIVE msg: m_source=35569, m_type=20, m2_i1=-1218497595, m2_i2=-1081545896
+PM SEND msg: dest=35569 m_type=0, m2_i1=2222, m2_i2=3333
+
+test_rmtbind 
+------------
+Usage: ./test_rmtbind <dcid> <endpoint> <nodeid> 
+
+root@debian:/home/jara/mol-ipc# ./test_rmtbind  0 4 5
+Binding REMOTE process of dcid=0 from node=5 with endpoint=4 
+Dump procs of DC0
+Unbinding REMOTE process of dcid=0 from node=5 with endpoint=4 
+
+root@debian:/home/jara/mol-ipc# dmesg 
+[ 2127.707987] DEBUG 2453:mol_bind:314: dcid=0 p_nr=4
+[ 2127.708084] DEBUG 2453:mol_bind:357: i=8 p_nr=4 dcid=0 lpid=-1 endpoint=4 nodeid=5
+[ 2127.709342] DCID     NR      ENDP    LPID    NODE    FLAGS   GETF    SNDT     WITM
+[ 2127.709392] 0        4       4       -1      5       C00     27342   27342    27342
+
+test_relay
+----------
+ ./test_relay <dcid> <server> <clt1_nr> <clt2_nr>
+ 
+root@debian:/home/jara/mol-ipc# ./test_relay 0 10 11 12
+CLIENT2-send()->SERVER-relay()->CLIENT1
+then CLIENT1-send()->CLIENT2
+BIND SERVER dcid=0 svr_pid=2551 svr_nr=10 svr_ep=10
+SERVER waits RECEIVING
+BIND RECEIVER dcid=0 clt2_pid=2553 clt2_nr=12 clt2_ep=12
+CLIENT2 waits RECEIVING
+BIND CLIENT1 dcid=0 clt1_pid=2552 clt1_nr=11 clt1_ep=11
+CLIENT1(10) makes sendrec to SERVER(11)
+SENDREC msg: m_type=0, m1_i1=1, m1_i2=2, m1_i3=3
+RECEIVE msg: m_source=11, m_type=0, m1_i1=1, m1_i2=2, m1_i3=3
+RELAY to 12 msg: m_source=11 m_type=0, m1_i1=1, m1_i2=2, m1_i3=3
+SERVER waits RECEIVING
+RECEIVE msg: m_source=11, m_type=0, m1_i1=1, m1_i2=2, m1_i3=3
+UNBIND CLIENT1 dcid=0 clt1_pid=2552 clt1_nr=11 clt1_ep=11
+CLIENT2 waits RECEIVING
+
+
+ 2748.729538] DEBUG 2575:mol_mini_sendrec:691: SENDING HALF
+[ 2748.729538] DEBUG 2575:dump_message1:150: size:36, source:11 type:0 m1i1:1 m1i2:2 m1i3:3
+
+[ 2748.738954] DEBUG 2574:mol_mini_receive:588: Found acceptable message. Copy it and update status.
+[ 2748.739178] DEBUG 2574:dump_message1:150: size:36, source:11 type:0 m1i1:1 m1i2:2 m1i3:3
+
+[ 2750.742029] DEBUG 2574:mol_mini_relay:963: Destination: p_nr=12 p_endpoint=12  p_nodeid=0
+[ 2750.742029] DEBUG 2574:dump_message1:150: size:36, source:0 type:0 m1i1:0 m1i2:0 m1i3:0
+
+[ 2750.764851] DEBUG 2576:mol_mini_receive:588: Found acceptable message. Copy it and update status.
+[ 2750.765031] DEBUG 2576:dump_message1:150: size:36, source:11 type:0 m1i1:1 m1i2:2 m1i3:3
+
+[ 2750.775040] DEBUG 2576:mol_mini_send:425: dcid=0 caller_pid=2576 caller_nr=12 dst_ep=11 
+[ 2750.775040] DEBUG 2576:dump_message1:150: size:36, source:12 type:128 m1i1:1 m1i2:2 m1i3:3
+
+[ 2750.781648] DEBUG 2575:mol_mini_sendrec:739: Waiting message p_getfrom=12 srcdst_ep=10
+[ 2750.781934] DEBUG 2575:mol_mini_sendrec:742: Found acceptable message. Copy it and update status.
+[ 2750.782021] DEBUG 2575:dump_message1:150: size:36, source:12 type:128 m1i1:1 m1i2:2 m1i3:3
+
+[ 2750.785129] DEBUG 2575:mol_unbind:1161: dcid=0 lpid=2575 endpoint=11 flags=200 sendto=27342 getfrom=27342
+
+
+
+
+   
+ 
+
+
+
+
+
+
+
+
+
+
+
+

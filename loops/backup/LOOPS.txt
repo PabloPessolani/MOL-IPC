@@ -1,0 +1,180 @@
+
+	PRUEBAS REALIZADAS EN MAQUINAS VIRTUALES VMWARE
+	
+Sistema operativo	Microsoft Windows 7 Ultimate
+Versión	6.1.7601 Service Pack 1 Compilación 7601
+Descripción adicional del sistema operativo 	No disponible
+Fabricante del sistema operativo	Microsoft Corporation
+Nombre del sistema	USUARIO-PC
+Fabricante del sistema	Gigabyte Technology Co., Ltd.
+Modelo del sistema	GA-A55M-DS2
+Tipo de sistema	PC basado en x64
+Procesador	AMD A6-3670 APU with Radeon(tm) HD Graphics, 2700 Mhz, 4 procesadores principales, 4 procesadores lógicos
+Versión y fecha de BIOS	Award Software International, Inc. FC, 18/11/2011
+Versión de SMBIOS	2.4
+Directorio de Windows	C:\Windows
+Directorio del sistema	C:\Windows\system32
+Dispositivo de arranque	\Device\HarddiskVolume1
+Configuración regional	España
+Capa de abstracción de hardware	Versión = "6.1.7601.17514"
+Nombre de usuario	Usuario-PC\Admin
+Zona horaria	Hora estándar de Argentina
+Memoria física instalada (RAM)	4,00 GB
+Memoria física total	3,50 GB
+Memoria física disponible	1,13 GB
+Memoria virtual total	6,99 GB
+Memoria virtual disponible	4,03 GB
+Espacio de archivo de paginación	3,50 GB
+Archivo de paginación	C:\pagefile.sys
+
+loop_mq_perf
+============
+Proceso 1: msgrcv
+Proceso 2: msgsnd
+
+t_start=1349543822.68 t_stop=1349543823.55 t_total=0.87
+Loops = 50000 count=1249975001 buffer.mtype=1249975001
+Time for a pair of MSGSND/MSGRCV= 0.017364[ms]
+Throuhput = 57591.282570 [MSGSND_MSGRCV/s]
+
+loop_mq2_perf
+============
+Proceso 1: msgrcv/msgsnd
+Proceso 2: msgsnd/msgrcv
+
+t_start=1349543854.48 t_stop=1349543855.50 t_total=1.02
+Loops = 50000 count=1249975001 buffer.mtype=1249975001
+Time for a pair of MSGSND/MSGRCV= 0.010233[ms]
+Throuhput = 97725.541145 [MSGSND_MSGRCV/s]
+
+loop_mq3_perf
+============
+Proceso 1: msgrcv/msgsnd (BUFFER DOBLE sizeof(msg) )
+Proceso 2: msgsnd/msgrcv
+
+t_start=1349543877.59 t_stop=1349543878.62 t_total=1.03
+Loops = 50000 count=1249975001 buffer.mtype=1249975001
+Time for a pair of MSGSND/MSGRCV= 0.010307[ms]
+Throuhput = 97020.300154 [MSGSND_MSGRCV/s]
+
+
+loop_rs_perf
+============
+Proceso 1: mnx_receive
+Proceso 2: mnx_send
+
+t_start=1349543923.63 t_stop=1349543924.37 t_total=0.73
+Loops = 50000
+Time for a pair of SEND/RECEIVE= 0.014671[ms]
+Throuhput = 68161.207611 [SEND-RECEIVE/s]
+
+loop_sr2_perf
+============
+Proceso 1: mnx_receive/mnx_send
+Proceso 2: mnx_sendrec
+
+t_start=1349543955.87 t_stop=1349543957.33 t_total=1.46
+Loops = 50000
+Time for a pair of SEND/RECEIVE= 0.014561[ms]
+Throuhput = 68674.623439 [SEND-RECEIVE/s]
+
+loop_nr2_perf
+============
+Proceso 1: mnx_receive/mnx_notify
+Proceso 2: mnx_notify/mnx_receive
+
+t_start=1349543983.17 t_stop=1349543984.01 t_total=0.85
+Loops = 50000
+Time for a pair of SEND/RECEIVE= 0.008466[ms]
+Throuhput = 118119.795319 [SEND-RECEIVE/s]
+
+loop_mq_copy BLOCK SIZE= 1432 
+============
+Proceso 1: msgsnd(msq1)
+Proceso 2: msgrcv(msq1)
+t_start=1349544017.43 t_stop=1349544018.43 t_total=1.00
+Total Bytes = 71600000 transfer size=1432 #transfers=50000
+Throuhput = 71388827.613782 [bytes/s]
+
+loop_mq3_copy BLOCK SIZE= 1432
+============
+Proceso 1: msgsnd(msq1)
+Proceso 2: msgrcv(msq1)/msgsnd(msq2)
+Proceso 3: msgrcv(msq2)
+
+t_start=1349530475.00 t_stop=1349530476.81 t_total=1.81
+Total Bytes = 71600000 transfer size=1432 #transfers=50000
+Throuhput = 39592897.403705 [bytes/s]
+
+loop_sr3_copy BLOCK SIZE= 1432 KERNEL = 1432
+============
+Proceso 1: mnx_vcopy
+Proceso 2: 
+t_start=1349544150.61 t_stop=1349544151.07 t_total=0.45
+Total Bytes = 71600000 transfer size=1432 #transfers=50000
+Throuhput = 158206916.781160 [bytes/s]
+
+loop_sr4_copy BLOCK SIZE= 1432 KERNEL = 1432
+============
+Proceso 1: requester: mnx_vcopy(src_ep, dst_ep)
+Proceso 2: source
+Proceso 3: destination
+t_start=1349546039.08 t_stop=1349546040.55 t_total=1.47
+Total Bytes = 71600000 transfer size=1432 #transfers=50000
+Throuhput = 48593635.543405 [bytes/s]
+
+
+loop_mq_copy BLOCK SIZE= 4096
+============  
+Proceso 1: msgsnd(msq1)
+Proceso 2: msgrcv(msq1)
+t_start=1350152853.42 t_stop=1350152863.16 t_total=9.74
+Total Bytes = 2048000000 transfer size=4096 #transfers=500000
+Throuhput = 210207463.180377 [bytes/s]
+
+loop_mq3_copy BLOCK SIZE= 4096
+============
+Proceso 1: msgsnd(msq1)
+Proceso 2: msgrcv(msq1)/msgsnd(msq2)
+Proceso 3: msgrcv(msq2)
+t_start=1350152908.77 t_stop=1350152928.16 t_total=19.39
+Total Bytes = 2048000000 transfer size=4096 #transfers=500000
+Throuhput = 105637569.423104 [bytes/s]
+
+loop_sr3_copy BLOCK SIZE= 4096 KERNEL = 1432
+============
+Proceso 1: mnx_vcopy
+Proceso 2: 
+t_start=1350154312.23 t_stop=1350154321.02 t_total=8.80
+Total Bytes = 819200000 transfer size=4096 #transfers=200000
+Throuhput = 93116165.327872 [bytes/s]
+
+loop_sr4_copy BLOCK SIZE= 4096 KERNEL = 1432
+============
+Proceso 1: requester: mnx_vcopy(src_ep, dst_ep)
+Proceso 2: source
+Proceso 3: destination
+t_start=1350154419.07 t_stop=1350154436.82 t_total=17.75
+Total Bytes = 819200000 transfer size=4096 #transfers=200000
+Throuhput = 46150032.949306 [bytes/s]
+
+loop_sr3_copy BLOCK SIZE= 4096 KERNEL = 4096
+============
+Proceso 1: mnx_vcopy
+Proceso 2: 
+t_start=1350154727.95 t_stop=1350154731.16 t_total=3.21
+Total Bytes = 819200000 transfer size=4096 #transfers=200000
+Throuhput = 255265320.961439 [bytes/s]
+
+loop_sr4_copy BLOCK SIZE= 4096 KERNEL = 4096
+============
+Proceso 1: requester: mnx_vcopy(src_ep, dst_ep)
+Proceso 2: source
+Proceso 3: destination
+t_start=1350154853.12 t_stop=1350154859.37 t_total=6.26
+Total Bytes = 819200000 transfer size=4096 #transfers=200000
+Throuhput = 130965466.659125 [bytes/s]
+
+
+
+

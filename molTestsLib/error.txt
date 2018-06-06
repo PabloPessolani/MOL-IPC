@@ -1,0 +1,5 @@
+make: Warning: File `Makefile' has modification time 3.2e+04 s in the future
+test_fs_inet_01.c: In function ‘mol_dirfile’:
+test_fs_inet_01.c:74: warning: assignment makes pointer from integer without a cast
+test_fs_inet_01.c:77: warning: assignment makes pointer from integer without a cast
+make: warning:  Clock skew detected.  Your build may be incomplete.

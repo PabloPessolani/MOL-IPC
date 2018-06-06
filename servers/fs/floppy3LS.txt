@@ -1,0 +1,59 @@
+total 72
+ 1 drwxrwxrwx  4 bin   bin       2432 Jun 29  2014 .
+ 1 drwxr-xr-x 14 root  operator  1280 Aug  7  2013 ..
+ 5 -rwxr-xr-x  1 root  operator  9776 Aug  7  2013 date
+ 2 -rwxr-xr-x  1 root  operator   472 Aug  7  2013 passwd
+22 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd0
+13 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd1
+14 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd2
+15 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd3
+16 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd4
+17 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd5
+18 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd6
+19 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd7
+20 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd8
+21 -rwxr-xr-x  1 root  operator   472 Jun 29  2014 passwd9
+ 6 drwxr-xr-x  2 root  operator   256 Jun  2  2014 pepe
+ 9 drwxr-xr-x  3 root  operator   192 Jun  6  2014 pirulo2
+ 3 -rwxr-xr-x  1 root  operator   137 Aug  7  2013 rc.daemons
+24 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons0
+23 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons1
+25 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons2
+26 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons3
+27 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons4
+28 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons5
+29 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons6
+30 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons7
+31 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons8
+32 -rwxr-xr-x  1 root  operator   137 Jun 29  2014 rc.daemons9
+ 4 -rwxr-xr-x  1 root  operator  2557 Aug  7  2013 services
+33 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services0
+34 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services1
+35 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services2
+36 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services3
+37 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services4
+38 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services5
+39 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services6
+40 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services7
+41 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services8
+42 -rwxr-xr-x  1 root  operator  2557 Jun 29  2014 services9
+
+/mnt/pepe:
+total 8
+6 drwxr-xr-x 2 root  operator   256 Jun  2  2014 .
+1 drwxrwxrwx 4 bin   bin       2432 Jun 29  2014 ..
+7 -rwxr-xr-x 1 root  operator   472 Jun  2  2014 passwd
+8 -rwxr-xr-x 1 root  operator  2557 Jun  2  2014 services
+
+/mnt/pirulo2:
+total 5
+ 9 drwxr-xr-x 3 root  operator   192 Jun  6  2014 .
+ 1 drwxrwxrwx 4 bin   bin       2432 Jun 29  2014 ..
+10 drwxr-xr-x 2 root  operator   256 Jun  6  2014 pirulo1
+
+/mnt/pirulo2/pirulo1:
+total 6
+10 drwxr-xr-x 2 root  operator   256 Jun  6  2014 .
+ 9 drwxr-xr-x 3 root  operator   192 Jun  6  2014 ..
+11 -rwxr-xr-x 1 root  operator   472 Jun  6  2014 passwd
+12 -rwxr-xr-x 1 root  operator  2557 Jun  6  2014 services
