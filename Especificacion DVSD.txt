@@ -1,0 +1,183 @@
+DVSD: Es un servidor distribuido que permite la gestion integral del cluster DVSD
+
+Es un servidor (UDP port XXXX) constituido por 2 hilos:
+	1- Servidor de requerimientos: ofrece servicios a los clientes (gestores del DVS) para ejecutar comandos en todos o en algunos nodos del DVS.
+	2- Servidor de replicación: Es el responsable de realizar el multicast de las peticiones hacia los diferentes nodos y de recibir los resultados.
+	
+Ambos hilos comparten datos comunes y se encuentran sincronizados utilizando mutexes.
+
+Las peticiones (RQST) y las respuestas (RPLY) son atomicas, es decir solo hace falta un unico mensaje
+para contenerlos.
+
+Cada peticion RQST_XXXXXX tiene asociado:
+	- nodo peticionante
+	- nodo destinatario (puede ser DVS_ALLNODES)
+	- Numero de secuencia del peticionante
+	- tipo de requerimiento
+	- parámetros del requerimiento
+	
+Cada peticion RQST_RPLY tiene asociado:
+	- nodo respondiente
+	- nodo peticionante
+	- Numero de secuencia del peticionante
+	- tipo de requerimiento
+	- codigo de error (rcode)
+	- número de respuestas (rply_count) o longitud de respuesta (rply_len)
+	- array de respuestas
+
+// DVS 
+RQST_DVSINIT 
+RQST_GETDVSINFO
+RQST_DVSEND
+// DC
+RQST_DCINIT
+RQST_GETDCINFO 
+RQST_DCEND
+// NODE & PROXY
+RQST_ADDNODE 
+RQST_GETNODEINFO 
+RQST_DELNODE 
+RQST_GETPROXYINFO
+RQST_GETPROXYSTS  // Requiere una nueva API
+// PROCESS
+RQST_GETPROCINFO 
+RQST_SETPRIV 
+RQST_GETPRIV 
+RQST_MIGRATE
+// HOST
+RQST_COMMAND
+RQST_PS 
+RQST_VMSTAT 
+RQST_IFCONFIG
+RQST_NETSTAT 
+RQST_DF
+RQST_MOUNT
+RQST_KILL
+RQST_PIDSTAT
+RQST_CONTAINER
+RQST_CONTROLLER
+
+
+===============================================================================
+RQST_DVSINIT 
+============
+Requerimiento:
+	- dvs_usr_t;
+Respuesta:
+	- rcode = nodeid | ERROR_CODE
+	- rply_count = 0
+
+RQST_GETDVSINFO 
+===============
+Requerimiento:
+Respuesta:
+	- rcode = ERROR_CODE
+	- rply_count = 1
+	- dvs_usr_t;
+	
+RQST_DVSEND  
+===============
+Requerimiento:
+Respuesta:
+	- rcode = ERROR_CODE
+	- rply_count = 0
+ 
+RQST_DCINIT
+===========
+Requerimiento:
+	- DCID
+	- DC_usr_t
+Respuesta:
+	- rcode = DCID | ERROR_CODE	
+	- rply_count = 0
+
+RQST_GETDCINFO
+===============
+Requerimiento:
+	- DCID
+Respuesta:
+	- rcode = ERROR_CODE	
+	- rply_count = 1
+	- DC_usr_t
+ 
+RQST_DCEND
+===========
+Requerimiento:
+	- DCID
+Respuesta:
+	- rcode = ERROR_CODE
+	- rply_count = 0
+	
+RQST_ADDNODE
+===========
+Requerimiento:
+	- DCID
+	- nodeid
+Respuesta:
+	- rcode = ERROR_CODE
+	- rply_count = 0
+
+RQST_GETNODEINFO 
+===========
+Requerimiento:
+	- nodeid // en el nodo destino existen varias definiciones de nodos
+Respuesta:
+	- rcode = ERROR_CODE
+	- rply_count = 1
+	- node_usr_t
+
+RQST_DELNODE 
+===========
+Requerimiento:
+	- DCID
+	- nodeid
+Respuesta:
+	- rply_count = 0
+	- rcode = ERROR_CODE
+	
+RQST_GETPROXYINFO 
+=================
+Requerimiento:
+	- PXID
+Respuesta:
+	- rcode = ERROR_CODE	
+	- rply_count = 2 // son 2  proxies
+	- proc_usr_t[2]
+
+RQST_GETPROXYSTS 
+=================
+Requerimiento:
+	- PXID
+Respuesta:
+	- rcode = ERROR_CODE	
+	- rply_count = 1
+	- proxies_usr_t
+	
+TRATAMIENTO DE MENSAJES SPREAD
+==============================
+JOIN:   Todos incorporan el nodo al DVS
+			Verifican en la configuración que script van a ejecutar por JOIN
+		
+DISCONNECT: Todos remueven el nodo del DVS
+			Verifican en la configuracion que script van a ejecutar por DISCONNECT
+			
+PARTITION: Todos refrescan la configuracion del DVS
+			Verifican en la configuracion que script van a ejecutar por PARTITION
+
+MERGE:
+			Verifican en la configuracion que script van a ejecutar por MERGE
+
+APPLICATION MESSAGE: 
+	Da tratamiento individual
+	
+		
+	
+	
+
+
+
+
+
+
+	
+	
